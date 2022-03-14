@@ -28,6 +28,12 @@ class Address
     #[ORM\Column(type: 'string', length: 50)]
     private $country;
 
+    #[ORM\Column(type: 'boolean')]
+    private $isBilling;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isDelivery;
+
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
@@ -111,6 +117,42 @@ class Address
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isBilling
+     */
+    public function getIsBilling()
+    {
+        return $this->isBilling;
+    }
+
+    /**
+     * Set the value of isBilling
+     */
+    public function setIsBilling($isBilling): self
+    {
+        $this->isBilling = $isBilling;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isDelivery
+     */
+    public function getIsDelivery()
+    {
+        return $this->isDelivery;
+    }
+
+    /**
+     * Set the value of isDelivery
+     */
+    public function setIsDelivery($isDelivery): self
+    {
+        $this->isDelivery = $isDelivery;
 
         return $this;
     }

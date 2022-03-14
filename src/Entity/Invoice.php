@@ -22,6 +22,10 @@ class Invoice
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invoices')]
     private $user;
 
+    public function __construct()
+    {
+        $this->date = new \DateTime();  
+    }
 
     public function getId(): ?int
     {
@@ -40,12 +44,12 @@ class Invoice
         return $this;
     }
 
-    public function getOrderDate(): ?\DateTimeInterface
+    public function getOrderDate(): ?\DateTime
     {
         return $this->order_date;
     }
 
-    public function setOrderDate(\DateTimeInterface $order_date): self
+    public function setOrderDate(\DateTime $order_date): self
     {
         $this->order_date = $order_date;
 
