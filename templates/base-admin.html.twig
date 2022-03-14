@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}LNA - Administration{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <link href="{{ asset('bootstrap5/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+            <link href="{{ asset('fontawesome5/css/all.min.css') }}" rel="stylesheet">
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('bootstrap5/js/bootstrap.bundle.js') }}" rel="script"></script>
+        {% endblock %}
+    </head>
+    <body>
+
+        {% include 'admin/parts/header.html.twig' %}
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2 p-0 col-2 bg-dark">
+                        {% include 'admin/parts/aside-nav.html.twig' %}
+                    </div>
+                    <div class="col-lg-10 p-0">
+                        {% include 'admin/parts/date-picker.html.twig' %}
+                        <div class="col-lg-10 col-sm-8 p-0">
+                            <div class="container">
+                                
+                                    {% block body %}
+                                    {% endblock %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+        {% include 'admin/parts/footer.html.twig' %}
+
+    </body>
+</html>

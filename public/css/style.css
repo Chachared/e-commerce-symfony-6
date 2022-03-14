@@ -1,0 +1,115 @@
+/******************************************fonts******************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Raleway:wght@100;200;400;600;700;800&display=swap");
+body {
+  font-family: "Raleway";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.titre {
+  font-family: "Fuzzy Bubbles";
+}
+
+/***********************************************colors***************************************************/
+.color-star {
+  color: yellowgreen;
+}
+
+.bg-star {
+  background-color: yellowgreen;
+}
+
+.price {
+  font-weight: bold;
+  color: darkred;
+}
+
+/****************************headers*************************/
+header {
+  height: 100%;
+  background: url("../img/headers/terra.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+#headerDogs {
+  height: 460px;
+  background: url("../img/headers/headerDogs.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+#headerCats {
+  height: 460px;
+  background: url("../img/headers/headerCats.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+#headerRodents {
+  height: 520px;
+  background: url("../img/headers/headerRodents.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+/***********************************************NAVBAR********************************************************/
+
+.dropdown-menu {
+  background-color: #0f1e44;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(100,100,100,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: white;
+}
+
+/**************************************************BOUTONS*****************************************************/
+.panier {
+  background-color: yellowgreen;
+  border-radius: 20px 10px 20px 10px;
+  width: 125px;
+  height: 35px;
+  border: none;
+  color: #ffffff;
+}
+
+/**********************************************CARDS***ET MAP GOOGLE********************************************/
+.card {
+  color: black;
+  border-radius: 10px 10px 10px 10px;
+  outline-color: #0f1e44;
+  height: 100%;
+  width: 100%;
+}
+
+/**********************************************LIENS************************************************************/
+a:link {
+  color: white;
+} /* Lien non visité */
+a:visited {
+  color: white;
+} /* Lien visité */
+a:hover {
+  color: #0000ff;
+} /* Lien survolé*/
+a:active {
+  color: #0000ff;
+}
+
+/****************************footer*************************/
+footer {
+  height: 100%;
+  overflow: hidden;
+  background: url("../img/footers/terraReverse.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+/***************************search bar************************/

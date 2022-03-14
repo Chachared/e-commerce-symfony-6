@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+
+        {% include 'default/parts/header-dogs.html.twig' %}
+
+    <section>
+        <div id="fiche-produit" class="fiche-produit-classic" data-product="37389">
+
+
+            <section class="bswnm-breadcrumb container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="d-inline-flex list-unstyled pt-4">
+                            <li>
+                                <a href="index.php" class="text-dark mx-2">Accueil ></a>
+                            </li>
+                            <li>
+                                <a href="chien.php" class="text-dark mx-2">Chien ></a>
+                            </li>
+                            <li>
+                                <a href="couchage-chien.php" class="text-dark mx-2">Couchage pour chien</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="bswnm-product container font-family-primary-light pb-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-2 d-flex thumbnails ">
+                                <div class="mb-auto pt-2 pt-sm-0 w-100">
+                                    <img src="{{}}"
+                                        class="w-75 p-1 border rounded my-1 my-xl-2 "
+                                        alt="Couchage pour chat - Corbeille Douceur pour chats">
+                                    <img src="{{}}"
+                                        class="w-75 p-1 border rounded my-1 my-xl-2 "
+                                        alt="Couchage pour chat - Corbeille Douceur pour chats">
+                                    <img src="{{}}"
+                                        class="w-75 p-1 border rounded my-1 my-xl-2 "
+                                        alt="{{product.name}}">
+                                </div>
+                            </div>
+                            <div class="col-5 main-picture mt-4 mt-xl-0">
+                                <div class="row">
+                                    <div class="col-10 offset-2">
+                                        <img class="d-block w-100" src="{{}}" alt="{{product.name}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="row py-2">
+                                    <div class="col-12">
+                                        <!--Titre du produit-->
+                                        <h1>
+                                       {{product.name}}
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-dark mt-2">
+                                        <p>
+                                        {{product.description}}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row py-3">
+                                    <div class="col-4 col-xl-3">
+                                        <p class="text-grey small d-block">
+                                            à partir de
+                                        </p>
+                                        <p class="h3 font-weight-bold d-block mb-0">
+                                        {{product.price}}€
+                                        </p>
+                                    </div>
+                                    <!--avis des clients-->
+                                    <div class="col-8 col-xl-9 small text-grey">
+                                        <h6 class="d-block font-weight-bold"><a href="" class="text-dark">31 avis
+                                                client</a></h6>
+                                        {% include 'default/parts/stars.html.twig' %}
+                                        <!--affichage des commentaires-->
+                                        <div class="row">
+
+                                            <div class="col-6"><div class="card mt-3">
+                                                <h6 class="card-header bg-star text-white">user
+                                                </h6>
+                                                <div class="card-body">
+                                                    <p>commentaire</p>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row py-3">
+                                    <div class="col-12">
+                                        <a href="/marques/furminator/" target="_blank" class="campaign-banner"><img
+                                                src="//www.wanimo.com/images_campagnes/bandeau_-0-1615540438-2103-furminator-banniere-fiche.png"
+                                                srcset="//www.wanimo.com/images_campagnes/bandeau_-0-1615540438-2103-furminator-banniere-fiche.png 2x"
+                                                data-srcset="//www.wanimo.com/images_campagnes/bandeau_-0-1615540438-2103-furminator-banniere-fiche.png 2x"
+                                                class="w-100 lazyloaded" alt="Bannière campagne">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container px-0 pb-3 pt-4">
+                <div class="py-4 rounded-15">
+                    <div class="row">
+                        <h2 class="col-12 text-center">
+                            Choisissez votre article
+                        </h2>
+                    </div>
+                    <div class="row px-4 px-xl-0">
+                        <div class="col-12 col-xl-11 m-auto">
+                            <article
+                                class="row font-family-primary-light border-top border-bottom py-5 position-relative">
+                                <div class="col-12 col-md-6 col-xl-4 d-flex">
+                                    <div class="align-self-center">
+                                        <img src="{{}}"
+                                            class="my-auto cursor-pointer mx-3" alt="Visuel produit" height="100px">
+                                    </div>
+                                    <ul class="list-unstyled align-self-center pl-4">
+                                        <li>{{product.name}}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-md-3 col-xl-2 d-flex py-3 py-md-0">
+                                    <div class="m-auto text-center">
+                                        <p class="h5 font-weight-bold d-block mb-0">
+                                            {{product.price}}€
+                                        </p>
+                                        <p class="small d-block">
+                                            + Eco-part : 0,06€
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-md-3 col-xl-2 d-flex py-3 py-md-0">
+                                    <div class="align-self-center">
+                                        <p class="text-green available position-relative availability font-weight-bold">
+                                            Disponible</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-5 col-lg-3 offset-lg-6 offset-xl-0 col-xl-2 d-flex pt-md-3 pt-xl-0">
+                                    <div class="m-auto d-flex box-shadow-light rounded-pill px-3 qty ">
+                                        <p class="px-2 py-3 h5 mb-0 cursor-pointer">-</p>
+                                        <input type="number" class="text-center border-0 product-quantity" maxlength="2"
+                                            min="1" max="99" value="1" aria-label="Quantité souhaitée">
+                                        <p class="px-2 py-3 h5 mb-0 cursor-pointer">+</p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="col-7 col-lg-3 col-xl-2 d-flex pt-md-3 pt-xl-0 justify-content-end align-items-center">
+                                    <a href="{{ path('cart_add', {'id': product.id})}}" class="btn panier">Panier</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+{% endblock %}

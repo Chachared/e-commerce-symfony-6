@@ -1,0 +1,7 @@
+{% for i in range (0,4) %}
+    {% if product.stars > i %}
+        <i class="fas fa-star color-star"></i>
+    {% else %}
+        <i class="far fa-star color-star"></i>
+    {% endif %}
+{% endfor %}

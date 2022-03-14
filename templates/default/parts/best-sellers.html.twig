@@ -1,0 +1,22 @@
+        <section> 
+                <div class="container my-5 text-center">    
+                    <h4 class="text-center">Nos meilleures ventes</h4>
+                    <div class="row">
+                {% for product in products %}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card shadow-lg">
+                            <a href="">
+                                <img src="" width="200" height="200" alt="produit phare"/>
+                            </a>
+                            <div class="card-body">
+                                <p><strong>{{ product.HTPrice}} €</strong></p>
+                                <p>{% include 'default/parts/stars.html.twig' %}</p>
+                                <p>{{ product.name }}</p>
+                                <a href="{{ path ('show_product', {'id': product.title}) }}" class="panier btn">Voir + </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                    </div>
+                </div>
+            </section>

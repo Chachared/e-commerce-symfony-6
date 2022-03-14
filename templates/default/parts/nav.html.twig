@@ -1,0 +1,79 @@
+        {# menu de navigation produits #}
+        <section class="sticky-top">
+            <div class="container navbarTop mb-5">
+                <nav id="navbar_top" class="navbar navbar-expand-xl">
+                    <a href="{{ path ('default') }}" class="navbar-brand px-5">Accueil</a>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon navbar-dark"></span>
+                    </button>
+                    {# menus déroulants #}
+                    <div id="navbarCollapse" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav px-5">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Chien</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Alimentation</a>
+                                    <a href="#" class="dropdown-item">Jeu</a>
+                                    <a href="#" class="dropdown-item">Couchage</a>
+                                    <a href="#" class="dropdown-item">Voyage</a>
+                                    <a href="#" class="dropdown-item">Education</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Chat</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Alimentation</a>
+                                    <a href="#" class="dropdown-item">Jeu</a>
+                                    <a href="#" class="dropdown-item">Couchage</a>
+                                    <a href="#" class="dropdown-item">Voyage</a>
+                                    <a href="#" class="dropdown-item">Education</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Rongeurs</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Alimentation</a>
+                                    <a href="#" class="dropdown-item">Jeu</a>
+                                    <a href="#" class="dropdown-item">Couchage</a>
+                                    <a href="#" class="dropdown-item">Voyage</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Reptiles</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Alimentation</a>
+                                    <a href="#" class="dropdown-item">Jeu</a>
+                                    <a href="#" class="dropdown-item">Habitat</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Oiseaux</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Alimentation</a>
+                                    <a href="#" class="dropdown-item">Jeu</a>
+                                    <a href="#" class="dropdown-item">Habitat</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Poissons</a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Alimentation</a>
+                                    <a href="#" class="dropdown-item">Habitat</a>
+                                </div>
+                            </li>
+                        </ul>
+                        {# item de menu tout à droite #}
+                        <ul class="nav navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a href="" class="nav-link text-center" aria-current="page"><img
+                                        src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
+                                        class="cart"></br>Panier</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link text-center" href=""><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte" class="" ></br>Mon compte</a></li>
+                            <li class="nav-item"><a class="nav-link text-center" href=""><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte" class="" ></br>Se connecter</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </section>

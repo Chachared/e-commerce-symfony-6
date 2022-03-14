@@ -2,18 +2,39 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}La Nîmes'alerie{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <link href="{{ asset('bootstrap5/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/cookie.css') }}" rel="stylesheet">
+            <link href="{{ asset('fontawesome5/css/all.min.css') }}" rel="stylesheet">
+
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('bootstrap5/js/bootstrap.bundle.js') }}" rel="script"></script>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+
+        {% block body %}
+        {% endblock %}
+
+
+            {% if app.request.cookies.get('accepted') != 1 %}
+            <div class="cookiesContent" id="cookiesPopup">
+                <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" class="img-cookie" />
+                <p class="p-cookie">Avec votre accord, nous utilisons des cookies pour stocker et accéder à des informations personnelles. Vous pouvez retirer votre consentement à tout moment.</p>
+                <a href="{{ path('allow_cookie')}}">
+                    <button class="accept">J'aime les cookies !</button>
+                </a>  
+            </div>
+            {% endif %}
+    {% include 'default/parts/footer.html.twig' %}
     </body>
 </html>
