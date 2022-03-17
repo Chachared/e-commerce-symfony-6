@@ -3,6 +3,7 @@
                     <h4 class="text-center">Nos meilleures ventes</h4>
                     <div class="row">
                 {% for product in products %}
+                {% if product.isFlash == 1 %}
                     <div class="col-lg-3 col-sm-6">
                         <div class="card shadow-lg">
                             <a href="">
@@ -11,11 +12,12 @@
                             <div class="card-body">
                                 <p><strong>{{ product.HTPrice}} €</strong></p>
                                 <p>{% include 'default/parts/stars.html.twig' %}</p>
-                                <p>{{ product.name }}</p>
-                                <a href="{{ path ('show_product', {'id': product.title}) }}" class="panier btn">Voir + </a>
+                                <p>{{ product.title }}</p>
+                                <a href="" class="panier btn">Voir + </a>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
                     </div>
                 </div>

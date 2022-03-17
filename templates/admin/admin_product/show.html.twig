@@ -1,42 +1,87 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}Fiche produit{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ product.image }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Stars</th>
-                <td>{{ product.stars }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Fiche produit</h1>
+            <div class="col-6">
+                <h3>{{product.category.parentCategory.name}} > {{product.category.name}}
+                {% if product.isFlash == 1 %} > produit flash {% endif %}</h3>
+            </div>
+            <div class="col-3 d-flex justify-content-center">
+                <a href="{{ path('admin_product_index') }}" class="btn btn-dark rounded-pill my-2 mx-2">Retour</a>
+                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-success rounded-pill my-2 mx-2">Editer</a>
+            </div>
 
-    <a href="{{ path('admin_product_index') }}">back to list</a>
+            <div class="col-3 d-flex justify-content-end">
+                {{ include('admin/admin_product/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('admin_product_edit', {'id': product.id}) }}">edit</a>
+            <div class="container my-2">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            
+                            <div class="col-2 d-flex thumbnails ">
+                                <div class="mb-auto pt-2 pt-sm-0 w-100">
+                                    <img src=""
+                                        class="w-75 p-1 border rounded my-1 my-xl-2 "
+                                        alt="">
+                                </div>
+                            </div>
 
-    {{ include('admin_product/_delete_form.html.twig') }}
+                            <div class="col-5 main-picture mt-4 mt-xl-0">
+                                <div class="row">
+                                    <div class="col-10 offset-2">
+                                        <img class="d-block w-100" src="" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="row py-2">
+                                    <div class="col-12">
+                                        <h3>{{product.brand.name}}</h3>
+                                        <h1>
+                                       {{product.title}}
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-dark mt-2">
+                                        <p>
+                                        {{product.description}}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row py-3">
+                                    <div class="col-4 col-xl-3">
+                                        <h6 class="text-grey small d-block">
+                                            Prix hors taxe
+                                        </h6>
+                                        <p class="h3 font-weight-bold d-block mb-0">
+                                        {{(product.HTprice)}}€
+                                        </p>
+                                    </div>
+                                    <!--avis des clients-->
+                                    <div class="col-8 col-xl-9 small text-grey d-flex justify-content-end align-items-end">
+                                        <p class="h3 font-weight-bold d-block mb-0">
+                                        {% include 'default/parts/stars.html.twig' %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 {% endblock %}
