@@ -43,7 +43,7 @@ class Product
     #[ORM\Column(type: 'integer')]
     private $stars;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, orphanRemoval: true, cascade: ["persist"])]
     private $pictures;
 
     public function __construct()

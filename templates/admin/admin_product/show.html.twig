@@ -28,17 +28,27 @@
                         <div class="row">
                             
                             <div class="col-2 d-flex thumbnails ">
+                                <div class="row">
+                                    <div class="col-6">
+                            {% for picture in product.pictures %}
+                              
                                 <div class="mb-auto pt-2 pt-sm-0 w-100">
-                                    <img src=""
-                                        class="w-75 p-1 border rounded my-1 my-xl-2 "
-                                        alt="">
+                                    <img src="{{asset('img/uploads/product/' ~ picture.href )}}"
+                                        class="w-100 p-1 border rounded my-1 my-xl-2 "
+                                        alt="{{ picture.alt }}">
+                                </div>
+                               
+                            {% endfor %}
+                                    </div>
                                 </div>
                             </div>
+                            
 
                             <div class="col-5 main-picture mt-4 mt-xl-0">
                                 <div class="row">
                                     <div class="col-10 offset-2">
-                                        <img class="d-block w-100" src="" alt="">
+                                    <p class="text-danger">attention faire miniature cliquable</p>
+                                        <img class="d-block w-100" src="{{asset('img/chien-loupe.jpg')}}" alt="">
                                     </div>
                                 </div>
                             </div>

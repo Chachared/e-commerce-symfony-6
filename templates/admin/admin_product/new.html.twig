@@ -3,9 +3,21 @@
 {% block title %}{{ parent() }} Nouveau produit{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un nouveau produit</h1>
 
+    <div class="row">
+        <div class="col-6">
+            <h1 class="mb-3 ms-4">Ajouter un nouveau produit</h1>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <a href="{{ path('admin_product_index') }}" class="btn btn-dark rounded-pill">Retour</a>
+        </div>
+     </div>
+     
     {{ include('admin/admin_product/_form.html.twig') }}
 
-    <a href="{{ path('admin_product_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script rel="script" src="{{ asset('js/admin/prototype-product.js') }}"></script>
 {% endblock %}
