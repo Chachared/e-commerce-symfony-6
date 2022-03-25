@@ -57,6 +57,13 @@ header {
   color: white;
 }
 
+#headerFish {
+  height: 520px;
+  background: url("../img/headers/headerFish.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
+}
+
 /***********************************************NAVBAR********************************************************/
 
 .dropdown-menu {

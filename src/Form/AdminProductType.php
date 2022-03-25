@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Product;
-use Doctrine\DBAL\Types\FloatType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -74,6 +73,7 @@ class AdminProductType extends AbstractType
                 'entry_type' => AdminPictureType::class,
                 'allow_add' => true,
                 'prototype' => true,
+                
             ])
             ->add('save', SubmitType::class, [
                 'label'=>"Ajouter",

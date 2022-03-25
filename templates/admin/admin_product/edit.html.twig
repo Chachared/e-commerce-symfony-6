@@ -1,13 +1,24 @@
 {% extends 'base-admin.html.twig' %}
 
-{% block title %}Edit Product{% endblock %}
+
+{% block title %}{{ parent() }} Modifier produit{% endblock %}
 
 {% block body %}
-    <h1>Edit Product</h1>
 
+    <div class="row">
+        <div class="col-6">
+            <h1 class="mb-3 ms-4">Modifier un produit</h1>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <a href="{{ path('admin_product_index') }}" class="btn btn-dark rounded-pill">Retour</a>
+        </div>
+     </div>
+     
     {{ include('admin/admin_product/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admin_product_index') }}">back to list</a>
+{% endblock %}
 
-    {{ include('admin/admin_product/_delete_form.html.twig') }}
+{% block javascripts %}
+    {{ parent() }}
+    <script rel="script" src="{{ asset('js/admin/prototype-product.js') }}"></script>
 {% endblock %}

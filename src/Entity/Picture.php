@@ -19,6 +19,9 @@ class Picture
     #[ORM\Column(type: 'string', length: 255)]
     private $alt;
 
+    #[ORM\Column(type: 'boolean')]
+    private $isFront;
+
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'pictures')]
     #[ORM\JoinColumn(nullable: false)]
     private $product;
@@ -64,6 +67,24 @@ class Picture
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isFront
+     */
+    public function getIsFront()
+    {
+        return $this->isFront;
+    }
+
+    /**
+     * Set the value of isFront
+     */
+    public function setIsFront($isFront): self
+    {
+        $this->isFront = $isFront;
 
         return $this;
     }

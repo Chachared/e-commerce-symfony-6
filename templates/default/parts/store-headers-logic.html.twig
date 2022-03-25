@@ -1,0 +1,9 @@
+{% if product.category.parentCategory.name == 'Chien'%}
+        {% include 'default/parts/header-dogs.html.twig' %}
+        {% elseif product.category.parentCategory.name == 'Chat'%}
+        {% include 'default/parts/header-cats.html.twig' %}
+        {% elseif product.category.parentCategory.name == 'Rongeurs'%}
+        {% include 'default/parts/header-rodents.html.twig' %}
+        {% elseif product.category.parentCategory.name == 'Poissons'%}
+        {% include 'default/parts/header-fish.html.twig' %}
+        {% endif %}

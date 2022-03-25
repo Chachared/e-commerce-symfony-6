@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Picture;
 use App\Entity\Product;
 use App\Form\AdminProductType;
 use App\Repository\ProductRepository;
@@ -71,15 +70,35 @@ class AdminProductController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'admin_product_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager, SluggerInterface $slugger ): Response
     {
         $form = $this->createForm(AdminProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            foreach ($form->get('pictures') as $picture){
+
+                $pictureFile = $picture->get('href')->getData();
+   
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+                $pictureFile->move(
+                    $this->getParameter('product_picture'),
+                    $newFilename
+                );
+                
+                $picture = $picture->getData();
+                $picture-> setHref($newFilename);
+                $picture-> setProduct($product);
+                $product-> addPicture($picture);
+
+            }
+            
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin/admin_product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/admin_product/edit.html.twig', [
@@ -96,6 +115,6 @@ class AdminProductController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin/admin_product_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_product_index', [], Response::HTTP_SEE_OTHER);
     }
 }

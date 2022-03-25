@@ -14,6 +14,7 @@ class DefaultController extends AbstractController
     
     public function __construct(ProductRepository $productRepository){
         $this->productRepository = $productRepository;
+
     }
     
     #[Route('/', name: 'default')]
@@ -23,6 +24,7 @@ class DefaultController extends AbstractController
         
         return $this->render('default/index.html.twig', [
             'products' => $products,
+
         ]);
     }
 
@@ -31,4 +33,5 @@ class DefaultController extends AbstractController
 
         return $this->render('default/product.html.twig', ['product'=>$product]);
     }
+
 }

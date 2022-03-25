@@ -103,13 +103,13 @@ class CategoryFixtures extends Fixture
         
         $category19= new Category();
         $category19->setName('couchage');
-        $category19->setParentCategory($category2);
+        $category19->setParentCategory($category3);
         $this->addReference('category19', $category19);
         $manager->persist($category19);
         
         $category20= new Category();
         $category20->setName('accessoires');
-        $category20->setParentCategory($category2);
+        $category20->setParentCategory($category3);
         $this->addReference('category20', $category20);
         $manager->persist($category20);
         

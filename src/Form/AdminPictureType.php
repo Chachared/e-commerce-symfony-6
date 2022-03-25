@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Picture;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +19,7 @@ class AdminPictureType extends AbstractType
         ->add('href', FileType::class, [
                 'required'=>true,
                 'mapped'=>false,
-                'label'=>"Image",
+                'label'=>"Image à télécharger",
                 'constraints'=>[
                     new File(
                         [
@@ -42,6 +43,11 @@ class AdminPictureType extends AbstractType
                 'required'=>true,
                 'label'=>"texte alternatif",
                 'attr'=>['class'=>'form-control']
+            ])
+            ->add('isFront', CheckboxType::class, [
+                'required'=>false,
+                'label'=>"Photo principale, attention n'en choisir qu'une !",
+                'attr'=>['class'=>'checkbox']
             ])
         ;
     }
