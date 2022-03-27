@@ -1,24 +1,4 @@
     <footer>
-        {# reassurance client #}
-        <section>
-            <div class="container mb-2">
-                <div class=row>
-                    <div class="col-lg-12 col-sm-6 d-flex justify-content-around">
-                        <ul class="nav ">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><img src="{{ asset('img/reassurance/paiement.png') }}" width=""
-                                        height="80" alt="F" class=""></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><img src="{{ asset('img/reassurance/avisClients.png') }}" width=""
-                                        height="80" alt="Contact" class=""></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         {# corps principal du footer #}
         <section>
             {# 2 menus #}
@@ -28,8 +8,8 @@
                     <div class="col-lg-4 col-sm-12 text-start">
                         <div class="">
                             <nav class="nav flex-column">
-                                <a class="nav-link active" aria-current="page" href="#">Livraison</a>
-                                <a class="nav-link" href="#">Moyens de paiement</a>
+                                <a class="nav-link active" aria-current="page" data-bs-toggle="modal" href="#deliveryModal">Livraison</a>
+                                <a class="nav-link" data-bs-toggle="modal" href="#paymentsModal">Moyens de paiement</a>
                                 <a class="nav-link" href="#">CGV</a>
                                 <a class="nav-link" href="#">Retour en haut de page</a>
                             </nav>
@@ -79,6 +59,8 @@
                     </div>
                 </div>
             </div>
+            {% include 'default/parts/delivery.html.twig' %}
+            {% include 'default/parts/payments.html.twig' %}
         </section>
 
     </footer>

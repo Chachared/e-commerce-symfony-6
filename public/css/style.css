@@ -87,6 +87,13 @@ header {
   color: #ffffff;
 }
 
+/**************************************************MODALES*****************************************************/
+.modal-content {
+  background: url("../img/stars.jpg") center no-repeat;
+  background-size: cover;
+  border-color: white;
+}
+
 /**********************************************CARDS***ET MAP GOOGLE********************************************/
 .card {
   color: black;

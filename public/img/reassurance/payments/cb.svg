@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="31px" viewBox="0 0 49 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>cb</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#3A8243" offset="0%"></stop>
+            <stop stop-color="#2375A9" offset="49.0630279%"></stop>
+            <stop stop-color="#08295C" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="48" height="30" rx="2.64"></rect>
+        <polygon id="path-4" points="0.00039 0.28821 17.82417 0.28821 17.82417 14.82 0.00039 14.82"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D___FOOTER" transform="translate(-604.000000, -463.000000)">
+            <g id="___FOOTER">
+                <g id="payement-methods" transform="translate(544.000000, 455.000000)">
+                    <g id="cb" transform="translate(60.400000, 8.400000)">
+                        <g id="logo-cb">
+                            <mask id="mask-3" fill="white">
+                                <use xlink:href="#path-2"></use>
+                            </mask>
+                            <use id="Mask" fill="url(#linearGradient-1)" fill-rule="nonzero" xlink:href="#path-2"></use>
+                            <g id="Group-8" mask="url(#mask-3)">
+                                <g transform="translate(6.600000, 7.200000)">
+                                    <g id="Group-3" stroke-width="1" fill="none" transform="translate(0.000000, 0.492102)">
+                                        <mask id="mask-5" fill="white">
+                                            <use xlink:href="#path-4"></use>
+                                        </mask>
+                                        <g id="Clip-2"></g>
+                                        <path d="M8.88927,6.93927 L17.81013,6.93927 C17.73057,5.17725 17.28129,3.36063 15.91863,2.19375 C14.29545,0.80379 11.45235,0.28821 8.91189,0.28821 C6.26769,0.28821 3.34347,0.85371 1.71171,2.34507 C0.30459,3.62973 0.00039,5.69673 0.00039,7.55391 C0.00039,9.49923 0.59553,11.76201 2.12199,13.06617 C3.74517,14.45223 6.37533,14.82039 8.91189,14.82039 C11.37591,14.82039 14.04507,14.40465 15.65889,13.08801 C17.26803,11.77293 17.82417,9.55773 17.82417,7.55391 L17.82417,7.54455 L8.88927,7.54455 L8.88927,6.93927 Z" id="Fill-1" fill="#FEFEFE" mask="url(#mask-5)"></path>
+                                    </g>
+                                    <path d="M18.40878,8.036964 L18.40878,14.987544 L30.81858,14.987544 L30.81858,14.978184 C32.63442,14.887704 34.07898,13.391664 34.07898,11.554764 C34.07898,9.717084 32.63442,8.125104 30.81858,8.033844 L30.81858,8.036964 L18.40878,8.036964 Z" id="Fill-4" fill="#FEFEFE"></path>
+                                    <path d="M33.851922,4.245072 C33.851922,2.474472 32.447142,1.071252 30.677322,1.071252 C30.554862,1.071252 30.404322,1.047852 30.285762,1.061112 L18.408702,1.061112 L18.408702,7.431372 L30.920682,7.431372 C32.561802,7.290192 33.851922,5.921292 33.851922,4.245072" id="Fill-6" fill="#FEFEFE"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

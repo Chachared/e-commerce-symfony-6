@@ -14,10 +14,7 @@
 
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            <script src="{{ asset('bootstrap5/js/bootstrap.bundle.js') }}" rel="script"></script>
-        {% endblock %}
+        
     </head>
     <body>
 
@@ -37,4 +34,9 @@
             {% endif %}
     {% include 'default/parts/footer.html.twig' %}
     </body>
+    {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('bootstrap5/js/bootstrap.bundle.js') }}" rel="script"></script>
+            <script src="{{ asset('js/default/main.js') }}" rel="script"></script>
+        {% endblock %}
 </html>
