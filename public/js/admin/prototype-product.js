@@ -9,7 +9,8 @@ $(document).ready(function () {
     // replace the "__name__" used in the id and name of the prototype
     // with a number that's unique to your pictures
     // end name attribute looks like name="product[pictures][2]"
-    newWidget = newWidget.replace(/__name__/g, counter);
+    newWidget = newWidget.replace(/__name__/g, "photo n°"+parseInt(counter+1));
+    newWidget = newWidget.replace(/label__/g, "");
     // Increase the counter
     counter++;
     // And store it, the length cannot be used if deleting widgets is allowed

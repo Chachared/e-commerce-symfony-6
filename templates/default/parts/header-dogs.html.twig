@@ -1,5 +1,7 @@
 <header id="headerDogs">
-    {% include 'default/parts/nav.html.twig' %}
+    {{ render(controller('App\\Controller\\DefaultController::displayNav'))}}
+    
+
     <section>
         <div class="container-fluid">
             <div class="row">  

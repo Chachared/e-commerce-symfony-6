@@ -46,7 +46,7 @@ class AdminPictureType extends AbstractType
             ])
             ->add('isFront', CheckboxType::class, [
                 'required'=>false,
-                'label'=>"Photo principale, attention n'en choisir qu'une !",
+                'label'=>"Photo principale, attention n'en choisir qu'une !  ",
                 'attr'=>['class'=>'checkbox']
             ])
         ;

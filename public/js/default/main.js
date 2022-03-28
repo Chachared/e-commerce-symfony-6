@@ -1,4 +1,3 @@
-
 //gestion des modales bootstrap du website
 var myModal = document.getElementById("myModal");
 var myInput = document.getElementById("myInput");

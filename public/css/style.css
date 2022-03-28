@@ -77,6 +77,19 @@ header {
   border-color: white;
 }
 
+.nav-link{
+  color: white;
+} /* Lien non visité */
+.nav-link:visited {
+  color: white;
+} /* Lien visité */
+.nav-link:hover {
+  color: lightgrey;
+} /* Lien survolé*/
+.nav-link:active {
+  color: lightgrey;
+}
+
 /**************************************************BOUTONS*****************************************************/
 .panier {
   background-color: yellowgreen;
@@ -111,10 +124,10 @@ a:visited {
   color: white;
 } /* Lien visité */
 a:hover {
-  color: #0000ff;
+  color: lightgrey;
 } /* Lien survolé*/
 a:active {
-  color: #0000ff;
+  color: lightgrey;
 }
 
 /****************************footer*************************/

@@ -1,6 +1,6 @@
     <header>
-        {% include 'default/parts/nav.html.twig' %}
 
+{{ render(controller('App\\Controller\\DefaultController::displayNav'))}}
         {# logo principal #}
         <section>
             <div class="container-fluid">

@@ -23,11 +23,14 @@ class DefaultController extends AbstractController
     #[Route('/', name: 'default')]
     public function index(): Response
     {
-        $products = $this->productRepository->findAll();
+        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
+        shuffle($flashProducts);
+        
         $categories = $this->categoryRepository->findAll();
         
+        
         return $this->render('default/index.html.twig', [
-            'products' => $products,
+            'products' => array_splice($flashProducts, -4),
             'categories' => $categories,
             'controller_name' => 'DefaultController'
         ]);
@@ -41,8 +44,8 @@ class DefaultController extends AbstractController
         return $this->render('default/product.html.twig', ['product'=>$product , 'categories'=> $categories]);
     }
 
-        #[Route('/category/{id}', name: 'show_category', methods: ['GET'])]
-    public function show(Category $category, Product $product): Response
+    #[Route('/category/{id}', name: 'show_category', methods: ['GET'])]
+    public function show(Category $category): Response
     {
         $products = $this->productRepository->findAll();
         $categories = $this->categoryRepository->findAll();
@@ -51,7 +54,23 @@ class DefaultController extends AbstractController
             'category' => $category, 
             'categories'=>$categories,
             'products' => $products, 
-            'product' =>$product
+            
+        ]);
+    }
+
+    public function displayNav(){
+
+        $categories = $this->categoryRepository->findAll();
+        $sortedCategories=[];
+        
+        foreach($categories as $category){
+
+            if($category->getParentCategory() !== null){
+            $sortedCategories[$category->getParentCategory()->getName()][] = $category;
+            }
+        }
+        return $this->render('default/parts/nav.html.twig', [
+            'categories'=>$sortedCategories
         ]);
     }
 }

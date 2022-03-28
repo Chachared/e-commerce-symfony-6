@@ -12,19 +12,14 @@
                     {# menus déroulants par catégories#}
                     <div id="navbarCollapse" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav px-5">
-                            {% for category in categories %}
+                            {% for parentCategory in categories|keys %}
                             <li class="nav-item dropdown">
-                                {% if category.parentCategory == NULL %}
-                                    <a href="{{ path('show_category', {'id': category.id})}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{category.name}}</a>
-                                {% else %}
-                                    {% if category.parentCategory.id != NULL and category.id == category.parentCategory.id %}
-                                        <div class="dropdown-menu">
-                                            {% for childCategory in category %}
-                                            <a href="{{ path('show_category', {'id': category.id})}}" class="dropdown-item">{{childCategory.name}}</a>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %} 
-                                {% endif %}
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{parentCategory}}</a>
+                                <div class="dropdown-menu">
+                                    {% for childCategory in categories[parentCategory] %}
+                                        <a href="{{ path('show_category', {'id': childCategory.id})}}" class="dropdown-item">{{childCategory.name}}</a>
+                                    {% endfor %} 
+                                </div>   
                             </li>
                             {% endfor %}
                         </ul>

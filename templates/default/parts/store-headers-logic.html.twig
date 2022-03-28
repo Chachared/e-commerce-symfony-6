@@ -1,9 +1,9 @@
-{% if product.category.parentCategory.name == 'Chien' or category.parentCategory.name == 'Chien' %}
+{% if (product is defined and product.category.parentCategory.name == 'Chien') or (category is defined and category.parentCategory.name == 'Chien') %}
         {% include 'default/parts/header-dogs.html.twig' %}
-{% elseif product.category.parentCategory.name == 'Chat' or category.parentCategory.name == 'Chat' %}
+{% elseif (product is defined and product.category.parentCategory.name == 'Chat') or (category is defined and category.parentCategory.name == 'Chat') %}
         {% include 'default/parts/header-cats.html.twig' %}
-{% elseif product.category.parentCategory.name == 'Rongeurs' or category.parentCategory.name == 'Rongeurs' %}
+{% elseif (product is defined and product.category.parentCategory.name == 'Rongeurs') or (category is defined and category.parentCategory.name == 'Rongeurs') %}
         {% include 'default/parts/header-rodents.html.twig' %}
-{% elseif product.category.parentCategory.name == 'Poissons' or category.parentCategory.name == 'Poissons' %}
+{% elseif (product is defined and product.category.parentCategory.name == 'Poissons') or (category is defined and category.parentCategory.name == 'Poissons') %}
         {% include 'default/parts/header-fish.html.twig' %}
 {% endif %}
