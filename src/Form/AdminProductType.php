@@ -46,7 +46,8 @@ class AdminProductType extends AbstractType
             ->add('HTprice', NumberType::class, [
                 'required'=>true,
                 'label'=>"Prix Hors Taxes",
-                'attr'=>['class'=>'form-control']
+                'attr'=>['class'=>'form-control',
+                ]
             ])
             ->add('stock', IntegerType::class, [
                 'required'=>true,

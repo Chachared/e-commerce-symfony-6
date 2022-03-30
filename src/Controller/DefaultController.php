@@ -73,4 +73,5 @@ class DefaultController extends AbstractController
             'categories'=>$sortedCategories
         ]);
     }
+
 }
