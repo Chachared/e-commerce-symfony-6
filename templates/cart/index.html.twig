@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+
+{% block body %}
+{% include 'default/parts/header.html.twig'%}
+<div class="container">
+
+    <div class="card shadow-lg my-3" style="min-height: 500px;">
+        <h3 class="card-header shadow-lg text-center">Mon panier</h3>
+        <div class="card-body text-success">
+            {% if cart|length > 0 %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Produit</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix unitaire</th>
+            <th scope="col">Prix total</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for productOrder in cart %}
+        <tr>
+            <th scope="row">{{ productOrder.product.title }}</th>
+            <td><a class="btn btn-sm btn-secondary rounded-pill">-</a> <strong>{{ productOrder.quantity }}</strong>  <a class="btn btn-sm btn-secondary rounded-pill">+</a></td>
+            <td>{{ productOrder.product.HTPrice }} €</td>
+            <td>{{ productOrder.product.HTPrice * productOrder.quantity }} €</td>
+            <td>
+                <a class="btn btn-dark btn-sm rounded-pill" href="{{path("cart_remove", {'id':productOrder.product.id})}}">Supprimer</a>
+                
+                
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2 class="text-danger">Votre panier est vide !</h2>
+    {% endif %}
+        </div>
+        <div class="card-footer">
+            <h5 class="text-end">Montant total : PRIX euros</h5>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

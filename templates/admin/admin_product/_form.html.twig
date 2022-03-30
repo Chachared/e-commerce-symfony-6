@@ -80,19 +80,22 @@
 
         <div class="mt-2 me-3 col-4">
         {{ form_row(form.pictures )}}
-            
-            <div id="picture-fields-list"
+
+            <ul id="picture-fields-list"
+                data-widget-tags="{{ '<li></li>'|e }}"
                 data-widget-counter="{{ form.pictures|length }}">
                 {% for pictureField in form.pictures %}
-                    {{ form_errors(pictureField) }}           
+                    <li>
+                        {{ form_errors(pictureField) }}           
+                    </li>
                 {% endfor %}
-            </div>
+            </ul>
             <button type="button"
                 class="addPicture btn btn-secondary rounded-pill mb-2 mt-0"
                 data-list-selector="#picture-fields-list">
                 Ajouter une image
             </button>
-            
+
         </div>
 
         <div class="my-2 me-3 col-2">

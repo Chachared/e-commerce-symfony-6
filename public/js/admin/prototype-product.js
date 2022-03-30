@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   $(".addPicture").click(function (e) {
     var list = $($(this).attr("data-list-selector"));
@@ -6,6 +7,7 @@ $(document).ready(function () {
 
     // grab the prototype template
     var newWidget = $("#admin_product_pictures").attr("data-prototype");
+    
     // replace the "__name__" used in the id and name of the prototype
     // with a number that's unique to your pictures
     // end name attribute looks like name="product[pictures][2]"
@@ -19,5 +21,6 @@ $(document).ready(function () {
     // create a new list element and add it to the list
     var newElem = $(list.attr("data-widget-tags")).html(newWidget);
     newElem.appendTo(list);
+    console.log(newElem);
   });
 });
