@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+{% include 'default/parts/header.html.twig' %}
+<div class="container">
+    <div class="card shadow-lg my-3" style="min-height: 500px;">
+        <h1 class="card-header shadow-lg h3 my-3">Veuillez vous enregistrer</h1>
+
+        <div class="card-body">
+            <div class="form-group">
+                {{ form_start(registrationForm) }}
+                    <div class="my-2 me-3">
+                        {{ form_row(registrationForm.username) }}
+                    </div>
+                    <div class="my-2 me-3">
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        }) }}
+                    </div>
+                    <div class="my-2 me-3">
+                        {{ form_row(registrationForm.title) }}
+                    </div>
+                    <div class="my-2 me-3">
+                        {{ form_row(registrationForm.firstname) }}
+                    </div>
+                    <div class="my-2 me-3">
+                        {{ form_row(registrationForm.lastname) }}
+                    </div>
+                    <div class="my-2 me-3">
+                        {{ form_row(registrationForm.birthday) }}
+                    </div>
+
+                    <button type="submit" class="btn btn btn-dark rounded-pill my-3">S'enregistrer</button>
+
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

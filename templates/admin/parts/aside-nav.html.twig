@@ -1,13 +1,6 @@
 <ul class="list-group list-group-flush">
   <li class="list-group-item bg-dark fs-6 text-end">
-    <img
-      src="https://image.noelshack.com/fichiers/2017/48/6/1512253071-patron.jpg"
-      alt="patron"
-      width="30"
-      height="30"
-      class="rounded-circle"
-    />
-    <div class="d-none d-sm-inline mx-1 text-light">M. le patron</div>
+    <div class="d-none d-sm-inline mx-1 text-light">Bonjour {{app.user.firstname}} {{app.user.lastname}}</div>
   </li>
   <li class="list-group-item bg-dark fs-4 text-uppercase">
     <a href="{{ path ('admin')}}" class="stretched-link link-light text-decoration-none"
@@ -42,6 +35,11 @@
   <li class="list-group-item bg-dark fs-5 text-uppercase">
     <a href="/" class="stretched-link link-light text-decoration-none"
       >Factures</a
+    >
+  </li>
+  <li class="list-group-item bg-dark fs-5 text-uppercase">
+    <a href="{{path('app_logout')}}" class="stretched-link link-light text-decoration-none"
+      >Déconnecter</a
     >
   </li>
 </ul>
