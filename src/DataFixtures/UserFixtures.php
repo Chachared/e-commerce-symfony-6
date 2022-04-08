@@ -83,7 +83,7 @@ class UserFixtures extends Fixture
             $firstname = $faker->firstName();
             $password = $this->hasher->hashPassword($user, '1234');
             
-            $user->setUsername($faker->username);
+            $user->setUsername(str_shuffle($firstname));
             $user->setPassword($password);
             $user->setTitle($faker->title);
             $user->setFirstname($firstname);
@@ -91,6 +91,7 @@ class UserFixtures extends Fixture
             $user->setEmail(strtolower($firstname.'.'.$lastname).'@'.$faker->freeEmailDomain());
             $user->setBirthday($faker->dateTimebetween('-100 year', '-18 year'));
             $user->setRegisterDate($faker->dateTimebetween('-2 months','now'));
+            
             $manager->persist($user);
         }
         

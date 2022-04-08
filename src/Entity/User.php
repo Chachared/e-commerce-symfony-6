@@ -25,6 +25,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
+    private ?string $plainPassword = null;
+    
     #[ORM\Column(type: 'string')]
     private $password;
 
@@ -104,6 +106,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function hasRole($role){
+        $exist =false;
+
+        foreach ($this->roles as $r){
+            if($r == $role){
+                $exist=true;
+            }  
+        }
+        return $exist;
+    } 
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -265,6 +278,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setBirthday(\DateTime $birthday): self
     {
         $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of plainPassword
+     *
+     * @return ?string
+     */
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * Set the value of plainPassword
+     *
+     * @param ?string $plainPassword
+     *
+     * @return self
+     */
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }

@@ -7,8 +7,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
+
 class AddressFixtures extends Fixture implements DependentFixtureInterface
 {
+    
     public function load(ObjectManager $manager): void
     {
         $address1 = new Address();
@@ -81,8 +83,8 @@ class AddressFixtures extends Fixture implements DependentFixtureInterface
         $address5-> setIsDelivery(true);
         $address5-> setUser($this->getReference('admin2'));
         $this->addReference('address5', $address5); 
-        $manager->persist($address5);        
-
+        $manager->persist($address5);
+        
         $manager->flush();
     }
 

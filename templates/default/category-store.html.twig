@@ -25,7 +25,7 @@
                                     </a>
                                 
                                 <div class="card-body">
-                                    <p><strong>{{ product.HTPrice}} €</strong></p>
+                                    <p><strong>{{ product.HTPrice|number_format(2,'.')}} €</strong></p>
                                     <p>{% include 'default/parts/stars.html.twig' %}</p>
                                     <p>{{ product.title }}</p>
                                     <a href="{{ path('show_product', {'id': product.id})}}" class="panier btn">Voir + </a>

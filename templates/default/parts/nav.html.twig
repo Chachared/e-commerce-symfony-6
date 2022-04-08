@@ -26,15 +26,25 @@
 
                         {# item de menu tout à droite #}
                         <ul class="nav navbar-nav ms-auto">
-                            <li class="nav-item">
+                            
+                            {% if app.user %}
+                                {% if app.user.hasRole('ROLE_ADMIN') %}
+                                    <li class="nav-item"><a class="nav-link text-center" href="{{path('admin')}}"><img src="{{ asset('img/chien-loupe.jpg') }}" width="50" height="50" alt="Compte"></br>Dashboard</a></li>
+                                {% else %}
+                                <li class="nav-item">
                                 <a href="{{ path('cart_display')}}" class="nav-link text-center" aria-current="page"><img
                                         src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
                                         class="cart"></br>Panier</a>
                             </li>
-                            {% if app.user %}
-                            <li class="nav-item"><a class="nav-link text-center" href=""><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte"></br>Mon compte</a></li>
+                                <li class="nav-item"><a class="nav-link text-center" href=""><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte"></br>Mon compte</a></li>
+                                {% endif %}
                             {% else %}
-                            <li class="nav-item"><a class="nav-link text-center" href="{{path('app_login')}}"><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte" ></br>Se connecter</a></li>
+                                <li class="nav-item">
+                                <a href="{{ path('cart_display')}}" class="nav-link text-center" aria-current="page"><img
+                                        src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
+                                        class="cart"></br>Panier</a>
+                            </li>
+                                <li class="nav-item"><a class="nav-link text-center" href="{{path('app_login')}}"><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte" ></br>Se connecter</a></li>
                             {% endif %}
                         </ul>
                     </div>

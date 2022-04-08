@@ -8,7 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,25 +28,13 @@ class RegistrationFormType extends AbstractType
                 'label'=>"Nom d'utilisateur",
                 'attr'=>['class'=>'form-control']
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'required'=>true,
-                'label'=>"Mot de passe",
-                'attr' => ['autocomplete' => 'new-password'],
-                'attr'=>['class'=>'form-control'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe devrait faire au moins 6 caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Veuillez vérifier vos mots de passe.',
+                'options' => ['attr' => ['class' => 'password-field form-control']],
+                'required' => true,
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmez votre mot de passe'],
             ])
             ->add('title',TextType::class, [
                 'required'=>true,
@@ -59,6 +49,11 @@ class RegistrationFormType extends AbstractType
             ->add('lastname',TextType::class, [
                 'required'=>true,
                 'label'=>"Nom",
+                'attr'=>['class'=>'form-control']
+                ])
+            ->add('email',EmailType::class, [
+                'required'=>true,
+                'label'=>"Adresse mail",
                 'attr'=>['class'=>'form-control']
                 ])
             ->add('birthday', DateType::class,[
