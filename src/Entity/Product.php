@@ -21,7 +21,7 @@ class Product
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'integer')]
     private $HT_price;
 
     #[ORM\Column(type: 'boolean')]
@@ -81,12 +81,12 @@ class Product
         return $this;
     }
 
-    public function getHTPrice(): ?float
+    public function getHTPrice(): ?int
     {
         return $this->HT_price;
     }
 
-    public function setHTPrice(float $HT_price): self
+    public function setHTPrice(int $HT_price): self
     {
         $this->HT_price = $HT_price;
 

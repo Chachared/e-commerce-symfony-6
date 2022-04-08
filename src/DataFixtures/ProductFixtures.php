@@ -52,7 +52,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product3-> setHTPrice(27,51);
         $product3-> setIsActive(true);
         $product3-> setStock(15);
-        $product3-> setIsFlash(false);
+        $product3-> setIsFlash(true);
         $product3-> setStars(4);
         $product3-> setBrand($this->getReference('brand4'));
         $product3-> setCategory($this->getReference('category9'));
@@ -66,7 +66,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product4-> setHTPrice(40,71);
         $product4-> setIsActive(true);
         $product4-> setStock(12);
-        $product4-> setIsFlash(false);
+        $product4-> setIsFlash(true);
         $product4-> setStars(4);
         $product4-> setBrand($this->getReference('brand10'));
         $product4-> setCategory($this->getReference('category10'));
@@ -81,7 +81,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product5-> setHTPrice(21,59);
         $product5-> setIsActive(true);
         $product5-> setStock(27);
-        $product5-> setIsFlash(false);
+        $product5-> setIsFlash(true);
         $product5-> setStars(5);
         $product5-> setBrand($this->getReference('brand11'));
         $product5-> setCategory($this->getReference('category11'));
@@ -94,7 +94,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product6-> setHTPrice(18,39);
         $product6-> setIsActive(true);
         $product6-> setStock(11);
-        $product6-> setIsFlash(false);
+        $product6-> setIsFlash(true);
         $product6-> setStars(5);
         $product6-> setBrand($this->getReference('brand2'));
         $product6-> setCategory($this->getReference('category12'));
@@ -126,7 +126,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product8-> setHTPrice(128);
         $product8-> setIsActive(true);
         $product8-> setStock(2);
-        $product8-> setIsFlash(false);
+        $product8-> setIsFlash(true);
         $product8-> setStars(5);
         $product8-> setBrand($this->getReference('brand12'));
         $product8-> setCategory($this->getReference('category14'));
@@ -152,7 +152,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product9-> setHTPrice(10,39);
         $product9-> setIsActive(true);
         $product9-> setStock(27);
-        $product9-> setIsFlash(false);
+        $product9-> setIsFlash(true);
         $product9-> setStars(2);
         $product9-> setBrand($this->getReference('brand5'));
         $product9-> setCategory($this->getReference('category15'));
@@ -165,7 +165,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product10-> setHTPrice(17,19);
         $product10-> setIsActive(true);
         $product10-> setStock(54);
-        $product10-> setIsFlash(false);
+        $product10-> setIsFlash(true);
         $product10-> setStars(4);
         $product10-> setBrand($this->getReference('brand13'));
         $product10-> setCategory($this->getReference('category16'));
@@ -180,7 +180,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product11-> setHTPrice(5,99);
         $product11-> setIsActive(true);
         $product11-> setStock(7);
-        $product11-> setIsFlash(false);
+        $product11-> setIsFlash(true);
         $product11-> setStars(5);
         $product11-> setBrand($this->getReference('brand8'));
         $product11-> setCategory($this->getReference('category17'));
@@ -196,7 +196,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product12-> setHTPrice(8,71);
         $product12-> setIsActive(true);
         $product12-> setStock(11);
-        $product12-> setIsFlash(false);
+        $product12-> setIsFlash(true);
         $product12-> setStars(4);
         $product12-> setBrand($this->getReference('brand14'));
         $product12-> setCategory($this->getReference('category18'));
@@ -212,7 +212,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product13-> setHTPrice(2,55);
         $product13-> setIsActive(true);
         $product13-> setStock(33);
-        $product13-> setIsFlash(false);
+        $product13-> setIsFlash(true);
         $product13-> setStars(3);
         $product13-> setBrand($this->getReference('brand3'));
         $product13-> setCategory($this->getReference('category19'));
@@ -225,7 +225,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product14-> setHTPrice(8,63);
         $product14-> setIsActive(true);
         $product14-> setStock(15);
-        $product14-> setIsFlash(false);
+        $product14-> setIsFlash(true);
         $product14-> setStars(4);
         $product14-> setBrand($this->getReference('brand15'));
         $product14-> setCategory($this->getReference('category20'));
@@ -238,7 +238,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product15-> setHTPrice(5,99);
         $product15-> setIsActive(true);
         $product15-> setStock(65);
-        $product15-> setIsFlash(false);
+        $product15-> setIsFlash(true);
         $product15-> setStars(4);
         $product15-> setBrand($this->getReference('brand6'));
         $product15-> setCategory($this->getReference('category27'));
@@ -251,7 +251,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product16-> setHTPrice(8,79);
         $product16-> setIsActive(true);
         $product16-> setStock(18);
-        $product16-> setIsFlash(false);
+        $product16-> setIsFlash(true);
         $product16-> setStars(4);
         $product16-> setBrand($this->getReference('brand6'));
         $product16-> setCategory($this->getReference('category28'));

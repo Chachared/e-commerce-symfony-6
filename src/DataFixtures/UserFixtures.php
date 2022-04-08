@@ -7,7 +7,7 @@ use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-
+use Faker;
 
 class UserFixtures extends Fixture
 {
@@ -72,6 +72,28 @@ class UserFixtures extends Fixture
         $this-> addReference('admin2', $admin2); 
         $manager->persist($admin2);
 
+
+        //fausses données grâce au faker
+        $faker = Faker\Factory::create('fr_FR');
+        
+        for($i = 0; $i<201; $i++){
+            $user = new User();
+            
+            $lastname = $faker->lastName();
+            $firstname = $faker->firstName();
+            $password = $this->hasher->hashPassword($user, '1234');
+            
+            $user->setUsername($faker->username);
+            $user->setPassword($password);
+            $user->setTitle($faker->title);
+            $user->setFirstname($firstname);
+            $user->setLastname($lastname);
+            $user->setEmail(strtolower($firstname.'.'.$lastname).'@'.$faker->freeEmailDomain());
+            $user->setBirthday($faker->dateTimebetween('-100 year', '-18 year'));
+            $user->setRegisterDate($faker->dateTimebetween('-2 months','now'));
+            $manager->persist($user);
+        }
+        
         $manager->flush();
     }
 }

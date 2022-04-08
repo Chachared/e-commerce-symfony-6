@@ -26,8 +26,8 @@
                             <tr>
                                 <th scope="row"><a href="{{ path('show_product', {'id': productOrder.product.id})}}" class="text-dark">{{ productOrder.product.title }}</a></th>  
                                 <td><a href="{{ path('cart_addremove', {'id': productOrder.product.id, 'operator': 'minus'}) }}" class="btn btn-sm btn-secondary rounded-pill">-</a> <strong>{{ productOrder.quantity }}</strong>  <a href="{{ path('cart_addremove', {'id': productOrder.product.id, 'operator': 'plus'}) }}" class="btn btn-sm btn-secondary rounded-pill">+</a></td>
-                                <td>{{ productOrder.product.HTPrice }} €</td>
-                                <td>{{ productOrder.product.HTPrice * productOrder.quantity }} €</td>
+                                <td>{{ productOrder.product.HTPrice|number_format(2,'.') }} €</td>
+                                <td>{{ productOrder.product.HTPrice * productOrder.quantity|number_format(2,'.') }} €</td>
                                 <td><a class="btn btn-dark btn-sm rounded-pill" href="{{path('cart_remove', {'id':productOrder.product.id})}}">Supprimer</a></td>
                             </tr>
                         {% endfor %}
