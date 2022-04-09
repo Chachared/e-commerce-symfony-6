@@ -140,3 +140,18 @@ footer {
 }
 
 /***************************search bar************************/
+
+
+/***************************pagination************************/
+.page-link:link {
+  color: black;
+} 
+.page-link:visited {
+  color: black;
+} 
+.page-link:hover {
+  color: black;
+} 
+.page-link:active {
+  color: black;
+}

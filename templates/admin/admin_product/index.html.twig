@@ -56,6 +56,25 @@
         {% endfor %}
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if currentPage != 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path('admin_product_index', {'currentPage': currentPage-1, 'nbResults': nbResults}) }}">Précédent</a>
+            </li>
+            {% endif %}
+
+            {% for page in 1..nbPages%}
+            <li class="page-item {% if page == currentPage %}active{% endif %}"><a class="page-link" href="{{ path('admin_product_index', {'currentPage': page, 'nbResults': nbResults}) }}">{{page}}</a></li>
+            {% endfor %}
+            
+            {% if currentPage != nbPages %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path('admin_product_index', {'currentPage': currentPage+1, 'nbResults': nbResults}) }}">Suivant</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
 
     
 {% endblock %}

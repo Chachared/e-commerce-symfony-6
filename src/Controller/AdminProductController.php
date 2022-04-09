@@ -15,11 +15,24 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/admin/admin_product')]
 class AdminProductController extends AbstractController
 {
-    #[Route('/', name: 'admin_product_index', methods: ['GET'])]
-    public function index(ProductRepository $productRepository): Response
+    #[Route('/{currentPage}/{nbResults}', name: 'admin_product_index', methods: ['GET'])]
+    public function index(ProductRepository $productRepository, $currentPage, $nbResults): Response
     {
+        $products = $productRepository->findAll();
+        
+        //Pagination des produits sur l'index de l'admin
+        $nbProducts = $productRepository->count([]);
+        $nbPages = $nbProducts/$nbResults;
+        
+        if($nbProducts % $nbResults != 0){
+            $nbPages = (int)($nbProducts/$nbResults) +1;
+        }
+        
         return $this->render('admin/admin_product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products,
+            'nbPages' => $nbPages,
+            'currentPage' => $currentPage,
+            'nbResults' => $nbResults
         ]);
     }
 
