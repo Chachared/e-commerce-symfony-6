@@ -143,15 +143,15 @@ footer {
 
 
 /***************************pagination************************/
-.page-link:link {
+.page-link:link, .nbResults:link {
   color: black;
 } 
-.page-link:visited {
+.page-link:visited, .nbResults:visited {
   color: black;
 } 
-.page-link:hover {
+.page-link:hover, .nbResults:hover {
   color: black;
 } 
-.page-link:active {
+.page-link:active, .nbResults:active {
   color: black;
 }

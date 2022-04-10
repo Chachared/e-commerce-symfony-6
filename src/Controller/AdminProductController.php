@@ -18,7 +18,7 @@ class AdminProductController extends AbstractController
     #[Route('/{currentPage}/{nbResults}', name: 'admin_product_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository, $currentPage, $nbResults): Response
     {
-        $products = $productRepository->findAll();
+        $products = $productRepository->findByPagination($currentPage, $nbResults);
         
         //Pagination des produits sur l'index de l'admin
         $nbProducts = $productRepository->count([]);
