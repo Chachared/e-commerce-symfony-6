@@ -83,9 +83,9 @@ class UserFixtures extends Fixture
             $firstname = $faker->firstName();
             $password = $this->hasher->hashPassword($user, '1234');
             
-            $user->setUsername(str_shuffle($firstname));
+            $user->setUsername($faker->username());
             $user->setPassword($password);
-            $user->setTitle($faker->title);
+            $user->setTitle($faker->title());
             $user->setFirstname($firstname);
             $user->setLastname($lastname);
             $user->setEmail(strtolower($firstname.'.'.$lastname).'@'.$faker->freeEmailDomain());
