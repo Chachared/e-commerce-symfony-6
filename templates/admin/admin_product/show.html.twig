@@ -12,7 +12,7 @@
                 {% if product.isFlash == 1 %} > produit flash {% endif %}</h3>
             </div>
             <div class="col-3 d-flex justify-content-center">
-                <a href="{{ path('admin_product_index') }}" class="btn btn-dark rounded-pill my-2 mx-2">Retour</a>
+                <a href="{{ path('admin_product_index',{'currentPage': 1,'nbResults': 5}) }}" class="btn btn-dark rounded-pill my-2 mx-2">Retour</a>
                 <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-success rounded-pill my-2 mx-2">Editer</a>
             </div>
 
