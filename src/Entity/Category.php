@@ -21,14 +21,17 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
     private $products;
 
-    #[ORM\ManyToOne(targetEntity: self::class)]
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'childCategory', cascade: ['remove'])]
     #[ORM\JoinColumn(nullable: true)]
     private $parentCategory;
 
+    #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class, cascade: ['remove'])]
+    private $childCategory;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->childCategory = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,5 +95,25 @@ class Category
     
     public function __toString(){
         return $this->id;
+    }
+
+    /**
+     * Get the value of childCategory
+     */ 
+    public function getChildCategory()
+    {
+        return $this->childCategory;
+    }
+
+    /**
+     * Set the value of childCategory
+     *
+     * @return  self
+     */ 
+    public function setChildCategory($childCategory)
+    {
+        $this->childCategory = $childCategory;
+
+        return $this;
     }
 }

@@ -44,6 +44,7 @@ class Product
     private $stars;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, orphanRemoval: true, cascade: ["persist"])]
+    #[ORM\JoinColumn(nullable: true)]
     private $pictures;
 
     public function __construct()

@@ -109,7 +109,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         Coloris : beige et vert 
         Dimensions Lapin : L 9,5 x l 7 cm
         Dimensions Chouette : L 8 x l 6,5 cm');
-        $product7-> setHTPrice(1,67);
+        $product7-> setHTPrice(1.67);
         $product7-> setIsActive(true);
         $product7-> setStock(92);
         $product7-> setIsFlash(true);
@@ -149,7 +149,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         Largeur  : 1 cm
         Longueur laisse : 100 cm
         Entretien : lavable en machine à 30°. Retirer le grelot pour le lavage.');
-        $product9-> setHTPrice(10,39);
+        $product9-> setHTPrice(10.39);
         $product9-> setIsActive(true);
         $product9-> setStock(27);
         $product9-> setIsFlash(true);
@@ -162,7 +162,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product10 = new Product();
         $product10-> setTitle('Gamelle double Glass Diner');
         $product10-> setDescription('D\'un design contemporain, la gamelle double Glass Diner pour chat et petit chien est composée de 2 bols en verre s\'imbriquant dans un socle élégant en PVC aspect laqué.');
-        $product10-> setHTPrice(17,19);
+        $product10-> setHTPrice(17.19);
         $product10-> setIsActive(true);
         $product10-> setStock(54);
         $product10-> setIsFlash(true);
@@ -177,7 +177,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product11-> setDescription('Hamiform a spécialement étudié les besoins alimentaires du jeune lapin et est allé chercher des ingrédients biologiques afin de lui apporter un repas sain, complet et équilibré.
         La taille et la forme des granulés Optima BIO jeune lapin ont été spécialement étudiées afin d’en faciliter la prise. Le lapin toy ou le jeune lapin ont en effet une mâchoire plus petite et nécessite un granulé adapté.
         Le Yucca, présent dans le granulé, optimise le taux de pH intestinal et favorise ainsi les défenses immunitaires, rendant le lapereau moins sensible aux agressions extérieures.');
-        $product11-> setHTPrice(5,99);
+        $product11-> setHTPrice(5.99);
         $product11-> setIsActive(true);
         $product11-> setStock(7);
         $product11-> setIsFlash(true);
@@ -193,7 +193,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         Le tunnel repose sur une bascule et se balance d\'avant en arrière. Il a également plusieurs trous, pour lui permettre d\'entrer et de sortir par plusieurs endroits.
         En ajoutant ce tunnel, vous rendrez la cage de votre rongeur plus amusantes !
         Matière : bois');
-        $product12-> setHTPrice(8,71);
+        $product12-> setHTPrice(8.71);
         $product12-> setIsActive(true);
         $product12-> setStock(11);
         $product12-> setIsFlash(true);
@@ -209,7 +209,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         Un petit nid douillet pour votre petit animal.
         Matière : herbe séchée
         Dimensions : Long 10.5 x larg 10.5 x Haut 10.5 cm');
-        $product13-> setHTPrice(2,55);
+        $product13-> setHTPrice(2.55);
         $product13-> setIsActive(true);
         $product13-> setStock(33);
         $product13-> setIsFlash(true);
@@ -222,7 +222,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product14 = new Product();
         $product14-> setTitle('Panier transport PAW');
         $product14-> setDescription('Panier de transport pour rongeur à prix incroyable ! En plastique avec motif pattes et ouverture par le haut. Avec ses poignées ergonomiques et la fermeture sûre et pratique, le transport de votre rongeur devient facile.');
-        $product14-> setHTPrice(8,63);
+        $product14-> setHTPrice(8.63);
         $product14-> setIsActive(true);
         $product14-> setStock(15);
         $product14-> setIsFlash(true);
@@ -235,7 +235,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product15 = new Product();
         $product15-> setTitle('Aliment complet en granulés pour poissons');
         $product15-> setDescription('L\'aliment en granulés TetraMin Granules fournira à vos poissons tous les nutriments dont ils ont besoin pour une longue vie en pleine santé. Sa formule équilibrée à base de vitamines, d\'oligo-éléments et de minéraux a une consistance et un goût très appréciés des poissons, est facile à digérer et améliore la qualité de l\'eau.');
-        $product15-> setHTPrice(5,99);
+        $product15-> setHTPrice(5.99);
         $product15-> setIsActive(true);
         $product15-> setStock(65);
         $product15-> setIsFlash(true);
@@ -248,7 +248,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product16 = new Product();
         $product16-> setTitle('EasyBalance');
         $product16-> setDescription('L\'utilisation régulière du conditionneur d\'eau Tetra EasyBalance permet d\'améliorer durablement la qualité de l\'eau de l\'aquarium. Sa formule efficace stabilise les valeurs importantes de l\'eau, à savoir la dureté carbonée (KH) et le pH, réduit les teneurs en phosphates et en nitrates et fournit des vitamines et minéraux indispensables aux plantes et aux poissons.');
-        $product16-> setHTPrice(8,79);
+        $product16-> setHTPrice(8.79);
         $product16-> setIsActive(true);
         $product16-> setStock(18);
         $product16-> setIsFlash(true);
