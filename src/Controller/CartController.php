@@ -18,7 +18,7 @@ class CartController extends AbstractController
         $cart = $request->getSession()->get('cart');
         
         $totalHTPrice = 0;
-        if($cart > 0){
+
         foreach ($cart as $productOrder){
             $totalHTPrice = $productOrder->getProduct()->getHTPrice() * $productOrder->getQuantity();
         }
@@ -28,7 +28,7 @@ class CartController extends AbstractController
             'totalHTPrice' => $totalHTPrice
         ]);
     }
-    }
+    
 
     #[Route('/{id}', name: 'cart_add', requirements: ['id' => '\d+'])]
     public function addToCart(Product $product, Request $request)

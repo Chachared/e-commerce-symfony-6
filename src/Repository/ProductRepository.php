@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -41,8 +40,6 @@ class ProductRepository extends ServiceEntityRepository
             $query -> andWhere('category.id LIKE :research')
                 -> setParameter('research', $filters['category']);
         }
-
-        
 
         if(!is_null($filters['brand'])){
             $query -> andWhere('brand.id LIKE :research')
