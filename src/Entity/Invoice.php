@@ -2,10 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InvoiceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InvoiceRepository::class)]
+//L'entité sera accessible via l'API pour servir l'application Angular du Dashboard
+//Nous n'utiliserons que des méthodes get, pour afficher des statistiques
+#[ApiResource(collectionOperations: ['get'], itemOperations: ['get'])]
 class Invoice
 {
     #[ORM\Id]

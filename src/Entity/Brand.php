@@ -76,4 +76,8 @@ class Brand
     public function __toString(){
         return $this->id;
     }
+
+    public function getValues()
+    {
+    }
 }

@@ -14,17 +14,17 @@ class Picture
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $href;
+    private ?string $href;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $alt;
+    private ?string $alt;
 
     #[ORM\Column(type: 'boolean')]
     private $isFront;
 
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'pictures')]
     #[ORM\JoinColumn(nullable: false)]
-    private $product;
+    private ?Product $product;
 
     public function getId(): ?int
     {
