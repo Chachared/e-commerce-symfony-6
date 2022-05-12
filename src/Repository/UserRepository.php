@@ -62,6 +62,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+    public function getNewCustomers(){
+
+        //afficher les clients inscrits dans les 15 derniers jours : on récupère la date d'il y a 15 jours
+        $newCustomerDate = new \DateTime();
+        $newCustomerDate->modify('-15 day');
+
+        //récupérer les clients inscrits après la date déterminée, soit dans les 15 derniers jours
+        return $this->createQueryBuilder('u')->select("COUNT(u) as newUsers")
+            ->where("u.registerDate > :registerDate")
+            ->setParameter("registerDate", $newCustomerDate)
+            ->getQuery()->getResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

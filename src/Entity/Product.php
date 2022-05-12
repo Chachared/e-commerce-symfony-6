@@ -2,16 +2,14 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-//L'entité sera accessible via l'API pour servir l'application Angular du Dashboard
-//Nous n'utiliserons que des méthodes get, pour afficher des statistiques
-#[ApiResource(collectionOperations: ['get'], itemOperations: ['get'])]
+
 class Product
 {
     #[ORM\Id]
@@ -47,9 +45,10 @@ class Product
     #[ORM\Column(type: 'integer')]
     private $stars;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, orphanRemoval: true, cascade: ["persist"])]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, cascade: ["persist"], orphanRemoval: true)]
     #[ORM\JoinColumn(nullable: true)]
     private $pictures;
+    private ArrayCollection $picture;
 
     public function __construct()
     {
