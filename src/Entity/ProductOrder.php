@@ -21,11 +21,11 @@ class ProductOrder
     #[ORM\Column(type: 'float')]
     private $HT_price;
 
-    #[ORM\ManyToOne(targetEntity: product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $product;
 
-    #[ORM\ManyToOne(targetEntity: invoice::class)]
+    #[ORM\ManyToOne(targetEntity: Invoice::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $invoice;
 
@@ -58,12 +58,12 @@ class ProductOrder
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct()
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): self
+    public function setProduct($product): self
     {
         $this->product = $product;
 
