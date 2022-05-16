@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\InvoiceRepository;
 use App\Repository\ProductOrderRepository;
 use App\Repository\UserRepository;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/api', name: 'api_', methods: ['GET'])]
+#[ApiResource]
 class GraphController extends AbstractController
 {
     #[Route('/stats', name: 'stats', methods: ['GET'])]

@@ -76,16 +76,16 @@ class UserFixtures extends Fixture
         //fausses données grâce au faker
         $faker = Faker\Factory::create('fr_FR');
         
-        for($i = 0; $i<201; $i++){
+        for($i = 0; $i<101; $i++){
             $user = new User();
-            
+
             $lastname = $faker->lastName();
             $firstname = $faker->firstName();
+            $username = $faker->unique()->userName();
             $password = $this->hasher->hashPassword($user, '1234');
             
-            $user->setUsername(str_shuffle($firstname));
+            $user->setUsername($username);
             $user->setPassword($password);
-            $user->setTitle($faker->title);
             $user->setFirstname($firstname);
             $user->setLastname($lastname);
             $user->setEmail(strtolower($firstname.'.'.$lastname).'@'.$faker->freeEmailDomain());
