@@ -76,7 +76,7 @@ class UserFixtures extends Fixture
         //fausses données grâce au faker
         $faker = Faker\Factory::create('fr_FR');
         
-        for($i = 0; $i<101; $i++){
+        for($i = 5; $i<100; $i++){
             $user = new User();
 
             $lastname = $faker->lastName();
@@ -89,8 +89,10 @@ class UserFixtures extends Fixture
             $user->setFirstname($firstname);
             $user->setLastname($lastname);
             $user->setEmail(strtolower($firstname.'.'.$lastname).'@'.$faker->freeEmailDomain());
-            $user->setBirthday($faker->dateTimebetween('-100 year', '-18 year'));
-            $user->setRegisterDate($faker->dateTimebetween('-2 months','now'));
+            $user->setBirthday($faker->dateTimeBetween('-100 year', '-18 year'));
+            $user->setRegisterDate($faker->dateTimeBetween('-2 months','now'));
+            //Récupère des user numérotés de 5 à 99
+            $this->addReference('user' . $i, $user);
             
             $manager->persist($user);
         }

@@ -11,32 +11,32 @@ class Address
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
-    private $street_number;
+    private string $street_number;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $street;
+    private string $street;
 
     #[ORM\Column(type: 'string', length: 5)]
-    private $zipcode;
+    private string $zipcode;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $city;
+    private string $city;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $country;
+    private string $country;
 
     #[ORM\Column(type: 'boolean')]
-    private $isBilling;
+    private bool $isBilling;
 
     #[ORM\Column(type: 'boolean')]
-    private $isDelivery;
+    private bool $isDelivery;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
-    private $user;
+    private User $user;
 
 
     public function getId(): ?int

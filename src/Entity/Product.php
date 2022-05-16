@@ -15,46 +15,39 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    private string $title;
 
     #[ORM\Column(type: 'text')]
-    private $description;
+    private string $description;
 
-    #[ORM\Column(type: 'integer')]
-    private $HT_price;
-
-    #[ORM\Column(type: 'boolean')]
-    private $isActive;
-
-    #[ORM\Column(type: 'integer')]
-    private $stock;
+    #[ORM\Column(type: 'float')]
+    private float $HT_price;
 
     #[ORM\Column(type: 'boolean')]
-    private $isFlash;
+    private bool $isActive;
+
+    #[ORM\Column(type: 'integer')]
+    private int $stock;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isFlash;
 
     #[ORM\ManyToOne(targetEntity: Brand::class, inversedBy: 'products')]
-    private $brand;
+    private Brand $brand;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
-    private $category;
+    private Category $category;
 
     #[ORM\Column(type: 'integer')]
-    private $stars;
+    private int $stars;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, cascade: ["persist"], orphanRemoval: true)]
     #[ORM\JoinColumn(nullable: true)]
-    private $pictures;
-    private ArrayCollection $picture;
-
-    public function __construct()
-    {
-        $this->picture = new ArrayCollection();
-        $this->pictures = new ArrayCollection();
-    }
+    private Collection $pictures;
 
     public function getId(): ?int
     {

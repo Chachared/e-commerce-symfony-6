@@ -13,18 +13,13 @@ class Brand
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $name;
+    private string $name;
 
     #[ORM\OneToMany(mappedBy: 'brand', targetEntity: Product::class)]
-    private $products;
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
+    private Collection $products;
 
     public function getId(): ?int
     {
@@ -75,9 +70,5 @@ class Brand
     
     public function __toString(){
         return $this->id;
-    }
-
-    public function getValues()
-    {
     }
 }

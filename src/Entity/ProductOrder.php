@@ -13,21 +13,21 @@ class ProductOrder
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'integer')]
-    private $quantity;
+    private int $quantity;
 
     #[ORM\Column(type: 'float')]
-    private $HT_price;
+    private float $HT_price;
 
     #[ORM\ManyToOne(targetEntity: Product::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private $product;
+    private Product $product;
 
     #[ORM\ManyToOne(targetEntity: Invoice::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private $invoice;
+    private Invoice $invoice;
 
     public function getId(): ?int
     {

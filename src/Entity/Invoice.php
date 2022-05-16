@@ -13,16 +13,17 @@ class Invoice
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 15)]
-    private $payment_method;
+    private string $payment_method;
 
     #[ORM\Column(type: 'date')]
-    private $order_date;
+    private \DateTime $order_date;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invoices')]
-    private $user;
+    private User $user;
+    private \DateTime $date;
 
     public function __construct()
     {

@@ -11,20 +11,20 @@ class Picture
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $href;
+    private string $href;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $alt;
+    private string $alt;
 
     #[ORM\Column(type: 'boolean')]
-    private $isFront;
+    private bool $isFront;
 
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'pictures')]
     #[ORM\JoinColumn(nullable: false)]
-    private $product;
+    private Product $product;
 
     public function getId(): ?int
     {
@@ -74,7 +74,7 @@ class Picture
     /**
      * Get the value of isFront
      */
-    public function getIsFront()
+    public function getIsFront(): bool
     {
         return $this->isFront;
     }

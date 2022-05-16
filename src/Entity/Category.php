@@ -13,26 +13,22 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private string $name;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
     private $products;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'childCategory', cascade: ['remove'])]
+    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['remove'], inversedBy: 'childCategory')]
     #[ORM\JoinColumn(nullable: true)]
-    private $parentCategory;
+    private Category $parentCategory;
+
 
     #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class, cascade: ['remove'])]
     private $childCategory;
 
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-        $this->childCategory = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -100,7 +96,7 @@ class Category
     /**
      * Get the value of childCategory
      */ 
-    public function getChildCategory()
+    public function getChildCategory(): ArrayCollection
     {
         return $this->childCategory;
     }
@@ -110,14 +106,11 @@ class Category
      *
      * @return  self
      */ 
-    public function setChildCategory($childCategory)
+    public function setChildCategory($childCategory): static
     {
         $this->childCategory = $childCategory;
 
         return $this;
     }
 
-    public function getValues()
-    {
-    }
 }
