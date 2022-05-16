@@ -78,12 +78,12 @@ class Product
         return $this;
     }
 
-    public function getHTPrice(): ?int
+    public function getHTPrice(): ?float
     {
         return $this->HT_price;
     }
 
-    public function setHTPrice(int $HT_price): self
+    public function setHTPrice(float $HT_price): self
     {
         $this->HT_price = $HT_price;
 

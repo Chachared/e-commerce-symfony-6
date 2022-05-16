@@ -23,7 +23,7 @@ class Category
 
     #[ORM\ManyToOne(targetEntity: self::class, cascade: ['remove'], inversedBy: 'childCategory')]
     #[ORM\JoinColumn(nullable: true)]
-    private Category $parentCategory;
+    private $parentCategory;
 
 
     #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class, cascade: ['remove'])]
@@ -96,7 +96,7 @@ class Category
     /**
      * Get the value of childCategory
      */ 
-    public function getChildCategory(): ArrayCollection
+    public function getChildCategory()
     {
         return $this->childCategory;
     }

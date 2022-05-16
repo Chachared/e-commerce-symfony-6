@@ -14,7 +14,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product1 = new Product();
         $product1-> setTitle('Farmina N&D sans céréales Adult Medium/Maxi poulet, grenade pour chien');
         $product1-> setDescription('Les croquettes sans céréales Farmina N&D sans céréales Adult Medium/Maxi, poulet et grenade ont été spécialement élaborées pour répondre aux exigences nutritionnelles des chiens sensibles de races moyennes et grandes. Leur processus de fabrication garantit la préservation des nutriments essentiels des matières premières naturelles et une bonne digestibilité.');
-        $product1-> setHTPrice(63,19);
+        $product1-> setHTPrice(63.19);
         $product1-> setIsActive(true);
         $product1-> setStock(4);
         $product1-> setIsFlash(true);
@@ -31,7 +31,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         Coloris : jaune, orange, vert ou blanc selon disponibilité
         Dimensions : diamètre 7 cm
         Jouet pour chien à utiliser sous surveillance du maître. L\'état du jouet est à contrôler régulièrement afin d\'éviter tout risque d\'ingestion de petits morceaux par votre animal. Ne pas laisser à la portée des enfants.');
-        $product2-> setHTPrice(4,39);
+        $product2-> setHTPrice(4.39);
         $product2-> setIsActive(true);
         $product2-> setStock(52);
         $product2-> setIsFlash(true);
@@ -49,7 +49,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         Votre compagnon ne pourra pas résister très longtemps à se blottir à l\'intérieur, entouré par ses rebords enveloppants.
         Dans la même collection, découvrez le lit douillet Cocoon pour chat et petit chien et le matelas Cocoon pour chien.
         Matière : 100% polyester');
-        $product3-> setHTPrice(27,51);
+        $product3-> setHTPrice(27.51);
         $product3-> setIsActive(true);
         $product3-> setStock(15);
         $product3-> setIsFlash(true);
@@ -63,7 +63,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product4-> setTitle('Harnais IDC Power Fluo');
         $product4-> setDescription('Le harnais IDC Power offrir un confort sans pareil à votre chien grâce à sa technicité au plus près de la morphologie de votre chien.
         Très robuste, ce harnais dispose de bandes réfléchissantes  pour une visibilité maximale de votre compagnon.');
-        $product4-> setHTPrice(40,71);
+        $product4-> setHTPrice(40.71);
         $product4-> setIsActive(true);
         $product4-> setStock(12);
         $product4-> setIsFlash(true);
@@ -78,7 +78,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product5-> setDescription('Vous êtes fatigué de retrouver des poils de votre chien partout dans la maison ? La brosse Furminator est LA solution !
         Spécialement conçue pour les chiens à poils courts (les poils mesurant moins de 5 cm), la brosse est dotée d\'une lame en acier inoxydable, de qualité premium, qui pénètre dans le pelage de votre chien pour éliminer le duvet et démêler ses poils, sans le blesser. 
         La perte de poils est ainsi réduite jusqu\'à 90%.');
-        $product5-> setHTPrice(21,59);
+        $product5-> setHTPrice(21.59);
         $product5-> setIsActive(true);
         $product5-> setStock(27);
         $product5-> setIsFlash(true);
@@ -91,7 +91,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $product6 = new Product();
         $product6-> setTitle('N&D Grain Free Neutered poulet, grenade pour chat');
         $product6-> setDescription('Les croquettes sans céréales Farmina N&D Grain Free Neutered poulet & grenade s\'inspirent de l\'alimentation naturelle des chats et ont été spécialement élaborées pour répondre aux exigences nutritionnelles des chats après une castration/stérilisation. Formulées en collaboration avec la Chair de Nutrition Animale de l\'Université de Naples, elles ne contiennent que des ingrédients naturels de grande qualité, dont 70 % proviennent d\'ingrédients d\'origine animale qui sont riches en protéines. Complété par 30 % de fruits, de légumes et d\'ingrédients d\'origine végétale, cet aliment équilibré et riche en substances vitales offre à votre chat un repas de qualité premium. Les croquettes Farmina N&D Grain Free Neutered poulet & grenade ne contiennent pas de céréales ni de gluten et sont garanties sans conservateurs. Elles conviennent donc aussi aux animaux sensibles qui souffrent d\'allergies ou d\'intolérances alimentaires.');
-        $product6-> setHTPrice(18,39);
+        $product6-> setHTPrice(18.39);
         $product6-> setIsActive(true);
         $product6-> setStock(11);
         $product6-> setIsFlash(true);

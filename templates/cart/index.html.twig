@@ -6,11 +6,11 @@
 {% block body %}
 {% include 'default/parts/header.html.twig'%}
 <div class="container">
-
+    {% if cart|length > 0 %}
     <div class="card shadow-lg my-3" style="min-height: 500px;">
         <h3 class="card-header shadow-lg text-center">Mon panier</h3>
-        <div class="card-body text-success">
-            {% if cart|length > 0 %}
+        <div class="card-body">
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -33,14 +33,15 @@
                         {% endfor %}
                     </tbody>
                 </table>
-
-            {% else %}
-                <h2 class="text-danger">Votre panier est vide !</h2>
-            {% endif %}
         </div>
         <div class="card-footer">
-            <h5 class="text-end">Montant total : {{totalHTPrice}} euros</h5>
+            <h5 class="text-end">Montant total TTC: {{totalHTPrice+totalHTPrice*0.20|number_format(2,'.') }} euros</h5>
         </div>
+        {% else %}
+            <h2 class="text-center mt-5">Votre panier est vide !</h2>
+            <h4 class="text-center mt-5">Quelques produits qui pourraient vous plaire :</h4>
+            {% include 'default/parts/best-sellers.html.twig'%}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

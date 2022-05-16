@@ -23,6 +23,7 @@ class DefaultController extends AbstractController
     #[Route('/', name: 'default')]
     public function index(): Response
     {
+        //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
         $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
         shuffle($flashProducts);
         
@@ -38,7 +39,7 @@ class DefaultController extends AbstractController
 
     #[Route('/product/{id}', name:'show_product', methods: ['GET'])]
     public function getOneProduct(Product $product){
-        
+
         $categories = $this->categoryRepository->findAll();
 
         return $this->render('default/product.html.twig', ['product'=>$product , 'categories'=> $categories]);

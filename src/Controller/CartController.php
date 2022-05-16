@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\ProductOrder;
+use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,11 +14,21 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/cart')]
 class CartController extends AbstractController
 {
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository){
+        $this->productRepository = $productRepository;
+    }
+
     #[Route('/', name: 'cart_display')]
     public function index(Request $request): Response
     {
+        //retourne 4 produits flashs de facon aleatoire ds le panier s'il est vide
+        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
+        shuffle($flashProducts);
+
+        //on récupère le panier en session
         $cart = $request->getSession()->get('cart');
-        
         $totalHTPrice = 0;
 
         foreach ($cart as $productOrder){
@@ -25,7 +37,8 @@ class CartController extends AbstractController
         
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
-            'totalHTPrice' => $totalHTPrice
+            'totalHTPrice' => $totalHTPrice,
+            'products' => array_splice($flashProducts, -4),
         ]);
     }
     
@@ -64,8 +77,7 @@ class CartController extends AbstractController
 
         // Met à jour la session avec le nouveau panier
         $session->set("cart", $cart);
-
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirectToRoute('cart_display');
     }
     
     #[Route('/remove/{id}', name: 'cart_remove')]
