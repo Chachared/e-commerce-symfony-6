@@ -27,7 +27,10 @@ class ProductRepository extends ServiceEntityRepository
         
     }
     public function search($filters){
-        $query = $this->createQueryBuilder('p')->leftJoin('p.category','category')->leftJoin('p.brand','brand');
+        $query = $this->createQueryBuilder('p')
+            ->leftJoin('p.category','category')
+            ->leftJoin('p.brand','brand')
+            ->getQuery()->getResult();;
         
         if(!is_null($filters['searchBar'])){
             $query -> where('p.title LIKE :research')
