@@ -34,4 +34,5 @@ class GraphController extends AbstractController
 
         return new JsonResponse($json);
     }
+
 }
