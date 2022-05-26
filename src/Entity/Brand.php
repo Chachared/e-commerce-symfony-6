@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\BrandRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-
+#[ApiSubresource]
 #[ORM\Entity(repositoryClass: BrandRepository::class)]
 class Brand
 {
