@@ -43,7 +43,7 @@ class InvoiceFixtures extends Fixture implements DependentFixtureInterface
 
             $invoice->setPaymentMethod('CB');
             $invoice->setOrderDate($faker->dateTimeBetween('-2 years'));
-            //Génère une reference type user8 pour pouvoir la récupérer sur les fixtures d'autres entités
+            //Génère une reference type user9 pour pouvoir la récupérer sur les fixtures d'autres entités
             $invoice->setUser($this->getReference('user' . $faker->numberBetween(5, 50)));
             $manager->persist($invoice);
         }
