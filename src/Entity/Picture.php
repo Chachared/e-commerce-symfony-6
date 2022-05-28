@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\PictureRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-
+#[ApiSubresource]
 #[ORM\Entity(repositoryClass: PictureRepository::class)]
 class Picture
 {
