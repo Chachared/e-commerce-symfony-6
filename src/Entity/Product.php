@@ -8,7 +8,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource, ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
     #[ORM\Id]
