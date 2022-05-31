@@ -18,6 +18,8 @@ class DefaultController extends AbstractController
     public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository){
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+
+
     }
     
     #[Route('/', name: 'default')]

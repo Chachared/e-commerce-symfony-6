@@ -3,8 +3,8 @@
     <div class="d-none d-sm-inline mx-1 text-light">Bonjour {{app.user.firstname}} {{app.user.lastname}}</div>
   </li>
   <li class="list-group-item bg-dark fs-4 text-uppercase">
-    <a href="{{ path ('admin')}}" class="stretched-link link-light text-decoration-none"
-      >Dashboard</a
+    <a href="http://localhost:4200/login" class="stretched-link link-light text-decoration-none"
+      >Statistiques</a
     >
   </li>
   <li class="list-group-item bg-dark fs-5 text-uppercase">
@@ -14,13 +14,18 @@
   </li>
   </li>
   <li class="list-group-item bg-dark fs-5 text-uppercase">
-    <a href="/" class="stretched-link link-light text-decoration-none"
-      >Clients</a
+    <a href="{{ path('admin_category_index',{'currentPage': 1,'nbResults': 5}) }}" class="stretched-link link-light text-decoration-none"
+      >Catégories</a
+    >
+  </li>
+  <li class="list-group-item bg-dark fs-5 text-uppercase">
+    <a href="{{ path('admin_brand_index') }}" class="stretched-link link-light text-decoration-none"
+      >Marques</a
     >
   </li>
   <li class="list-group-item bg-dark fs-5 text-uppercase">
     <a href="/" class="stretched-link link-light text-decoration-none"
-      >Commandes</a
+    >Clients</a
     >
   </li>
   <li class="list-group-item bg-dark fs-5 text-uppercase">
@@ -28,13 +33,9 @@
       >Paniers</a
     >
   </li>
-  <li class="list-group-item bg-dark fs-5 text-uppercase">
-    <a href="/" class="stretched-link link-light text-decoration-none"
-      >Fournisseurs</a
-    >
   </li>
   <li class="list-group-item bg-dark fs-5 text-uppercase">
-    <a href="/" class="stretched-link link-light text-decoration-none"
+    <a href="{{ path('admin_invoice_index',{'currentPage': 1,'nbResults': 5}) }}" class="stretched-link link-light text-decoration-none"
       >Factures</a
     >
   </li>

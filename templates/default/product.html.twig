@@ -13,24 +13,24 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
-                            
+
                             <div class="col-2 d-flex thumbnails ">
                                 <div class="row">
                                     <div class="col-6">
                             {% for picture in product.pictures %}
-                              
+
                                 <div class="mb-auto pt-2 pt-sm-0 w-100">
                                     <img src="{{asset('img/uploads/product/' ~ picture.href )}}"
                                         class="w-100 p-1 border rounded my-1 my-xl-2 "
                                         alt="{{ picture.alt }}">
                                 </div>
-                               
+
                             {% endfor %}
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-5 main-picture mt-4 mt-xl-0">
+
+                            <div class="col-5 main-picture mt-4 mb-5">
                                 <div class="row">
                                     <div class="col-10">
                                     {% for picture in product.pictures %}
@@ -57,13 +57,13 @@
                                     </div>
                                 </div>
 
-                                <div class="row py-3">
+                                <div class="row py-3 mt-4">
                                     <div class="col-4 col-xl-3">
                                         <h6 class="text-grey small d-block">
-                                            Prix hors taxe
+                                            Prix TTC
                                         </h6>
                                         <p class="h3 font-weight-bold d-block mb-0">
-                                        {{product.HTprice|number_format(2,'.')}}€
+                                        {{product.HTprice+product.HTprice*0.2|number_format(2,'.')}}€
                                         </p>
                                     </div>
                                     <!--avis des clients-->
@@ -73,69 +73,16 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="text-grey d-flex justify-content-end align-items-end mt-5">
+                                    <a href="{{ path('cart_add', {'id': product.id})}}" class="btn panier">Panier</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            <section class="container px-0 pb-3 pt-4">
-                <div class="py-4 rounded-15">
-                    <div class="row">
-                        <h2 class="col-12 text-center">
-                            Choisissez votre article
-                        </h2>
-                    </div>
-                    <div class="row px-4 px-xl-0">
-                        <div class="col-12 col-xl-11 m-auto">
-                            <article
-                                class="row font-family-primary-light border-top border-bottom py-5 position-relative">
-                                <div class="col-12 col-md-6 col-xl-4 d-flex">
-                                    <div class="align-self-center">
-                                        {% for picture in product.pictures %}
-                                        {% if picture.isFront == true %}
-                                        <img class="d-block w-100" src="{{asset('img/uploads/product/' ~ picture.href )}}" alt="{{ picture.alt }}">
-                                        {% endif %}
-                                    {% endfor %}
-                                    </div>
-                                    <ul class="list-unstyled align-self-center pl-4">
-                                        <li>{{product.title}}</li>
-                                    </ul>
-                                </div>
-                                <div class="col-6 col-md-3 col-xl-2 d-flex py-3 py-md-0">
-                                    <div class="m-auto text-center">
-                                        <p class="h5 font-weight-bold d-block mb-0">
-                                            {{product.HTprice |number_format(2,'.')}}€
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-md-3 col-xl-2 d-flex py-3 py-md-0">
-                                    <div class="align-self-center">
-                                        <p class="text-green available position-relative availability font-weight-bold">
-                                            Disponible</p>
-                                    </div>
-                                </div>
-
-                                <div class="col-5 col-lg-3 offset-lg-6 offset-xl-0 col-xl-2 d-flex pt-md-3 pt-xl-0">
-                                    <div class="m-auto d-flex box-shadow-light rounded-pill px-3 qty ">
-                                        <p class="px-2 py-3 h5 mb-0 cursor-pointer">-</p>
-                                        <input type="number" class="text-center border-0 product-quantity" maxlength="2"
-                                            min="1" max="99" value="1" aria-label="Quantité souhaitée">
-                                        <p class="px-2 py-3 h5 mb-0 cursor-pointer">+</p>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="col-7 col-lg-3 col-xl-2 d-flex pt-md-3 pt-xl-0 justify-content-end align-items-center">
-                                    <a href="{{ path('cart_add', {'id': product.id})}}" class="btn panier">Panier</a>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        </div>
+    </section>
 
 
 {% endblock %}

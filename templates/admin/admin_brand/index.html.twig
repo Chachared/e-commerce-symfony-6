@@ -1,0 +1,36 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}{{ parent() }} des marques {% endblock %}
+
+{% block heading %}
+    Gestion des marques en base de donnée
+{% endblock %}
+
+{% block body %}
+    <h1>Toutes les marques</h1>
+    <a class="text-dark" href="{{ path('admin_brand_new') }}">Ajouter une marque</a>
+    <table class="table table-striped table-hover table-sm mt-3">
+        <thead>
+            <tr>
+                <th>Nom de la marque</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for brand in brands %}
+            <tr>
+                <td>{{ brand.name }}</td>
+                <td>
+                    <a class="text-dark" href="{{ path('admin_brand_edit', {'id': brand.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune marque trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

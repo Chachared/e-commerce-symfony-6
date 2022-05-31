@@ -19,6 +19,14 @@ class InvoiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Invoice::class);
     }
 
+    public function findByPagination($currentPage, $nbResults){
+        return $this->createQueryBuilder('i')
+            ->setMaxResults($nbResults)
+            ->setFirstResult(($currentPage*$nbResults)-$nbResults)
+            ->getQuery()->getResult();
+
+    }
+
     // /**
     //  * @return Invoice[] Returns an array of Invoice objects
     //  */

@@ -27,7 +27,7 @@ class GraphController extends AbstractController
 
         $json = [
             "nbInvoices" => $invoiceRepository->count([]),
-            "nbNewCustomers" => $userRepository->getNewCustomers(),
+            "nbNewCustomers" => $userRepository->getNewCustomers(['newUsers']),
             "totalSales" => round($sumSales,2)
 
         ];
