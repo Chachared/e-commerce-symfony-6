@@ -1,9 +1,9 @@
 
         {# menu de navigation produits #}
-        <section class="sticky-top">
+        <section class="fixed-top">
             <div class="container navbarTop mb-5">
                 <nav id="navbar_top" class="navbar navbar-expand-xl">
-                    <a href="{{ path ('default') }}" class="navbar-brand px-5">Accueil</a>
+                    <a href="{{ path ('default') }}" class="navbar-brand mx-5 px-3 text-bg-rounded">Accueil</a>
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                         data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon navbar-dark"></span>
@@ -14,7 +14,7 @@
                         <ul class="nav navbar-nav px-5">
                             {% for parentCategory in categories|keys %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{parentCategory}}</a>
+                                <a class="nav-link dropdown-toggle mx-1 text-bg-rounded" data-bs-toggle="dropdown">{{parentCategory}}</a>
                                 <div class="dropdown-menu">
                                     {% for childCategory in categories[parentCategory] %}
                                         <a href="{{ path('show_category', {'id': childCategory.id})}}" class="dropdown-item">{{childCategory.name}}</a>
@@ -25,22 +25,22 @@
                         </ul>
 
                         {# item de menu tout à droite #}
-                        <ul class="nav navbar-nav ms-auto">
+                        <ul class="nav navbar-nav ms-auto px-3 right-menu-bg">
                             
                             {% if app.user %}
                                 {% if app.user.hasRole('ROLE_ADMIN') %}
-                                    <li class="nav-item"><a class="nav-link text-center" href="{{path('admin')}}"><img src="{{ asset('img/chien-loupe.jpg') }}" width="50" height="50" alt="Compte"></br>Dashboard</a></li>
+                                    <li class="nav-item"><a class="nav-link text-center " href="{{path('admin')}}"><img src="{{ asset('img/chien-loupe.jpg') }}" width="50" height="50" alt="Compte"></br>Dashboard</a></li>
                                 {% else %}
                                 <li class="nav-item">
-                                <a href="{{ path('cart_display')}}" class="nav-link text-center" aria-current="page"><img
+                                <a href="{{ path('cart_display')}}" class="nav-link text-center " aria-current="page"><img
                                         src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
                                         class="cart"></br>Panier</a>
                             </li>
-                                <li class="nav-item"><a class="nav-link text-center" href=""><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte"></br>Mon compte</a></li>
+                                <li class="nav-item"><a class="nav-link text-center " href=""><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte"></br>Mon compte</a></li>
                                 {% endif %}
                             {% else %}
                                 <li class="nav-item">
-                                <a href="{{ path('cart_display')}}" class="nav-link text-center" aria-current="page"><img
+                                <a href="{{ path('cart_display')}}" class="nav-link text-center " aria-current="page"><img
                                         src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
                                         class="cart"></br>Panier</a>
                             </li>
