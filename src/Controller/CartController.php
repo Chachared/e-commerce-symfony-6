@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\ProductOrder;
-use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,15 +28,20 @@ class CartController extends AbstractController
 
         //on récupère le panier en session
         $cart = $request->getSession()->get('cart');
-        $totalHTPrice = 0;
+        $totalTTCPrice = 0;
+        $TTCPrice = 0;
 
         foreach ($cart as $productOrder){
-            $totalHTPrice = $productOrder->getProduct()->getHTPrice() * $productOrder->getQuantity();
+            //calcul du total TTC du panier
+            $totalTTCPrice = $productOrder->getProduct()->getTTCPrice() * $productOrder->getQuantity();
+            //calcul des prix TTC des produits
+            $TTCPrice = $productOrder->getProduct()->getTTCPrice();
         }
         
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
-            'totalHTPrice' => $totalHTPrice,
+            'totalTTCPrice' => $totalTTCPrice,
+            'TTCPrice' => $TTCPrice,
             'products' => array_splice($flashProducts, -4),
         ]);
     }

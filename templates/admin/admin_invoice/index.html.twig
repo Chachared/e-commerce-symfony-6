@@ -9,10 +9,10 @@
 {% block body %}
     <h1>Toutes les commandes</h1>
     <div class="row">
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col-12 d-flex justify-content-end">
             <a href="{{ path('admin_invoice_index',{'currentPage': currentPage,'nbResults': 10}) }}" class="nbResults text-end">Afficher 10 résultats par page</a>
         </div>
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col d-flex justify-content-end">
             <a href="{{ path('admin_invoice_index',{'currentPage': currentPage,'nbResults': 5}) }}" class="nbResults text-end">Afficher 5 résultats par page</a>
         </div>
     </div>
@@ -20,8 +20,9 @@
         <thead>
             <tr>
                 <th>Date de la commande</th>
+                <th>Client</th>
+                <th>Montant de la commande</th>
                 <th>Méthode de paiement</th>
-
                 <th>actions</th>
             </tr>
         </thead>
@@ -29,6 +30,8 @@
         {% for invoice in invoices %}
             <tr>
                 <td>{{ invoice.orderDate ? invoice.orderDate|date('d/m/Y') : '' }}</td>
+                <td>{{ invoice.user.firstname }} <strong>{{ invoice.user.lastname }}</strong></td>
+                <td>TOTAL DES PRODUCTS ORDER</td>
                 <td>{{ invoice.paymentMethod }}</td>
 
                 <td>

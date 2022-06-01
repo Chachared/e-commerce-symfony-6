@@ -24,10 +24,10 @@
                     <tbody>
                         {% for productOrder in cart %}
                             <tr>
-                                <th scope="row"><a href="{{ path('show_product', {'id': productOrder.product.id})}}" class="text-dark">{{ productOrder.product.title }}</a></th>  
+                                <th scope="row"><a href="{{ path('show_product', {'id': productOrder.product.id})}}" class="text-dark">{{ productOrder.product.title }}</a></th>
                                 <td><a href="{{ path('cart_addremove', {'id': productOrder.product.id, 'operator': 'minus'}) }}" class="btn btn-sm btn-secondary rounded-pill">-</a> <strong>{{ productOrder.quantity }}</strong>  <a href="{{ path('cart_addremove', {'id': productOrder.product.id, 'operator': 'plus'}) }}" class="btn btn-sm btn-secondary rounded-pill">+</a></td>
-                                <td>{{ productOrder.product.HTPrice|number_format(2,'.') }} €</td>
-                                <td>{{ productOrder.product.HTPrice * productOrder.quantity|number_format(2,'.') }} €</td>
+                                <td>{{ TTCPrice|number_format(2,'.') }} €</td>
+                                <td>{{ TTCPrice|number_format(2,'.') * productOrder.quantity|number_format(2,'.') }} €</td>
                                 <td><a class="btn btn-dark btn-sm rounded-pill" href="{{path('cart_remove', {'id':productOrder.product.id})}}">Supprimer</a></td>
                             </tr>
                         {% endfor %}
@@ -35,7 +35,7 @@
                 </table>
         </div>
         <div class="card-footer">
-            <h5 class="text-end">Montant total TTC: {{totalHTPrice+totalHTPrice*0.20|number_format(2,'.') }} euros</h5>
+            <h5 class="text-end">Montant total TTC: {{totalTTCPrice|number_format(2,'.') }} euros</h5>
         </div>
         {% else %}
             <h2 class="text-center mt-5">Votre panier est vide !</h2>

@@ -28,7 +28,7 @@ class DefaultController extends AbstractController
         //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
         $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
         shuffle($flashProducts);
-        
+
         $categories = $this->categoryRepository->findAll();
         
         

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Invoice;
+use App\Entity\ProductOrder;
 use App\Form\InvoiceType;
 use App\Repository\InvoiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,6 +24,8 @@ class AdminInvoiceController extends AbstractController
         if($nbInvoices % $nbResults != 0){
             $nbPages = (int)($nbInvoices/$nbResults) +1;
         }
+
+
 
         return $this->render('admin/admin_invoice/index.html.twig', [
             'invoices' => $invoices,
