@@ -7,7 +7,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiSubresource]
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
