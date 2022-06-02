@@ -4,9 +4,9 @@
 
 {% block body %}
 {% include 'default/parts/header.html.twig' %}
-<div class="container">
-    <div class="card shadow-lg my-3" style="min-height: 500px;">
-        <h1 class="card-header shadow-lg h3 my-3">Veuillez vous connecter</h1>
+<div class="container d-flex justify-content-center">
+    <div class="card shadow-lg my-3 card-login">
+        <h1 class="card-header shadow-lg h3 my-3 text-center">Veuillez vous connecter</h1>
         <div class="card-body">
             <form method="post">
                 {% if error %}

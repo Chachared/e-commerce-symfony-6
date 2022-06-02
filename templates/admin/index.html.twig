@@ -4,21 +4,18 @@
 
 {% block body %}
     <div class="row">
-        {% include 'admin/parts/stat-card.html.twig' %}
-        {% include 'admin/parts/stat-card.html.twig' %}
-        {% include 'admin/parts/stat-card.html.twig' %}
+        <h3 class="text-center">Bienvenue sur votre dashboard !</h3>
+        {% include 'admin/parts/search-bar.html.twig' %}
 
-        <!--2eme row de stat-cards-->
-        {% include 'admin/parts/stat-card.html.twig' %}
-        {% include 'admin/parts/stat-card.html.twig' %}
-        {% include 'admin/parts/stat-card.html.twig' %}
+        <h3 class="text-center">Ici vous pourrez suivre l'activité de votre boutique</h3>
+        <div class="col-4">
+            <img src="{{ asset('img/chien-loupe.jpg') }}" width="50%" height="50%"
+                 alt="la Nimes'Alerie" class="img-fluid mt-5 text-center">
+        </div>
 
-        <!--Row du tableau des meilleures ventes-->
-        {% include 'admin/parts/product-table.html.twig' %}
-        <!--Row des diagrammes "camembert"-->
-        {% include 'admin/parts/diagramm-card.html.twig' %}
-        {% include 'admin/parts/diagramm-card.html.twig' %}
-        {% include 'admin/parts/diagramm-card.html.twig' %}
+
+
+
     </div>
 
 {% endblock %}

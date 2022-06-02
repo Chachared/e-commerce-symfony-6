@@ -29,7 +29,7 @@ h6,
 }
 
 /****************************headers*************************/
-header {
+#headerHome {
   height: 460px;
   background: url("../img/headers/terra.jpg") center no-repeat;
   background-size: cover;
@@ -172,4 +172,10 @@ footer {
 } 
 .page-link:active, .nbResults:active {
   color: black;
+}
+
+/***************************formulaires************************/
+.card-login{
+  width:50%;
+  border-radius: 60px 60px 60px 60px;
 }
