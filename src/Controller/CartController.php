@@ -34,13 +34,10 @@ class CartController extends AbstractController
         if ($cart!=null){
             foreach ($cart as $productOrder){
                 //calcul du total TTC du panier
-                $totalTTCPrice = $productOrder->getProduct()->getTTCPrice() * $productOrder->getQuantity();
-                //calcul des prix TTC des produits
-                $TTCPrice = $productOrder->getProduct()->getTTCPrice();
+                $totalTTCPrice += $productOrder->getProduct()->getTTCPrice() * $productOrder->getQuantity();
             }
         }
 
-        
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
             'totalTTCPrice' => $totalTTCPrice,
@@ -48,7 +45,7 @@ class CartController extends AbstractController
             'products' => array_splice($flashProducts, -4),
         ]);
     }
-    
+
 
     #[Route('/{id}', name: 'cart_add', requirements: ['id' => '\d+'])]
     public function addToCart(Product $product, Request $request)
@@ -60,15 +57,15 @@ class CartController extends AbstractController
 
         //Récupère la session grace à l'objet Request
         $session = $request->getSession();
-        
+
         //Crée un tableau vide pour représenter le panier
         $cart = [];
-        
+
         //Récupère le panier déjà en session s'il existe
         if ($session->has('cart')) {
             $cart = $session->get('cart');
         }
-        
+
         $exist = false;
         // Vérifie si on a déjà ce produit dans le panier
         foreach ($cart as $productOrderItem) {
@@ -86,15 +83,15 @@ class CartController extends AbstractController
         $session->set("cart", $cart);
         return $this->redirectToRoute('cart_display');
     }
-    
+
     #[Route('/remove/{id}', name: 'cart_remove')]
     public function remove(Product $product, Request $request){
-       
+
         $session = $request->getSession();
         $cart = $session->get('cart');
 
         $delete = null;
-        
+
         foreach ($cart as $key=>$productOrder){
             if($product->getId() == $productOrder->getProduct()->getId()){
                 $delete = $key;
@@ -102,16 +99,16 @@ class CartController extends AbstractController
         }
         //on supprime le produit selectionné
         unset($cart[$delete]);
-        
+
         $session->set('cart', $cart);
 
         return $this->redirectToRoute('cart_display');
     }
-    
+
     //Modification de la quantité d'un produit par les opérateurs
     #[Route('/{operator}/{id}', 'cart_addremove')]
     public function AddRemoveOperator($id, Product $product, Request $request, $operator){
-        
+
         $session = $request->getSession();
         $cart = $session->get('cart');
 
@@ -124,15 +121,15 @@ class CartController extends AbstractController
                 } elseif ($operator == 'minus' && $productOrder->getQuantity() > 0){
                     $productOrder->setQuantity($productOrder->getQuantity()-1);
                 }
-                
+
                 if ($productOrder->getQuantity() == 0){
                     return $this->redirectToRoute('cart_remove', array('id' => $id));
                 }
             }
         }
-        
+
         $session->set('cart', $cart);
-        
+
         return $this->redirectToRoute('cart_display');
     }
     #[Route('/deleteAll', name: 'cart_delete_all')]
