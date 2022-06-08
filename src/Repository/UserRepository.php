@@ -69,7 +69,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $newCustomerDate->modify('-15 day');
 
         //récupérer les clients inscrits après la date déterminée, soit dans les 15 derniers jours
-        return $this->createQueryBuilder('u')->select("COUNT(u) as newUsers")
+        return $this->createQueryBuilder('u')->select("u")
             ->where("u.registerDate > :registerDate")
             ->setParameter("registerDate", $newCustomerDate)
             ->getQuery()->getResult();

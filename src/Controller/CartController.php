@@ -31,12 +31,15 @@ class CartController extends AbstractController
         $totalTTCPrice = 0;
         $TTCPrice = 0;
 
-        foreach ($cart as $productOrder){
-            //calcul du total TTC du panier
-            $totalTTCPrice = $productOrder->getProduct()->getTTCPrice() * $productOrder->getQuantity();
-            //calcul des prix TTC des produits
-            $TTCPrice = $productOrder->getProduct()->getTTCPrice();
+        if ($cart!=null){
+            foreach ($cart as $productOrder){
+                //calcul du total TTC du panier
+                $totalTTCPrice = $productOrder->getProduct()->getTTCPrice() * $productOrder->getQuantity();
+                //calcul des prix TTC des produits
+                $TTCPrice = $productOrder->getProduct()->getTTCPrice();
+            }
         }
+
         
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
