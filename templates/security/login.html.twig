@@ -4,6 +4,7 @@
 
 {% block body %}
 {% include 'default/parts/header.html.twig' %}
+
 <div class="container d-flex justify-content-center">
     <div class="card shadow-lg my-3 card-login">
         <h1 class="card-header shadow-lg h3 my-3 text-center">Veuillez vous connecter</h1>
@@ -43,6 +44,9 @@
                 <button class="btn btn-lg btn-dark rounded-pill my-3" type="submit">
                     Se connecter
                 </button>
+                <a href="{{ path('register')}}" class="btn btn-lg btn-success rounded-pill my-3">
+                    S'enregistrer
+                </a>
             </form>
         </div>
     </div>
