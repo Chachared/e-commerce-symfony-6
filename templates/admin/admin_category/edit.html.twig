@@ -1,13 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}{{ parent() }}Modifier la catégorie{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
+    <div class="row">
+        <div class="col-6">
+            <h1 class="mb-3 ms-4">Modifier la catégorie</h1>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <a href="{{ path('admin_category_index',{'currentPage': 1,'nbResults': 5}) }}" class="btn btn-dark rounded-pill">Retour</a>
+        </div>
+    </div>
 
-    {{ include('admin_category/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/admin_category/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_admin_category_index') }}">back to list</a>
-
-    {{ include('admin_category/_delete_form.html.twig') }}
+    {{ include('admin/admin_category/_delete_form.html.twig') }}
 {% endblock %}
