@@ -20,11 +20,11 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     public function findByPagination($currentPage, $nbResults){
-        return $this->createQueryBuilder('p')
+        return $this->createQueryBuilder('p' )
+            ->orderBy('p.category')
             ->setMaxResults($nbResults)
             ->setFirstResult(($currentPage*$nbResults)-$nbResults)
             ->getQuery()->getResult();
-        
     }
     public function search($filters){
         $query = $this->createQueryBuilder('p')
