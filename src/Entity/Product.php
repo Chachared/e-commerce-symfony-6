@@ -2,9 +2,8 @@
 
 namespace App\Entity;
 
-
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -46,7 +45,11 @@ class Product
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class, cascade: ["persist"], orphanRemoval: true)]
     #[ORM\JoinColumn(nullable: true)]
-    private Collection $pictures;
+    private Collection|null $pictures;
+
+    public function __construct(){
+        $this->pictures=new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,7 +173,7 @@ class Product
     /**
      * @return Collection<int, Picture>
      */
-    public function getPictures(): Collection
+    public function getPictures():?Collection
     {
         return $this->pictures;
     }

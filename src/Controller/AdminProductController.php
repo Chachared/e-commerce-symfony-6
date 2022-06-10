@@ -15,7 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/admin/admin_product')]
 class AdminProductController extends AbstractController
 {
-    #[Route('/{currentPage}/{nbResults}', name: 'admin_product_index', methods: ['GET'])]
+    #[Route('/{currentPage}/{nbResults}', name: 'admin_product_index', methods: ['GET'], requirements:["currentPage"=>"\d+","nbResults"=>"\d+"], defaults:["currentPage"=>1,"nbResults"=>5])]
     public function index(ProductRepository $productRepository, $currentPage, $nbResults): Response
     {
         $products = $productRepository->findByPagination($currentPage, $nbResults);
@@ -44,7 +44,6 @@ class AdminProductController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            
             foreach ($form->get('pictures') as $picture){
                 
                 $pictureFile = $picture->get('href')->getData();

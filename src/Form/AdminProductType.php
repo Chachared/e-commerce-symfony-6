@@ -74,7 +74,6 @@ class AdminProductType extends AbstractType
                 'entry_type' => AdminPictureType::class,
                 'allow_add' => true,
                 'prototype' => true,
-                
             ])
             ->add('save', SubmitType::class, [
                 'label'=>"Ajouter",
