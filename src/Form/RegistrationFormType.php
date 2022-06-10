@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Address;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -59,8 +61,8 @@ class RegistrationFormType extends AbstractType
             ->add('birthday', DateType::class,[
                 'required'=>true,
                 'label'=>"Date de naissance",
-                
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
