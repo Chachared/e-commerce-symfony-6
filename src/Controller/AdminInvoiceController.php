@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/invoice')]
 class AdminInvoiceController extends AbstractController
 {
-    #[Route('/{currentPage}/{nbResults}', name: 'admin_invoice_index', methods: ['GET'])]
+    #[Route('/{currentPage}/{nbResults}', name: 'admin_invoice_index',requirements: ["currentPage"=>"\d+","nbResults"=>"\d+"], defaults: ["currentPage"=>1,"nbResults"=>5], methods: ['GET'])]
     public function index(InvoiceRepository $invoiceRepository, $currentPage, $nbResults): Response
     {
         $invoices = $invoiceRepository->findByPagination($currentPage, $nbResults);
@@ -55,7 +55,7 @@ class AdminInvoiceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'admin_invoice_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'admin_invoice_show', methods: ['GET'])]
     public function show(Invoice $invoice): Response
     {
         return $this->render('admin/admin_invoice/show.html.twig', [

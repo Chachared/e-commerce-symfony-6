@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -27,7 +28,7 @@ class CategoryType extends AbstractType
                 'label'=>'Boutique'
             ])
             ->add('save', SubmitType::class, options: [
-                'label'=>"Ajouter",
+                'label'=>"Modifier",
                 'attr'=>['class'=>'btn btn-success rounded-pill my-2']
             ])
         ;

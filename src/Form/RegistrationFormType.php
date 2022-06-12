@@ -2,13 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Address;
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -16,9 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
@@ -32,10 +25,11 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'label'=> 'Choix du mot de passe',
                 'invalid_message' => 'Veuillez vérifier vos mots de passe.',
                 'options' => ['attr' => ['class' => 'password-field form-control']],
                 'required' => true,
-                'first_options'  => ['label' => 'Mot de passe'],
+                'first_options'  => ['label' => 'Saisir le mot de passe une première fois'],
                 'second_options' => ['label' => 'Confirmez votre mot de passe'],
             ])
             ->add('title',TextType::class, [
@@ -61,6 +55,14 @@ class RegistrationFormType extends AbstractType
             ->add('birthday', DateType::class,[
                 'required'=>true,
                 'label'=>"Date de naissance",
+                'input_format'=>'dd/mm/YYYY',
+                'widget'=>'single_text'
+            ])
+            ->add('addresses', CollectionType::class, [
+                'entry_type' => AddressType::class,
+                'required'=>true,
+                'allow_add' => true,
+                'attr'=>['class'=>'form-control']
             ]);
 
     }

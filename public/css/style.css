@@ -113,6 +113,13 @@ h6,
   border: none;
   color: #ffffff;
 }
+.auth {
+  background-color: yellowgreen;
+  border-radius: 20px 10px 20px 10px;
+  border: none;
+  color: #ffffff;
+
+}
 
 .space {
   background:url("../img/stars.jpg") center no-repeat ;
@@ -178,9 +185,17 @@ footer {
 .card-login{
   width:50%;
   border-radius: 60px 60px 60px 60px;
+  background: url("../img/stars.jpg") center no-repeat;
+  background-size: cover;
+  border-color: white;
+  color:white;
+}
+.card-register{
+  width:80%;
+  border-radius: 60px 60px 60px 60px;
+  background: url("../img/stars.jpg") center no-repeat;
+  background-size: cover;
+  border-color: white;
+  color:white;
 }
 
-.card-register{
-  width:50%;
-  border-radius: 60px 60px 60px 60px;
-}

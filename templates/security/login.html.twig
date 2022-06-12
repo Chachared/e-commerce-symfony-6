@@ -41,12 +41,14 @@
         </div>
     #}
 
-                <button class="btn btn-lg btn-dark rounded-pill my-3" type="submit">
-                    Se connecter
-                </button>
-                <a href="{{ path('register')}}" class="btn btn-lg btn-success rounded-pill my-3">
-                    S'enregistrer
-                </a>
+                <div class="my-4 mx-3 d-flex justify-content-center">
+                    <a class="btn btn-lg auth rounded-pill my-3" type="submit">
+                        Se connecter
+                    </a>
+                    <a class="btn mx-4 my-4" href="{{ path('register')}}">
+                        S'enregistrer
+                    </a>
+                </div>
             </form>
         </div>
     </div>

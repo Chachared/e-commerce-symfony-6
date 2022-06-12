@@ -1,0 +1,61 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.street_number) }}
+            {{ form_widget (form.street_number) }}
+            <div class="form-error">
+            {{ form_errors (form.street_number) }}
+            </div>
+        </div>
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.street) }}
+            {{ form_widget (form.street) }}
+            <div class="form-error">
+                {{ form_errors (form.street) }}
+            </div>
+        </div>
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.zipcode) }}
+            {{ form_widget (form.zipcode) }}
+            <div class="form-error">
+                {{ form_errors (form.zipcode) }}
+            </div>
+        </div>
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.city) }}
+            {{ form_widget (form.city) }}
+            <div class="form-error">
+                {{ form_errors (form.city) }}
+            </div>
+        </div>
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.country) }}
+            {{ form_widget (form.country) }}
+            <div class="form-error">
+                {{ form_errors (form.country) }}
+            </div>
+        </div>
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.isBilling) }}
+            {{ form_widget (form.isBilling) }}
+            <div class="form-error">
+                {{ form_errors (form.isBilling) }}
+            </div>
+        </div>
+
+        <div class="my-4 mx-3">
+            {{ form_label (form.isDelivery) }}
+            {{ form_widget (form.isDelivery) }}
+            <div class="form-error">
+                {{ form_errors (form.isDelivery) }}
+            </div>
+        </div>
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

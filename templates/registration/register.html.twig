@@ -4,41 +4,94 @@
 
 {% block body %}
 {% include 'default/parts/header.html.twig' %}
-<div class="container d-flex">
+<div class="container d-flex justify-content-center">
     <div class="card shadow-lg my-3 card-register" >
-        <h1 class="card-header shadow-lg h3 my-3">Veuillez vous enregistrer</h1>
+        <h1 class="card-header shadow-lg h3 my-3 text-center">Veuillez vous enregistrer</h1>
 
         <div class="card-body">
             <div class="form-group">
                 {{ form_start(registrationForm) }}
-                    <div class="my-2 me-3">
-                        {{ form_row(registrationForm.username) }}
-                    </div>
-                    <div class="my-2 me-3">
-                        {{ form_row(registrationForm.plainPassword, {
-                            label: 'Password'
-                        }) }}
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.username) }}
+                                {{ form_widget (registrationForm.username) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.username) }}
+                                </div>
+                            </div>
+
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.plainPassword) }}
+                                {{ form_widget (registrationForm.plainPassword) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.plainPassword) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.email) }}
+                                {{ form_widget (registrationForm.email) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.email) }}
+                                </div>
+                            </div>
+
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.title) }}
+                                {{ form_widget (registrationForm.title) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.title) }}
+                                </div>
+                            </div>
+
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.firstname) }}
+                                {{ form_widget (registrationForm.firstname) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.firstname) }}
+                                </div>
+                            </div>
+
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.lastname) }}
+                                {{ form_widget (registrationForm.lastname) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.lastname) }}
+                                </div>
+                            </div>
+
+                            <div class="my-4 mx-3">
+                                {{ form_label (registrationForm.birthday) }}
+                                {{ form_widget (registrationForm.birthday) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.birthday) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="my-4 mx-3">
+                                <div class="my-4 mx-3">
+                                    {{ form_label (registrationForm.addresses) }}
+                                    {{ form_widget (registrationForm.addresses) }}
+                                    <div class="form-error">
+                                        {{ form_errors (registrationForm.addresses) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-6 my-2 me-3 mt-5">
-                        {{ form_row(registrationForm.email) }}
+                    <div class="my-4 mx-3 d-flex justify-content-center">
+                        <a href="{{ path('register')}}" class="btn btn-lg auth rounded-pill my-3">
+                            S'enregistrer
+                        </a>
+                        <a class="btn mx-4 my-4" href="{{ path('app_login')}}">
+                            J'ai déjà un compte
+                        </a>
                     </div>
-                    <div class="col-6 my-2 me-3">
-                        {{ form_row(registrationForm.title) }}
-                    </div>
-                    <div class="col-6 my-2 me-3">
-                        {{ form_row(registrationForm.firstname) }}
-                    </div>
-                    <div class="col-6 my-2 me-3">
-                        {{ form_row(registrationForm.lastname) }}
-                    </div>
-                    <div class="col-6 my-2 me-3">
-                        {{ form_row(registrationForm.birthday) }}
-                    </div>
-
-                    
-                    <button type="submit" class="btn btn btn-dark rounded-pill my-3">S'enregistrer</button>
-
                 {{ form_end(registrationForm) }}
             </div>
         </div>
