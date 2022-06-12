@@ -15,7 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/category')]
 class AdminCategoryController extends AbstractController
 {
-    #[Route('/{currentPage}/{nbResults}', name: 'admin_category_index', methods: ['GET'], requirements:["currentPage"=>"\d+","nbResults"=>"\d+"], defaults:["currentPage"=>1,"nbResults"=>5])]
+
+    #[Route('/{currentPage}/{nbResults}', name: 'admin_category_index', requirements: ["currentPage"=>"\d+","nbResults"=>"\d+"], defaults: ["currentPage"=>1,"nbResults"=>10], methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository, $currentPage, $nbResults): Response
     {
         $categories = $categoryRepository->findByPagination($currentPage, $nbResults);

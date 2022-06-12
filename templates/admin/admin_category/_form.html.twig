@@ -2,8 +2,26 @@
 <div class="container">
     <div class="form-group">
 
-    {{ form_widget(form) }}
+        <div class="my-2 me-3">
+            {{ form_label (form.name) }}
+            </br>
+            {{ form_widget (form.name) }}
+            <div class="form-error">
+                {{ form_errors (form.name) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3">
+            {{ form_label (form.parentCategory) }}
+            </br>
+            {{ form_widget (form.parentCategory) }}
+            <div class="form-error">
+                {{ form_errors (form.parentCategory) }}
+            </div>
+        </div>
         <div class="my-2 me-3 col-2">
             {{ form_widget (form.save) }}
         </div>
+
+
 {{ form_end(form) }}

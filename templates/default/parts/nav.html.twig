@@ -55,7 +55,13 @@
                                         src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
                                         class="cart"></br>Panier</a>
                             </li>
-                                <li class="nav-item"><a class="nav-link text-center" href="{{path('app_login')}}"><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte" ></br>Se connecter</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-center dropdown-toggle" data-bs-toggle="dropdown"><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte" ></br>Se connecter</a>
+                                    <div class="dropdown-menu">
+                                        <a href="{{ path('login') }}" class="dropdown-item">Me connecter</a>
+                                        <a href="{{ path('register') }}" class="dropdown-item">M'enregistrer</a>
+                                    </div>
+                                </li>
                             {% endif %}
                         </ul>
                     </div>

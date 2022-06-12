@@ -34,12 +34,15 @@
             <tr>
                 <td><strong>{{ category.parentCategory.name }}</strong></td>
                 <td>{{ category.name }}</td>
-
+                {% elseif category.parentCategory is null %}
+                    <td><strong>{{ category.name }}</strong></td>
+                    <td> - </td>
+            {% endif %}
                 <td>
                     <a class="text-dark" href="{{ path('admin_category_edit', {'id': category.id}) }}">Modifier</a>
                 </td>
             </tr>
-            {% endif %}
+
         {% else %}
             <tr>
                 <td colspan="3">aucune catégorie enregistrée</td>
