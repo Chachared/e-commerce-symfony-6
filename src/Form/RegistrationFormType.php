@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -58,11 +59,13 @@ class RegistrationFormType extends AbstractType
                 'input_format'=>'dd/mm/YYYY',
                 'widget'=>'single_text'
             ])
-            ->add('addresses', CollectionType::class, [
-                'entry_type' => AddressType::class,
+            ->add('addresses', AddressType::class, [
                 'required'=>true,
-                'allow_add' => true,
-                'attr'=>['class'=>'form-control']
+                'label'=>'Ajouter une adresse'
+            ])
+            ->add('save', SubmitType::class, [
+                'label'=>"M'enregistrer",
+                'attr'=>['class'=>'btn auth my-4 mx-4']
             ]);
 
     }

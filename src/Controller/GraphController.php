@@ -25,9 +25,16 @@ class GraphController extends AbstractController
             $sumSales += $order->getHTPrice() * $order->getQuantity();
         }
 
+        $newUsers = $userRepository->getNewCustomers();
+        $nbNewCustomers =0;
+
+        foreach ($newUsers as $newUser){
+            $nbNewCustomers += 1;
+        }
+
         $json = [
             "nbInvoices" => $invoiceRepository->count([]),
-            "nbNewCustomers" => $userRepository->getNewCustomers(),
+            "nbNewCustomers" => $nbNewCustomers,
             "totalSales" => round($sumSales,2)
 
         ];

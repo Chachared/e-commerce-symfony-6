@@ -73,21 +73,19 @@
                         </div>
                         <div class="col-4">
                             <div class="my-4 mx-3">
-                                <div class="my-4 mx-3">
-                                    {{ form_label (registrationForm.addresses) }}
-                                    {{ form_widget (registrationForm.addresses) }}
-                                    <div class="form-error">
-                                        {{ form_errors (registrationForm.addresses) }}
-                                    </div>
+                                {{ form_label (registrationForm.addresses) }}
+                                {{ form_widget (registrationForm.addresses) }}
+                                <div class="form-error">
+                                    {{ form_errors (registrationForm.addresses) }}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="my-4 mx-3 d-flex justify-content-center">
-                        <a href="{{ path('register')}}" class="btn btn-lg auth rounded-pill my-3">
-                            S'enregistrer
-                        </a>
+                        <div>
+                            {{ form_widget (registrationForm.save) }}
+                        </div>
                         <a class="btn mx-4 my-4" href="{{ path('app_login')}}">
                             J'ai déjà un compte
                         </a>
@@ -99,3 +97,4 @@
 </div>
 
 {% endblock %}
+

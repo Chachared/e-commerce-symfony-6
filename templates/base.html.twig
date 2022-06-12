@@ -37,6 +37,8 @@
     </body>
     {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script rel="script" src="{{ asset('js/default/jquery.min.js') }}"></script>
+            <script rel="script" src="{{ asset('js/default/jquery-easing.min.js') }}"></script>
             <script src="{{ asset('bootstrap5/js/bootstrap.bundle.js') }}" rel="script"></script>
             <script src="{{ asset('js/default/main.js') }}" rel="script"></script>
             <script src="{{ asset('js/default/thumbs.js') }}" rel="script"></script>
