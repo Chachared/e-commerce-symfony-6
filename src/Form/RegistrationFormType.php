@@ -60,6 +60,8 @@ class RegistrationFormType extends AbstractType
                 'widget'=>'single_text'
             ])
             ->add('addresses', AddressType::class, [
+                'by_reference' => false,
+                'mapped' => false,
                 'required'=>true,
                 'label'=>'Ajouter une adresse'
             ])

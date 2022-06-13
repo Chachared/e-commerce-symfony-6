@@ -28,7 +28,9 @@
                                     <p><strong>{{ product.TTCPrice|number_format(2,'.')}} €</strong></p>
                                     <p>{% include 'default/parts/stars.html.twig' %}</p>
                                     <p>{{ product.title }}</p>
-                                    <a href="{{ path('show_product', {'id': product.id})}}" class="panier btn">Voir + </a>
+                                    <div class="text-end align-items-end mb-2 me-2">
+                                        <a href="{{ path('show_product', {'id': product.id})}}" class="panier btn">Voir + </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

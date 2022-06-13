@@ -52,11 +52,13 @@ class DefaultController extends AbstractController
     {
         $products = $this->productRepository->findAll();
         $categories = $this->categoryRepository->findAll();
+
+
         
         return $this->render('default/category-store.html.twig', [
             'category' => $category, 
             'categories'=>$categories,
-            'products' => $products, 
+            'products' => $products,
             
         ]);
     }
