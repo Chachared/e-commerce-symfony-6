@@ -18,7 +18,8 @@ class CategoryType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required'=>true,
-                'label'=>'Catégorie'
+                'label'=>'Catégorie',
+                'attr'=>['class'=>'form-control']
             ])
 
             ->add('parentCategory', EntityType::class, [
@@ -28,7 +29,7 @@ class CategoryType extends AbstractType
                 'label'=>'Boutique'
             ])
             ->add('save', SubmitType::class, options: [
-                'label'=>"Modifier",
+                'label'=>"Ajouter",
                 'attr'=>['class'=>'btn btn-success rounded-pill my-2']
             ])
         ;

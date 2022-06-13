@@ -1,0 +1,62 @@
+{{ form_start(form) }}
+
+<div class="container">
+    <div class="form-group">
+
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.username) }}
+            </br>
+            {{ form_widget (form.username) }}
+            <div class="form-error">
+                {{ form_errors (form.username) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.title) }}
+            </br>
+            {{ form_widget (form.title) }}
+            <div class="form-error">
+                {{ form_errors (form.title) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.firstname) }}
+            {{ form_widget (form.firstname) }}
+            <div class="form-error">
+                {{ form_errors (form.firstname) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.lastname) }}
+            {{ form_widget (form.lastname) }}
+            <div class="form-error">
+                {{ form_errors (form.lastname) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.email) }}
+            {{ form_widget (form.email) }}
+            <div class="form-error">
+                {{ form_errors (form.email) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.birthday) }}
+            {{ form_widget (form.birthday) }}
+            <div class="form-error">
+                {{ form_errors (form.birthday) }}
+            </div>
+        </div>
+
+        <div class="my-2 me-3 col-2">
+            {{ form_widget (form.save) }}
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}

@@ -1,13 +1,17 @@
-{% extends '../../base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
-{% block title %}Edit Brand{% endblock %}
+{% block title %}{{ parent() }}Modifier la marque{% endblock %}
 
 {% block body %}
-    <h1>Edit Brand</h1>
+    <div class="row">
+        <div class="col-6">
+            <h1>Modifier la marque</h1>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <a href="{{ path('admin_brand_index') }}" class="btn btn-dark rounded-pill">Retour</a>
+        </div>
+    </div>
+    {{ include('admin/admin_brand/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('admin_brand/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_brand_index') }}">back to list</a>
-
-    {{ include('admin_brand/_delete_form.html.twig') }}
+    {{ include('admin/admin_brand/_delete_form.html.twig') }}
 {% endblock %}

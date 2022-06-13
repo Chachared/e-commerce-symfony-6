@@ -23,7 +23,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         parent::__construct($registry, User::class);
     }
-
+    public function findByPagination($currentPage, $nbResults){
+        return $this->createQueryBuilder('u' )
+            ->orderBy('u.registerDate')
+            ->setMaxResults($nbResults)
+            ->setFirstResult(($currentPage*$nbResults)-$nbResults)
+            ->getQuery()->getResult();
+    }
     /**
      * @throws ORMException
      * @throws OptimisticLockException

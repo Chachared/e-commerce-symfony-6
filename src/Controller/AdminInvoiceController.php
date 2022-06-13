@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/invoice')]
 class AdminInvoiceController extends AbstractController
 {
-    #[Route('/{currentPage}/{nbResults}', name: 'admin_invoice_index',requirements: ["currentPage"=>"\d+","nbResults"=>"\d+"], defaults: ["currentPage"=>1,"nbResults"=>5], methods: ['GET'])]
+    #[Route('/{currentPage}/{nbResults}', name: 'admin_invoice_index',requirements: ["currentPage"=>"\d+","nbResults"=>"\d+"], defaults: ["currentPage"=>1,"nbResults"=>10], methods: ['GET'])]
     public function index(InvoiceRepository $invoiceRepository, $currentPage, $nbResults): Response
     {
         $invoices = $invoiceRepository->findByPagination($currentPage, $nbResults);
