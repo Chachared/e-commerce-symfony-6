@@ -45,7 +45,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link text-center dropdown-toggle" data-bs-toggle="dropdown"><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte"></br>Mon compte</a>
                                     <div class="dropdown-menu">
-                                            <a href="{{ path('app_logout') }}" class="dropdown-item">Me déconnecter</a>
+                                        <a href="{{ path('show_user', {'id': app.user.id}) }}" class="dropdown-item">Mon compte</a>
+                                        <a href="{{ path('app_logout') }}" class="dropdown-item">Me déconnecter</a>
                                     </div>
                                 </li>
                                 {% endif %}

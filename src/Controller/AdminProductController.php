@@ -29,10 +29,7 @@ class AdminProductController extends AbstractController
         }
         
         return $this->render('admin/admin_product/index.html.twig', [
-            'products' => $products,
-            'nbPages' => $nbPages,
-            'currentPage' => $currentPage,
-            'nbResults' => $nbResults
+
         ]);
     }
 

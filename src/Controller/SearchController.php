@@ -9,10 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/search')]
 class SearchController extends AbstractController
 {
-    #[Route('/search', name: 'search')]
-    public function index(Request $request, ProductRepository $productRepository): Response
+    #[Route('/{currentPage}/{nbResults}', name: 'search', requirements: ["currentPage"=>"\d+","nbResults"=>"\d+"], defaults: ["currentPage"=>1,"nbResults"=>5], methods: ['GET'])]
+    public function index(Request $request, ProductRepository $productRepository, $currentPage, $nbResults): Response
     {
         $products= $productRepository->findAll();
 

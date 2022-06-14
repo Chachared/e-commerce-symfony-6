@@ -27,15 +27,13 @@ class SearchType extends AbstractType
                 'choice_label'=>'name',
                 'label' => 'Catégorie',
                 'required'=>false,
-                'class'=> Category::class,
-                'attr'=>['class'=>'form-control']
+                'class'=> Category::class
             ])
             ->add('brand', EntityType::class, [
                 'choice_label'=>'name',
                 'label' => 'Marque',
                 'required'=>false,
-                'class'=> Brand::class,
-                'attr'=>['class'=>'form-control']
+                'class'=> Brand::class
             ])
             ->add('stars', ChoiceType::class, [
                 'required'=>false,
@@ -49,6 +47,7 @@ class SearchType extends AbstractType
                 ],
                 'expanded'=>true,
                 'multiple'=> true,
+
             ])
             ->add('minPrice', NumberType::class, [
                 'required'=>false,

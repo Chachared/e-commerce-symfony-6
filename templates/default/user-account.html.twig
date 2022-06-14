@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte client{% endblock %}
+
+{% block body %}
+
+    {% include 'default/parts/header.html.twig' %}
+
+<main>
+    <div class="container d-flex justify-content-center">
+        <div class="card shadow-lg my-3 card-register" >
+            <h1 class="card-header shadow-lg h3 my-3 text-center">Bienvenue {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="my-4 mx-3">
+                            <h5>Mes informations</h5>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="my-4 mx-3">
+                            <h5>Mes adresses</h5>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="my-4 mx-3">
+                            <h5>Mes commandes</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

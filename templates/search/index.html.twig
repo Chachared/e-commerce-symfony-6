@@ -3,12 +3,66 @@
 {% block title %}Recherche{% endblock %}
 
 {% block body %}
-
+    {{ form_start(form) }}
         <div class="container">
-                {{ form_start(form) }}
-                {{ form_end(form) }}
-        </div>
+            <h1 class="text-center">Rechercher un produit</h1>
+            <div class="form-group">
 
+                <div class="my-2 me-3">
+                    {{ form_label (form.searchBar) }}
+                    </br>
+                    {{ form_widget (form.searchBar) }}
+                    <div class="form-error">
+                        {{ form_errors (form.searchBar) }}
+                    </div>
+                </div>
+                <div class="my-2 me-3 col-6">
+                    {{ form_label (form.category) }}
+                    </br>
+                    {{ form_widget (form.category) }}
+                    <div class="form-error">
+                        {{ form_errors (form.category) }}
+                    </div>
+                </div>
+                <div class="my-2 me-3 col-6">
+                    {{ form_label (form.brand) }}
+                    </br>
+                    {{ form_widget (form.brand) }}
+                    <div class="form-error">
+                        {{ form_errors (form.brand) }}
+                    </div>
+                </div>
+                <div class="my-2 me-3 col-6">
+                    {{ form_label (form.stars) }}
+                    </br>
+                    {{ form_widget (form.stars) }}
+                    <div class="form-error">
+                        {{ form_errors (form.stars) }}
+                    </div>
+                </div>
+                <div class="my-2 me-3 col-6">
+                    {{ form_label (form.minPrice) }}
+                    </br>
+                    {{ form_widget (form.minPrice) }}
+                    <div class="form-error">
+                        {{ form_errors (form.minPrice) }}
+                    </div>
+                </div>
+                <div class="my-2 me-3 col-6">
+                    {{ form_label (form.maxPrice) }}
+                    </br>
+                    {{ form_widget (form.maxPrice) }}
+                    <div class="form-error">
+                        {{ form_errors (form.maxPrice) }}
+                    </div>
+                </div>
+                <div class="my-2 me-3 col-2">
+                    {{ form_widget (form.save) }}
+                </div>
+
+            </div>
+        </div>
+    {{ form_end(form) }}
  
         <div class="container my-3 text-center">    
             <h4 class="text-center">
@@ -20,6 +74,7 @@
             </h4>
 
             <div class="row d-flex justify-content-center">
+
                 {% for product in products %}
 
                     <div class="col-lg-4 col-sm-6 mb-2">

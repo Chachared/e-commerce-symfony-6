@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\User;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,14 +55,23 @@ class DefaultController extends AbstractController
         $categories = $this->categoryRepository->findAll();
 
 
-        
+
         return $this->render('default/category-store.html.twig', [
-            'category' => $category, 
+            'category' => $category,
             'categories'=>$categories,
             'products' => $products,
-            
+
         ]);
     }
+
+    #[Route('/user/{id}', name: 'show_user', methods: ['GET'])]
+    public function showUser(User $user): Response
+    {
+        return $this->render('default/user-account.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
 
     public function displayNav(){
 
