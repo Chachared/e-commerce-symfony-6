@@ -9,25 +9,32 @@
 <main>
     <div class="container d-flex justify-content-center">
         <div class="card shadow-lg my-3 card-register" >
-            <h1 class="card-header shadow-lg h3 my-3 text-center">Bienvenue {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
+            <h1 class="card-header shadow-lg h3 my-3 text-center">Bienvenue, {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">
                         <div class="my-4 mx-3">
                             <h5>Mes informations</h5>
+                            <p>récupérer les infos du compte</p>
+
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="my-4 mx-3">
                             <h5>Mes adresses</h5>
+                            <p>récupérer les adresses du compte</p>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="my-4 mx-3">
                             <h5>Mes commandes</h5>
+                            <p>récupérer les commandes du compte</p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class=" text-center">
+                <a href="{{ path('app_logout') }}" class="text-white">Me déconnecter</a>
             </div>
         </div>
     </div>
