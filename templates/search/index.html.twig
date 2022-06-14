@@ -78,7 +78,7 @@
                 {% for product in products %}
 
                     <div class="col-lg-4 col-sm-6 mb-2">
-                        <div class="card shadow-lg ">
+                        <div class="card-sm shadow-lg ">
                             <a href="{{ path('show_product', {'id': product.id})}}">
                                 {% for picture in product.pictures %}
                                     {% if picture.isFront == 1  %}
