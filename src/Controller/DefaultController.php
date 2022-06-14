@@ -5,9 +5,12 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -67,10 +70,27 @@ class DefaultController extends AbstractController
     #[Route('/user/{id}', name: 'show_user', methods: ['GET'])]
     public function showUser(User $user): Response
     {
-        return $this->render('default/user-account.html.twig', [
+        return $this->render('default/user/user-account.html.twig', [
             'user' => $user,
         ]);
     }
+    #[Route('user/{id}/edit', name: 'edit_user', methods: ['GET', 'POST'])]
+    public function editUser(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userRepository->add($user);
+            return $this->redirectToRoute('default', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('default/user/user-edit.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
 
 
     public function displayNav(){

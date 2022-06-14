@@ -8,7 +8,7 @@
 
 <main>
     <div class="container d-flex justify-content-center">
-        <div class="card shadow-lg my-3 card-register" >
+        <div class="card shadow-lg my-3 card-account" >
             <h1 class="card-header shadow-lg h3 my-3 text-center">Bienvenue, {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
             <div class="card-body">
                 <div class="row">
@@ -16,7 +16,7 @@
                         <div class="my-4 mx-3">
                             <h5>Mes informations</h5>
                             <p>récupérer les infos du compte</p>
-
+                            <a href="{{ path('edit_user', {'id': app.user.id}) }}" class="text-white">Modifier</a>
                         </div>
                     </div>
                     <div class="col-4">

@@ -180,7 +180,7 @@ footer {
   color: black;
 }
 
-/***************************formulaires************************/
+/***************************mon compte************************/
 .card-login{
   width:50%;
   border-radius: 60px 60px 60px 60px;
@@ -190,6 +190,14 @@ footer {
   color:white;
 }
 .card-register{
+  width:80%;
+  border-radius: 60px 60px 60px 60px;
+  background: url("../img/stars.jpg") center no-repeat;
+  background-size: cover;
+  border-color: white;
+  color:white;
+}
+.card-account{
   width:80%;
   border-radius: 60px 60px 60px 60px;
   background: url("../img/stars.jpg") center no-repeat;

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mettre à jour mes données{% endblock %}
+
+{% block body %}
+    {% include 'default/parts/header.html.twig' %}
+    <main>
+        <div class="container d-flex justify-content-center">
+            <div class="card shadow-lg my-3 card-account" >
+                <h1 class="card-header shadow-lg h3 my-3 text-center">Mettre à jour mes données</h1>
+                <div class="card-body d-flex justify-content-center">
+                        {{ include('default/user/_form.html.twig', {'button_label': 'Update'}) }}
+                        <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
