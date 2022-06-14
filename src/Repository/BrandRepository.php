@@ -19,6 +19,13 @@ class BrandRepository extends ServiceEntityRepository
         parent::__construct($registry, Brand::class);
     }
 
+    public function findByPagination($currentPage, $nbResults){
+        return $this->createQueryBuilder('b')
+            ->setMaxResults($nbResults)
+            ->setFirstResult(($currentPage*$nbResults)-$nbResults)
+            ->getQuery()->getResult();
+
+    }
     // /**
     //  * @return Brand[] Returns an array of Brand objects
     //  */

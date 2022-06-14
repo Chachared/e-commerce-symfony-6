@@ -14,11 +14,21 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/brand')]
 class AdminBrandController extends AbstractController
 {
-    #[Route('/', name: 'admin_brand_index', methods: ['GET'])]
-    public function index(BrandRepository $brandRepository): Response
+    #[Route('/{currentPage}/{nbResults}', name: 'admin_brand_index', requirements: ["currentPage"=>"\d+","nbResults"=>"\d+"], defaults: ["currentPage"=>1,"nbResults"=>10], methods: ['GET'])]
+    public function index(BrandRepository $brandRepository, $currentPage, $nbResults): Response
     {
+        $brands = $brandRepository->findByPagination($currentPage, $nbResults);
+        $nbBrands = $brandRepository->count([]);
+        $nbPages = $nbBrands/$nbResults;
+
+        if($nbBrands % $nbResults != 0){
+            $nbPages = (int)($nbBrands/$nbResults) +1;
+        }
         return $this->render('admin/admin_brand/index.html.twig', [
-            'brands' => $brandRepository->findAll(),
+            'brands' => $brands,
+            'nbPages' => $nbPages,
+            'currentPage' => $currentPage,
+            'nbResults' => $nbResults
         ]);
     }
 
