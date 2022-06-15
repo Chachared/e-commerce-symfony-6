@@ -15,7 +15,15 @@
                     <div class="col-4">
                         <div class="my-4 mx-3">
                             <h5>Mes informations</h5>
-                            <p>récupérer les infos du compte</p>
+                            <div>
+                                <p><strong>Titre: </strong>{{ user.title }}</p>
+                                <p><strong>Prénom: </strong>{{ user.firstname }}</p>
+                                <p><strong>Nom: </strong>{{ user.lastname }}</p>
+                                <p><strong>Nom d'utilisateur: </strong>{{ user.username }}</p>
+                                <p><strong>Adresse email: </strong>{{ user.email }}</p>
+                                <p><strong>Date de naissance: </strong></p>
+                                <p><strong>Date d'enregistrement: </strong></p>
+                            </div>
                             <a href="{{ path('edit_user', {'id': app.user.id}) }}" class="text-white">Modifier</a>
                         </div>
                     </div>
@@ -33,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" text-center">
+            <div class="text-center mb-2">
                 <a href="{{ path('app_logout') }}" class="text-white">Me déconnecter</a>
             </div>
         </div>
