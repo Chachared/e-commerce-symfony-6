@@ -30,14 +30,13 @@
                             <div class="col-2 d-flex">
                                 <div class="row" >
                                     <div class="col-6">
-                            {% for picture in product.pictures %}
-                              
-                                <div class="mb-auto pt-2 pt-sm-0 w-100">
-                                    <a href =""><img src="{{asset('img/uploads/product/' ~ picture.href )}}"
-                                        class="w-100 p-1 border rounded my-1 my-xl-2 thumbPic"
-                                        alt="{{ picture.alt }}"></a>
-                                </div>
-                            {% endfor %}
+                                        {% for picture in product.pictures %}
+                                            <div class="mb-auto pt-2 pt-sm-0 w-100">
+                                                <img src="{{asset('img/uploads/product/' ~ picture.href )}}"
+                                                    class="w-100 p-1 border rounded my-1 my-xl-2 thumbPic"
+                                                    alt="{{ picture.alt }}">
+                                            </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +47,7 @@
                                     <div class="col-10">
                                     {% for picture in product.pictures %}
                                         {% if picture.isFront == true %}
-                                        <img class="d-block w-100 mainPic" src="{{asset('img/uploads/product/' ~ picture.href )}}" alt="{{ picture.alt }}">
+                                        <img class="d-block w-100" id="mainPic" src="{{asset('img/uploads/product/' ~ picture.href )}}" alt="{{ picture.alt }}">
                                         {% endif %}
                                     {% endfor %}
                                     </div>

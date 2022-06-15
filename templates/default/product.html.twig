@@ -20,9 +20,9 @@
                             {% for picture in product.pictures %}
 
                                 <div class="mb-auto pt-2 pt-sm-0 w-100">
-                                    <a id="thumb" href="{{asset('img/uploads/product/' ~ picture.href )}}"><img src="{{asset('img/uploads/product/' ~ picture.href )}}"
-                                        class="w-100 p-1 border rounded my-1 my-xl-2"
-                                        alt="{{ picture.alt }}"></a>
+                                    <img src="{{asset('img/uploads/product/' ~ picture.href )}}"
+                                        class="w-100 p-1 border rounded my-1 my-xl-2 thumbPic"
+                                        alt="{{ picture.alt }}">
                                 </div>
 
                             {% endfor %}
@@ -35,7 +35,7 @@
                                     <div class="col-10">
                                     {% for picture in product.pictures %}
                                         {% if picture.isFront == true %}
-                                        <img class="d-block w-100" src="{{asset('img/uploads/product/' ~ picture.href )}}" alt="{{ picture.alt }}">
+                                        <img class="d-block w-100" id="mainPic" src="{{asset('img/uploads/product/' ~ picture.href )}}" alt="{{ picture.alt }}">
                                         {% endif %}
                                     {% endfor %}
                                     </div>
@@ -84,5 +84,8 @@
         </div>
     </section>
 
+        {% block javascripts %}
+            <script rel="script" src="{{ asset('js/thumbs.js') }}"></script>
+        {% endblock %}
 
 {% endblock %}

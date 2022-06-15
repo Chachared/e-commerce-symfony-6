@@ -1,7 +1,8 @@
+const main = document.getElementById('mainPic');
 
-    let thumb = document.getElementsByClassName('thumbPic');
-    let main = document.getElementsByClassName('mainPic');
-
+document.querySelectorAll('.thumbPic').forEach(thumb=>{
     thumb.addEventListener('click', function(){
-    alert("cliqué");
+        main.src=thumb.src
     })
+})
+

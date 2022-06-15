@@ -22,12 +22,12 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
     private $products;
 
-    #[ORM\ManyToOne(targetEntity: self::class, cascade: ['remove'], inversedBy: 'childCategory')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'childCategory')]
+    #[ORM\JoinColumn(nullable: true, name:'parent_category_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
     private $parentCategory;
 
 
-    #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class, cascade: ['remove'])]
+    #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class, cascade:['persist'])]
     private $childCategory;
 
 

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -26,7 +27,11 @@ class CategoryType extends AbstractType
                 'class' => Category::class,
                 'required'=>true,
                 'choice_label'=>'name',
-                'label'=>'Boutique'
+                'label'=>'Boutique',
+                'query_builder'=>function(EntityRepository $entityRepository){
+                    return $entityRepository->createQueryBuilder('c')
+                        ->where('c.parentCategory is null');
+                }
             ])
             ->add('save', SubmitType::class, options: [
                 'label'=>"Ajouter",
