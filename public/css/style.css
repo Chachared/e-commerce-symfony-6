@@ -205,4 +205,19 @@ footer {
   border-color: white;
   color:white;
 }
+.card-address{
+  border-radius: 20px 20px 20px 20px;
+  background: url("../img/stars.jpg") center no-repeat;
+  background-size: cover;
+  border-color: white;
+  color:white;
+}
+
+.card-invoice{
+  border-radius: 20px 20px 20px 20px;
+  background: url("../img/stars.jpg") center no-repeat;
+  background-size: cover;
+  border-color: white;
+  color:white;
+}
 

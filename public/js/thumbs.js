@@ -1,10 +1,7 @@
 
-    thumb = document.getElementById('thumb').getElementsByTagName('img'),
-    main = document.getElementById('main');
-    setClickFunction();
+    let thumb = document.getElementsByClassName('thumbPic');
+    let main = document.getElementsByClassName('mainPic');
 
-function setClickFunction() {
-    thumb.onclick = function() {
-        main.src = thumb.src;
-    };
-}
+    thumb.addEventListener('click', function(){
+    alert("cliqué");
+    })

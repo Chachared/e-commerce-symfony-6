@@ -14,29 +14,48 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="my-4 mx-3">
-                            <h5>Mes informations</h5>
-                            <div>
-                                <p><strong>Titre: </strong>{{ user.title }}</p>
-                                <p><strong>Prénom: </strong>{{ user.firstname }}</p>
-                                <p><strong>Nom: </strong>{{ user.lastname }}</p>
-                                <p><strong>Nom d'utilisateur: </strong>{{ user.username }}</p>
-                                <p><strong>Adresse email: </strong>{{ user.email }}</p>
-                                <p><strong>Date de naissance: </strong></p>
-                                <p><strong>Date d'enregistrement: </strong></p>
+                            <h5 class="text-uppercase">Mes informations</h5>
+                            <div class="my-3">
+                                <p><strong>Titre:</strong> {{ user.title }}</p>
+                                <p><strong>Prénom:</strong> {{ user.firstname }}</p>
+                                <p><strong>Nom:</strong> {{ user.lastname }}</p>
+                                <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+                                <p><strong>Adresse email:</strong> {{ user.email }}</p>
+                                <p><strong>Date de naissance:</strong></p>
+                                <p><strong>Date d'enregistrement:</strong></p>
                             </div>
                             <a href="{{ path('edit_user', {'id': app.user.id}) }}" class="text-white">Modifier</a>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="my-4 mx-3">
-                            <h5>Mes adresses</h5>
-                            <p>récupérer les adresses du compte</p>
+                            <h5 class="text-uppercase">Mes adresses</h5>
+                            {% for address in user.addresses %}
+                                <div class="card-address my-3 p-1">
+                                    {% if address.isDelivery == 1 and address.isBilling == 0 %}
+                                        <p class="text-uppercase h6"><strong>Livraison</strong></p>
+                                        {% elseif address.isBilling == 1 and address.isDelivery == 0 %}
+                                            <p class="text-uppercase h6"><strong>Facturation</strong></p>
+                                            {% else %}
+                                                <p class="text-uppercase h6"><strong>Facturation & Livraison</strong></p>
+                                    {% endif %}
+                                    <p>{{ address.streetNumber }}, {{ address.street }}</p>
+                                    <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="my-4 mx-3">
-                            <h5>Mes commandes</h5>
-                            <p>récupérer les commandes du compte</p>
+                            <h5 class="text-uppercase">Mes commandes</h5>
+                            {% for invoice in user.invoices %}
+                                <div class="card-invoice my-3 p-1">
+                                    <p>Commande n°{{ invoice.id }}, passée le "date"</p>
+                                    <p>Montant total</p>
+                                    <p>Réglement par <strong class="text-uppercase">{{ invoice.paymentMethod }}</strong></p>
+                                    <a href="" class=""text-white>Détail</a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
