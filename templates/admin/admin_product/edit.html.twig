@@ -6,16 +6,15 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-6">
-            <h1 class="mb-3 ms-4">Modifier un produit</h1>
-        </div>
-        <div class="col-6 d-flex justify-content-end align-items-center">
-            <a href="{{ path('admin_product_index',{'currentPage': 1,'nbResults': 5}) }}" class="btn btn-dark rounded-pill">Retour</a>
+        <div class="col-12">
+            <a href="{{ path('admin_product_index') }}" class="btn btn-back ms-3 mb-3">Retour</a>
+            <h1 class="mb-3 ms-4">Modifier "{{ product.title }}"</h1>
         </div>
      </div>
-     
-    {{ include('admin/admin_product/_form.html.twig', {'button_label': 'Update'}) }}
 
+    <div class="row">
+        {{ include('admin/admin_product/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
 
 {% endblock %}
 

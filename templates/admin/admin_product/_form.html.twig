@@ -2,32 +2,33 @@
 
     <div class="container">
 
-
-        <div class="my-2 me-3">
-        {{ form_label (form.category) }}
-        </br>
-        {{ form_widget (form.category) }}
-        <div class="form-error">
-            {{ form_errors (form.category) }}
-        </div>
-        </div>
-
-        <div class="my-2 me-3">
-            {{ form_label (form.brand) }}
-            </br>
-            {{ form_widget (form.brand) }}
+        <div class="my-2 me-3 col-6">
+            {{ form_label (form.title) }}
+            {{ form_widget (form.title) }}
             <div class="form-error">
-                {{ form_errors (form.brand) }}
+                {{ form_errors (form.title) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 my-2 me-3">
+                {{ form_label (form.category) }}
+                </br>
+                {{ form_widget (form.category) }}
+                <div class="form-error">
+                    {{ form_errors (form.category) }}
+                </div>
+            </div>
+
+            <div class="col-4 my-2 me-3">
+                {{ form_label (form.brand) }}
+                </br>
+                {{ form_widget (form.brand) }}
+                <div class="form-error">
+                    {{ form_errors (form.brand) }}
+                </div>
             </div>
         </div>
 
-        <div class="my-2 me-3 col-6">
-        {{ form_label (form.title) }}
-        {{ form_widget (form.title) }}
-        <div class="form-error">
-            {{ form_errors (form.title) }}
-        </div>
-        </div>
 
         <div class="my-2 me-3 col-6">
         {{ form_label (form.description) }}
@@ -81,9 +82,14 @@
         <div class="mt-2 me-3">
             <div class="d-flex flex-row">
                 {% for picture in product.pictures %}
-                    <img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="thumbnail p-1 border rounded mx-2 my-2 "
+                    <img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="thumbnail border me-2 rounded my-2 "
                          alt="{{ picture.alt }}"/>
                 {% endfor %}
+                <button type="button"
+                        class="addPicture btn btn-add-picture mb-2 mt-2"
+                        data-list-selector="#picture-fields-list">
+                    +
+                </button>
             </div>
             {{ form_widget(form.pictures )}}
             <div class="form-error">
@@ -100,12 +106,8 @@
                     </li>
                 {% endfor %}
             </ul>
-            <button type="button"
-                class="addPicture btn btn-secondary rounded-pill mb-2 mt-2"
-                data-list-selector="#picture-fields-list">
-                Ajouter une image
-            </button>
         </div>
+
 
         <div class="my-2 me-3 col-2">
         {{ form_widget (form.save) }}

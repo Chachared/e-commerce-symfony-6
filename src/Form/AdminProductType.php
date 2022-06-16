@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,6 +24,12 @@ class AdminProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('title', TextType::class, [
+                'required'=>true,
+                'label'=>"Nom du produit",
+                'attr'=>['class'=>'form-control',
+                        'placeholder'=>'Ex: croquettes pour chien']
+            ])
             ->add('brand', EntityType::class, [
                 'class' => Brand::class,
                 'required'=>true,
@@ -35,15 +42,11 @@ class AdminProductType extends AbstractType
                 'choice_label'=>'name',
                 'label'=>'Catégorie'
             ])
-            ->add('title', TextType::class, [
-                'required'=>true,
-                'label'=>"Titre",
-                'attr'=>['class'=>'form-control']
-            ])
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'required'=>true,
                 'label'=>"Description",
-                'attr'=>['class'=>'form-control']
+                'attr'=>['class'=>'form-control',
+                        'placeholder'=>'Veuillez décrire votre nouveau produit']
             ])
             ->add('HTprice', NumberType::class, [
                 'required'=>true,
@@ -69,7 +72,8 @@ class AdminProductType extends AbstractType
             ->add('stars', NumberType::class, [
                 'required'=>true,
                 'label'=>"Nbre d'étoiles",
-                'attr'=>['class'=>'form-control']
+                'attr'=>['class'=>'form-control',
+                        'placeholder'=>'Max. 5']
             ])
             ->add('pictures', CollectionType::class,[
                 'label'=>"Ajouter des images",
@@ -80,7 +84,7 @@ class AdminProductType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'label'=>"Ajouter",
-                'attr'=>['class'=>'btn btn-success rounded-pill my-2']
+                'attr'=>['class'=>'btn btn-add my-2']
             ])
         ;
     }
