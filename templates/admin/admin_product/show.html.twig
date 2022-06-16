@@ -6,16 +6,12 @@
 
     <div class="container-fluid">
         <div class="row">
-            <h1 class="text-center">{{product.category.parentCategory.name}} > {{product.category.name}}
-                    {% if product.isFlash == 1 %} > produit flash {% endif %}</h1>
-            <div class="col-12 d-flex justify-content-center">
-                <a href="{{ path('admin_product_index') }}" class="btn btn-back my-2 mx-2">Retour</a>
-                <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-add my-2 mx-2">Editer</a>
-                {{ include('admin/admin_product/_delete_form.html.twig') }}
-            </div>
+            <p class="text-center mt-3 h4">{{product.category.parentCategory.name}} > {{product.category.name}}
+                    {% if product.isFlash == 1 %} > produit flash {% endif %}</p>
+            <h1 class="text-center mb-3">{{product.title}}</h1>
+
         </div>
     </div>
-
             <div class="container my-2">
                 <div class="row">
                     <div class="col-12">
@@ -50,10 +46,7 @@
                             <div class="col-5">
                                 <div class="row py-2">
                                     <div class="col-12">
-                                        <h3>{{product.brand.name}}</h3>
-                                        <h1>
-                                       {{product.title}}
-                                        </h1>
+                                        <p class="h4">Marque: {{product.brand.name}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -63,18 +56,32 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-12 text-dark mt-2">
+                                        <p>
+                                            <strong>Quantité en stock:</strong> {{product.stock}}</br>
+                                            <em>
+                                                {% if product.isActive == 1%}
+                                                    Produit actif (en vente)
+                                                {% else %}
+                                                    Produit inactif
+                                                {% endif %}
+                                            </em>
+                                        </p>
+                                    </div>
+                                </div>
 
                                 <div class="row py-3">
-                                    <div class="col-4 col-xl-3">
+                                    <div class="col-5 col-xl-3">
                                         <h6 class="text-grey small d-block">
-                                            Prix hors taxe
+                                            Prix H.T.
                                         </h6>
                                         <p class="h3 font-weight-bold d-block mb-0">
                                         {{product.HTprice|number_format(2,'.')}}€
                                         </p>
                                     </div>
                                     <!--avis des clients-->
-                                    <div class="col-8 col-xl-9 small text-grey d-flex justify-content-end align-items-end">
+                                    <div class="col-7 col-xl-9 small text-grey d-flex justify-content-end align-items-end">
                                         <p class="h3 font-weight-bold d-block mb-0">
                                         {% include 'default/parts/stars.html.twig' %}
                                         </p>
@@ -82,6 +89,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end mb-3">
+                        <a href="{{ path('admin_product_index') }}" class="btn btn-back my-2 mx-2">Retour</a>
+                        <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-add my-2 mx-2">Editer</a>
+                        {{ include('admin/admin_product/_delete_form.html.twig') }}
                     </div>
                 </div>
             </div>
