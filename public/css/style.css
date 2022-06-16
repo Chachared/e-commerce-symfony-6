@@ -122,6 +122,8 @@ h6,
 
 .space {
   background:url("../img/stars.jpg") center no-repeat ;
+  border-radius: 20px 10px 20px 10px;
+  border: none;
 }
 
 /**************************************************MODALES*****************************************************/
@@ -224,4 +226,32 @@ footer {
 /***************************formulaires************************/
 .thumbnail {
   width: 150px;
+}
+
+/***************************administration dashboard************************/
+.btn-add {
+  background-color: yellowgreen;
+  border-radius: 20px 10px 20px 10px;
+  width: 125px;
+  height: 35px;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-delete{
+  background-color: darkred;
+  border-radius: 20px 10px 20px 10px;
+  width: 125px;
+  height: 35px;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-back{
+  background-color: #212529;
+  border-radius: 20px 10px 20px 10px;
+  width: 125px;
+  height: 35px;
+  border: none;
+  color: #ffffff;
 }
