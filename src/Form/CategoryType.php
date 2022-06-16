@@ -35,7 +35,7 @@ class CategoryType extends AbstractType
             ])
             ->add('save', SubmitType::class, options: [
                 'label'=>"Ajouter",
-                'attr'=>['class'=>'btn btn-success rounded-pill my-2']
+                'attr'=>['class'=>'btn btn-add my-2']
             ])
         ;
     }

@@ -232,7 +232,6 @@ footer {
 .btn-add {
   background-color: yellowgreen;
   border-radius: 20px 10px 20px 10px;
-  width: 85px;
   height: 35px;
   border: none;
   color: #ffffff;
@@ -241,7 +240,6 @@ footer {
 .btn-delete{
   background-color: darkred;
   border-radius: 20px 10px 20px 10px;
-  width: 85px;
   height: 35px;
   border: none;
   color: #ffffff;
@@ -250,7 +248,6 @@ footer {
 .btn-back{
   background-color: #212529;
   border-radius: 20px 10px 20px 10px;
-  width: 85px;
   height: 35px;
   border: none;
   color: #ffffff;

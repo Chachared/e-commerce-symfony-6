@@ -23,7 +23,7 @@ class Category
     private $products;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'childCategory')]
-    #[ORM\JoinColumn(nullable: true, name:'parent_category_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: true)]
     private $parentCategory;
 
 

@@ -5,14 +5,13 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-10">
-                <h1 class="mb-3 ms-4">Ajouter une nouvelle catégorie</h1>
+            <div class="col-12">
+                <a href="{{ path('admin_category_index')}}" class="btn btn-back ms-3 mb-3">Retour</a>
+                <h1 class="mb-3 ms-3">Ajouter une nouvelle catégorie</h1>
              </div>
-            <div class="col-2 d-flex justify-content-end align-items-center">
-                <a href="{{ path('admin_category_index')}}" class="btn btn-dark rounded-pill">Retour</a>
-            </div>
         </div>
-        <div class="col">
+
+        <div class="row">
             {{ include('admin/admin_category/_form.html.twig') }}
         </div>
     </div>
