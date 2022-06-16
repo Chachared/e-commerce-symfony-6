@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -73,6 +74,7 @@ class AdminProductType extends AbstractType
             ->add('pictures', CollectionType::class,[
                 'label'=>"Ajouter des images",
                 'entry_type' => AdminPictureType::class,
+                'mapped' => false,
                 'allow_add' => true,
                 'prototype' => true,
             ])

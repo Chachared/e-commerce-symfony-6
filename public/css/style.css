@@ -218,6 +218,10 @@ footer {
   background: url("../img/stars.jpg") center no-repeat;
   background-size: cover;
   border-color: white;
-  color:white;
+  color: white;
 }
 
+/***************************formulaires************************/
+.thumbnail {
+  width: 150px;
+}

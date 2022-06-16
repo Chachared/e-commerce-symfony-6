@@ -12,6 +12,15 @@
         </div>
         </div>
 
+        <div class="my-2 me-3">
+            {{ form_label (form.brand) }}
+            </br>
+            {{ form_widget (form.brand) }}
+            <div class="form-error">
+                {{ form_errors (form.brand) }}
+            </div>
+        </div>
+
         <div class="my-2 me-3 col-6">
         {{ form_label (form.title) }}
         {{ form_widget (form.title) }}
@@ -69,24 +78,33 @@
         </div>
         </div>
 
-        <div class="mt-2 me-3 col-4">
-        {{ form_row(form.pictures )}}
-
+        <div class="mt-2 me-3">
+            <div class="d-flex flex-row">
+                {% for picture in product.pictures %}
+                    <img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="thumbnail p-1 border rounded mx-2 my-2 "
+                         alt="{{ picture.alt }}"/>
+                {% endfor %}
+            </div>
+            {{ form_widget(form.pictures )}}
+            <div class="form-error">
+                {{ form_errors (form.pictures) }}
+            </div>
+            {# upload d'images #}
             <ul id="picture-fields-list"
-                data-widget-tags="{{ '<li></li>'|e }}"
+                class="list-group list-group-horizontal-sm"
+                data-widget-tags="{{ '<li class="list-group-item flex-fill"></li>'|e }}"
                 data-widget-counter="{{ form.pictures|length }}">
                 {% for pictureField in form.pictures %}
                     <li>
-                        {{ form_errors(pictureField) }}           
+                        {{ form_errors(pictureField) }}
                     </li>
                 {% endfor %}
             </ul>
             <button type="button"
-                class="addPicture btn btn-secondary rounded-pill mb-2 mt-0"
+                class="addPicture btn btn-secondary rounded-pill mb-2 mt-2"
                 data-list-selector="#picture-fields-list">
                 Ajouter une image
             </button>
-
         </div>
 
         <div class="my-2 me-3 col-2">

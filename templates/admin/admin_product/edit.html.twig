@@ -16,12 +16,6 @@
      
     {{ include('admin/admin_product/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <div class="d-flex flex-row">
-    {% for picture in product.pictures %}
-        <img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="w-25 p-1 border rounded mx-2 my-2 "
-        alt="{{ picture.alt }}"/>
-    {% endfor %}
-    </div>
 
 {% endblock %}
 
