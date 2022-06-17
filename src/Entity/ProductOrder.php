@@ -25,7 +25,7 @@ class ProductOrder
     #[ORM\JoinColumn(nullable: false)]
     private Product $product;
 
-    #[ORM\ManyToOne(targetEntity: Invoice::class)]
+    #[ORM\ManyToOne(targetEntity: Invoice::class, inversedBy: 'productOrders')]
     #[ORM\JoinColumn(nullable: false)]
     private Invoice $invoice;
 
@@ -70,19 +70,16 @@ class ProductOrder
         return $this;
     }
 
-    public function getInvoice(): ?invoice
+    public function getInvoice()
     {
         return $this->invoice;
     }
 
-    public function setInvoice(?invoice $invoice): self
+    public function setInvoice($invoice)
     {
         $this->invoice = $invoice;
 
         return $this;
     }
-
-   
-
 
 }

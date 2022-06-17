@@ -14,24 +14,24 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private int $id;
+    private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
-    private $products;
+    private Collection $products;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'childCategory')]
     #[ORM\JoinColumn(nullable: true)]
-    private $parentCategory;
+    private ?Category $parentCategory;
 
 
-    #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class, cascade:['persist'])]
+    #[ORM\OneToMany(mappedBy:'parentCategory', targetEntity: self::class)]
     private $childCategory;
 
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
@@ -89,7 +89,7 @@ class Category
 
         return $this;
     }
-    
+
     public function __toString():string {
         return $this->id;
     }

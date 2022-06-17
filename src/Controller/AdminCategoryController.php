@@ -82,6 +82,6 @@ class AdminCategoryController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin/admin_category_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_category_index', [], Response::HTTP_SEE_OTHER);
     }
 }

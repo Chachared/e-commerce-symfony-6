@@ -7,77 +7,85 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1 class="text-center">Toutes les catégories</h1>
+    <div class="container">
 
-    <div class="row">
-        <div class="col-12 text-center">
-            <p>Bonjour <strong>{{app.user.firstname}} {{app.user.lastname}}</strong>, ici vous pourrez avoir une vision d'ensemble des catégories enregistrées en base de données !</p>
-        </div>
-        <div class="col-6">
-            <div class="row">
-                <a class="text-dark" href="{{ path('admin_category_new') }}">Ajouter une catégorie</a>
+        <h1 class="text-center">Toutes les catégories</h1>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>Bonjour <strong>{{app.user.firstname}} {{app.user.lastname}}</strong>, ici vous pourrez avoir une vision d'ensemble des catégories enregistrées en base de données !</p>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <a class="text-dark" href="{{ path('admin_category_new') }}">Ajouter une catégorie</a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <a href="{{ path('admin_category_index') }}" class="nbResults text-end">Afficher 10 résultats par page</a>
+                </div>
+                <div class="row">
+                    <a href="{{ path('admin_category_index') }}" class="nbResults text-end">Afficher 5 résultats par page</a>
+                </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="row">
-                <a href="{{ path('admin_category_index',{'currentPage': currentPage,'nbResults': 10}) }}" class="nbResults text-end">Afficher 10 résultats par page</a>
-            </div>
-            <div class="row">
-                <a href="{{ path('admin_category_index',{'currentPage': currentPage,'nbResults': 5}) }}" class="nbResults text-end">Afficher 5 résultats par page</a>
-            </div>
-        </div>
-    </div>
 
-    <table class="table table-striped table-hover table-sm my-3">
-        <thead>
-            <tr>
-                <th>Boutique</th>
-                <th>Catégorie</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            {%if category.parentCategory != null %}
-            <tr>
-                <td><strong>{{ category.parentCategory.name }}</strong></td>
-                <td>{{ category.name }}</td>
-                {% elseif category.parentCategory is null %}
-                    <td><strong>{{ category.name }}</strong></td>
-                    <td> - </td>
-            {% endif %}
-                <td>
-                    <a class="text-dark" href="{{ path('admin_category_edit', {'id': category.id}) }}">Modifier</a>
-                </td>
-            </tr>
+        <table class="table table-striped table-hover table-sm my-3">
+            <thead>
+                <tr>
+                    <th>Boutique</th>
+                    <th>Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for category in categories %}
+                        {%if category.parentCategory != null %}
+                            <td><strong>{{ category.parentCategory.name }}</strong></td>
+                            <td>{{ category.name }}</td>
+                        {% elseif category.parentCategory is null %}
+                            <td><strong>{{ category.name }}</strong></td>
+                            <td> - </td>
+                    {% endif %}
+                    <td>
+                        <div class="row">
+                            <div class="col-3">
+                                <a class="text-dark" href="{{ path('admin_category_edit', {'id': category.id}) }}">Modifier</a>
+                            </div>
+                            <div class="col-2">
+                                {{ include('admin/admin_category/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        {% else %}
-            <tr>
-                <td colspan="3">aucune catégorie enregistrée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {% if currentPage != 1 %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ path('admin_category_index', {'currentPage': currentPage-1, 'nbResults': nbResults}) }}">Précédent</a>
-                </li>
-            {% endif %}
-
-            {% for page in 1..nbPages%}
-                <li class="page-item {% if page == currentPage %}active{% endif %}"><a class="page-link" href="{{ path('admin_category_index', {'currentPage': page, 'nbResults': nbResults}) }}">{{page}}</a></li>
+            {% else %}
+                <tr>
+                    <td colspan="3">aucune catégorie enregistrée</td>
+                </tr>
             {% endfor %}
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if currentPage != 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('admin_category_index', {'currentPage': currentPage-1, 'nbResults': nbResults}) }}">Précédent</a>
+                    </li>
+                {% endif %}
 
-            {% if currentPage != nbPages %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ path('admin_category_index', {'currentPage': currentPage+1, 'nbResults': nbResults}) }}">Suivant</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
+                {% for page in 1..nbPages%}
+                    <li class="page-item {% if page == currentPage %}active{% endif %}"><a class="page-link" href="{{ path('admin_category_index', {'currentPage': page, 'nbResults': nbResults}) }}">{{page}}</a></li>
+                {% endfor %}
 
+                {% if currentPage != nbPages %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ path('admin_category_index', {'currentPage': currentPage+1, 'nbResults': nbResults}) }}">Suivant</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 
 {% endblock %}

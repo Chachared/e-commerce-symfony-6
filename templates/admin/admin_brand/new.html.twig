@@ -1,19 +1,21 @@
 {% extends 'base-admin.html.twig' %}
 
-{% block title %}New Brand{% endblock %}
+{% block title %} des marques{% endblock %}
 
 {% block body %}
+
     <div class="container">
+
         <div class="row">
-            <div class="col-8">
-                <h1 class="mb-3 ms-4">Ajouter une nouvelle marque</h1>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                <a href="{{ path('admin_brand_index') }}" class="btn btn-back rounded-pill">Retour</a>
+            <div class="col-12">
+                <a href="{{ path('admin_brand_index') }}" class="btn btn-back ms-3 mb-3">Retour</a>
+                <h1 class="mb-3 ms-3">Ajouter une nouvelle marque</h1>
             </div>
         </div>
+
         <div class="row">
             {{ include('admin/admin_brand/_form.html.twig') }}
         </div>
     </div>
+
 {% endblock %}

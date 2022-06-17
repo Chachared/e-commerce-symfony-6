@@ -4,6 +4,8 @@ namespace App\Entity;
 
 
 use App\Repository\InvoiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -26,9 +28,31 @@ class Invoice
     private User $user;
     private \DateTime $date;
 
+    #[ORM\OneToMany(mappedBy: 'invoice', targetEntity: ProductOrder::class, orphanRemoval: true)]
+    #[ORM\JoinColumn(nullable: true)]
+    private Collection|null $productOrders;
+
+    /**
+     * @param ?Collection|null $productOrders
+     */
+    public function setProductOrders(Collection|null $productOrders): void
+    {
+        $this->productOrders = $productOrders;
+    }
+
+    /**
+     * @returnCollection|null
+     */
+    public function getProductOrders(): Collection|null
+    {
+        return $this->productOrders;
+    }
+
+
     public function __construct()
     {
-        $this->date = new \DateTime();  
+        $this->date = new \DateTime();
+        $this->productOrders=new ArrayCollection();
     }
 
     public function getId(): ?int

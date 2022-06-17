@@ -1,17 +1,20 @@
 {% extends 'base-admin.html.twig' %}
 
-{% block title %}{{ parent() }}Modifier l'administrateur{% endblock %}
+{% block title %}{{ parent() }} des administrateurs{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-6">
-            <h1>Modifier l'administrateur</h1>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('admin_user_index')}}" class="btn btn-back ms-3 mb-3">Retour</a>
+                <h1 class="mb-3 ms-4">Modifier "{{app.user.username}}" (admin)</h1>
+            </div>
         </div>
-        <div class="col-6 d-flex justify-content-end align-items-center">
-            <a href="{{ path('admin_user_index')}}" class="btn btn-dark rounded-pill">Retour</a>
+
+        <div class="row">
+            {{ include('admin/admin_user/_form.html.twig', {'button_label': 'Update'}) }}
         </div>
     </div>
-    {{ include('admin/admin_user/_form.html.twig', {'button_label': 'Update'}) }}
-
-    {{ include('admin/admin_user/_delete_form.html.twig') }}
 {% endblock %}

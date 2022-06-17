@@ -1,21 +1,23 @@
 {% extends 'base-admin.html.twig' %}
 
 
-{% block title %}{{ parent() }} Modifier produit{% endblock %}
+{% block title %}{{ parent() }} des produits{% endblock %}
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-12">
-            <a href="{{ path('admin_product_index') }}" class="btn btn-back ms-3 mb-3">Retour</a>
-            <h1 class="mb-3 ms-4">Modifier "{{ product.title }}"</h1>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('admin_product_index') }}" class="btn btn-back ms-3 mb-3">Retour</a>
+                <h1 class="mb-3 ms-4">Modifier "{{ product.title }}"</h1>
+            </div>
+         </div>
+
+        <div class="row">
+            {{ include('admin/admin_product/_form.html.twig', {'button_label': 'Update'}) }}
         </div>
-     </div>
-
-    <div class="row">
-        {{ include('admin/admin_product/_form.html.twig', {'button_label': 'Update'}) }}
     </div>
-
 {% endblock %}
 
 {% block javascripts %}
