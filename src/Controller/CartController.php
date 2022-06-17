@@ -149,6 +149,19 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('cart_display');
     }
-    
+
+    /*persister le panier en BDD
+    récupérer le panier en session
+    recuperer l'utilisateur connecté
+    s'il n'est pas connecté -> redirect to login
+    S'il est connecté -> on peut enregister la commande
+    récupérer chaque ligne du panier pour la persister en product order
+    setQuantity()
+    setHTPrice()
+    setProduct()
+    setInvoice() -> new invoice
+    invoice->setUser()
+
+    }*/
     
 }
