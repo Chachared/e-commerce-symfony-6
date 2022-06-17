@@ -39,7 +39,7 @@
                 <tr>
                     <td>{{ invoice.orderDate ? invoice.orderDate|date('d/m/Y') : '' }}</td>
                     <td>{{ invoice.user.firstname }} <strong>{{ invoice.user.lastname }}</strong></td>
-                    <td>TOTAL €</td>
+                    <td>{{ invoice.TotalHTPrice }} €</td>
                     <td>{{ invoice.paymentMethod }}</td>
 
                     <td>

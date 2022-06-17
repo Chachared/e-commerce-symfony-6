@@ -26,7 +26,6 @@ class AdminInvoiceController extends AbstractController
         }
 
 
-
         return $this->render('admin/admin_invoice/index.html.twig', [
             'invoices' => $invoices,
             'nbPages' => $nbPages,

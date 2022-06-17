@@ -35,8 +35,8 @@
                         <strong>Informations sur la commande</strong>
                     </div>
                     <div class="card-body" >
-                        <p>Commande du: {{ invoice.orderDate ? invoice.orderDate|date('d-m-Y') : '' }}</p>
-                        <p>Montant total de la commande</p>
+                        <p>Commande du: {{ invoice.orderDate ? invoice.orderDate|date('d/m/Y') : '' }}</p>
+                        <p>Montant total de la commande: {{ invoice.TotalHTPrice }} €</p>
                         <p>Moyen de paiement: {{ invoice.paymentMethod }}</p>
                     </div>
                 </div>
@@ -63,6 +63,7 @@
             <tfoot>
             <tr>
                 <th>Montant total de la facture</th>
+                <td class="text-end"><strong>{{ invoice.TotalHTPrice }} €</strong></td>
             </tr>
             </tfoot>
         </table>

@@ -100,4 +100,14 @@ class Invoice
 
         return $this;
     }
+
+    public function getTotalHTPrice(){
+
+        $totalHTPrice = 0;
+        foreach ($this->getProductOrders() as $productOrder){
+        $totalHTPrice += $productOrder->getHTPrice();
+        }
+        return $totalHTPrice;
+
+    }
 }
