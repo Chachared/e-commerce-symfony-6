@@ -26,6 +26,7 @@ class ProductRepository extends ServiceEntityRepository
             ->setFirstResult(($currentPage*$nbResults)-$nbResults)
             ->getQuery()->getResult();
     }
+
     public function search($filters){
         $query = $this->createQueryBuilder('p')
             ->leftJoin('p.category','category')
