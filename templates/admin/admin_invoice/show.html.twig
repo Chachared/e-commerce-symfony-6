@@ -12,35 +12,41 @@
                 <h1 class="mb-3 ms-3">Détail de la facture</h1>
             </div>
         </div>
-
-        <div class="col-6">
-        <table class="table table-striped table-hover table ms-3">
-            <tbody>
-                <tr>
-                <tr>
-                    <th>Nom du client</th>
-                    <td><strong>{{ invoice.user.firstname|u.truncate(2, '.') }} {{ invoice.user.lastname }}</strong></td>
-                </tr>
-                    <th>Date de la commande</th>
-                    <td>{{ invoice.orderDate ? invoice.orderDate|date('d-m-Y') : '' }}</td>
-                </tr>
-                <tr>
-                    <th>Montant total de la commande</th>
-                    <td></td>
-
-                </tr>
-                <tr>
-                    <th>Moyen de paiement</th>
-                    <td>{{ invoice.paymentMethod }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-5 me-1">
+                <div class="card ms-3">
+                    <div class="card-header h6 text-center">
+                        <strong>Adresse de facturation</strong>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-uppercase">{{ invoice.user.title }} {{ invoice.user.firstname }} {{ invoice.user.lastname }}</p>
+                        {% for address in invoice.user.addresses%}
+                            {% if address.isBilling == 1 %}
+                                <p>{{ address.streetNumber }} {{ address.street }}</p>
+                                <p class="text-uppercase">{{ address.zipCode }} {{ address.city }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-5 ms-1">
+                <div class="card ms-3">
+                    <div class="card-header h6 text-center">
+                        <strong>Informations sur la commande</strong>
+                    </div>
+                    <div class="card-body" >
+                        <p>Commande du: {{ invoice.orderDate ? invoice.orderDate|date('d-m-Y') : '' }}</p>
+                        <p>Montant total de la commande</p>
+                        <p>Moyen de paiement: {{ invoice.paymentMethod }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <table class="table table-striped table-hover table ms-3">
+        <table class="table table-striped table-hover table my-3 mx-3">
             <thead>
                 <tr>
-                    <th>Produit</th>
+                    <th>Produits</th>
                     <th>Quantité</th>
                     <th>Prix total</th>
                 </tr>
@@ -48,12 +54,17 @@
             <tbody>
             {% for productOrder in invoice.productOrders %}
                 <tr>
-                    <td>{{ productOrder.product.title|u.truncate(50, '...') }}</td>
+                    <td>{{ productOrder.product.title }}</td>
                     <td>{{ productOrder.quantity }}</td>
                     <td>{{ productOrder.HTPrice|number_format(2,'.') }} €</td>
                 </tr>
             {% endfor %}
             </tbody>
+            <tfoot>
+            <tr>
+                <th>Montant total de la facture</th>
+            </tr>
+            </tfoot>
         </table>
     </div>
 {% endblock %}
