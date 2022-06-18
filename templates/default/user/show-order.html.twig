@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mettre à jour mes données{% endblock %}
+
+{% block body %}
+    {% include 'default/parts/header-account.html.twig' %}
+    <main>
+        <div class="container my-5 d-flex justify-content-center">
+
+            <div class="row">
+
+                <h1 class="h3 text-center">Voir le détail de votre commande du {{ invoice.orderDate ? invoice.orderDate|date('d/m/Y') : '' }}</h1>
+                <div class="col-12">
+                    <div class="card shadow-lg my-3 card-account">
+                        <div class="row g-0">
+                            <div class="col-lg-3">
+                                <img src="{{ asset('img/logos/logoClear.jpg') }}" width="200px" class="img-fluid rounded p-2" alt="boutique" />
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="text-uppercase text-decoration-underline card-title text-end me-5 mb-5">Détail de la facture</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 me-1">
+                                            <div class="card card-account ms-3">
+                                                <div class="card-header h6 text-center">
+                                                    <strong>Adresse de facturation</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="text-uppercase">{{ invoice.user.title }} {{ invoice.user.firstname }} {{ invoice.user.lastname }}</p>
+                                                    {% for address in invoice.user.addresses%}
+                                                        {% if address.isBilling == 1 %}
+                                                            <p>{{ address.streetNumber }} {{ address.street }}</p>
+                                                            <p class="text-uppercase">{{ address.zipCode }} {{ address.city }}</p>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-6 ms-1">
+                                            <div class="card card-account ms-3">
+                                                <div class="card-header h6 text-center">
+                                                    <strong>Informations sur la commande</strong>
+                                                </div>
+                                                <div class="card-body" >
+                                                    <p>Commande du: {{ invoice.orderDate ? invoice.orderDate|date('d/m/Y') : '' }}</p>
+                                                    <p>Montant total de la commande: {{ invoice.TotalHTPrice }} €</p>
+                                                    <p>Moyen de paiement: {{ invoice.paymentMethod }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-3 mx-3">
+                                        <table class="table text-white">
+                                            <thead>
+                                            <tr>
+                                                <th>Produits</th>
+                                                <th>Quantité</th>
+                                                <th>Prix total</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for productOrder in invoice.productOrders %}
+                                                <tr>
+                                                    <td>{{ productOrder.product.title }}</td>
+                                                    <td>{{ productOrder.quantity }}</td>
+                                                    <td>{{ productOrder.HTPrice|number_format(2,'.') }} €</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th>Montant total de la facture</th>
+                                                <td class="text-end"><strong>{{ invoice.TotalHTPrice }} €</strong></td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body text-center">
+                                    <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour à l'espace client</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 my-5">
+                    <h4 class="text-center mt-5">Quelques produits qui pourraient vous plaire :</h4>
+                    {% include 'default/parts/best-sellers.html.twig'%}
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+{% endblock %}

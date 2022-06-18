@@ -20,24 +20,28 @@ class SearchType extends AbstractType
         $builder
             ->add('searchBar', TextType::class, [
                 'label' => 'Barre de recherche',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'required'=>false,
                 'attr'=>['class'=>'form-control']
             ])
             ->add('category', EntityType::class, [
                 'choice_label'=>'name',
                 'label' => 'Catégorie',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'required'=>false,
                 'class'=> Category::class
             ])
             ->add('brand', EntityType::class, [
                 'choice_label'=>'name',
                 'label' => 'Marque',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'required'=>false,
                 'class'=> Brand::class
             ])
             ->add('stars', ChoiceType::class, [
                 'required'=>false,
                 'label' => 'Nombre d\'étoiles',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'choices'=> [
                     '1 étoile'=> 1,
                     '2 étoiles'=> 2,
@@ -52,6 +56,7 @@ class SearchType extends AbstractType
             ->add('minPrice', NumberType::class, [
                 'required'=>false,
                 'label' => 'Prix minimum',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>[
                     'class'=>'form-control'
                 ]
@@ -59,6 +64,7 @@ class SearchType extends AbstractType
             ->add('maxPrice', NumberType::class, [
                 'required'=>false,
                 'label' => 'Prix maximum',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>[
                     'class'=>'form-control'
                 ]

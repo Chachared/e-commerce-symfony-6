@@ -17,6 +17,7 @@ class  BrandType extends AbstractType
             ->add('name', TextType::class, [
                 'required'=>true,
                 'label'=>'Marque',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
             ])
             ->add('save', SubmitType::class, options: [

@@ -22,11 +22,13 @@ class RegistrationFormType extends AbstractType
             ->add('username',TextType::class, [
                 'required'=>true,
                 'label'=>"Nom d'utilisateur",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'label'=> 'Choix du mot de passe',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'invalid_message' => 'Veuillez vérifier vos mots de passe.',
                 'options' => ['attr' => ['class' => 'password-field form-control']],
                 'required' => true,
@@ -36,26 +38,31 @@ class RegistrationFormType extends AbstractType
             ->add('title',TextType::class, [
                 'required'=>true,
                 'label'=>"Titre",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
                 ])
             ->add('firstname',TextType::class, [
                 'required'=>true,
                 'label'=>"Prénom",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
                 ])
             ->add('lastname',TextType::class, [
                 'required'=>true,
                 'label'=>"Nom",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
                 ])
             ->add('email',EmailType::class, [
                 'required'=>true,
                 'label'=>"Adresse mail",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
                 ])
             ->add('birthday', DateType::class,[
                 'required'=>true,
                 'label'=>"Date de naissance",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'input_format'=>'dd/mm/YYYY',
                 'widget'=>'single_text'
             ])
@@ -63,7 +70,8 @@ class RegistrationFormType extends AbstractType
                 'by_reference' => false,
                 'mapped' => false,
                 'required'=>true,
-                'label'=>'Ajouter une adresse'
+                'label'=>'Ajouter une adresse',
+                'label_attr'=>['class'=>'text-bold my-2']
             ])
             ->add('save', SubmitType::class, [
                 'label'=>"M'enregistrer",

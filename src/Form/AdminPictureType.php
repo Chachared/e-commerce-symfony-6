@@ -20,6 +20,7 @@ class AdminPictureType extends AbstractType
                 'required'=>true,
                 'mapped'=>false,
                 'label'=>"Image à télécharger",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'constraints'=>[
                     new File(
                         [
@@ -42,12 +43,14 @@ class AdminPictureType extends AbstractType
             ->add('alt', TextType::class, [
                 'required'=>true,
                 'label'=>"texte alternatif",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
             ])
             ->add('isFront', CheckboxType::class, [
                 'required'=>false,
                 'label'=>"Photo principale, attention n'en choisir qu'une !  ",
-                'attr'=>['class'=>'checkbox']
+                'label_attr'=>['class'=>'text-bold my-2'],
+                'attr'=>['class'=>'checkbox ms-2']
             ])
         ;
     }

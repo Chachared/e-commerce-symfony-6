@@ -21,11 +21,13 @@ class UserType extends AbstractType
             ->add('username', TextType::class, [
                 'required'=>true,
                 'label'=>"Nom d'utilisateur",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control mt-2']
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'label'=> 'Choix du mot de passe',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'invalid_message' => 'Veuillez vérifier vos mots de passe.',
                 'options' => ['attr' => ['class' => 'password-field form-control mt-2']],
                 'required' => true,
@@ -33,32 +35,38 @@ class UserType extends AbstractType
                                     'attr'=>['class'=>'form-control mt-2']
                 ],
                 'second_options' => ['label' => 'Confirmez votre mot de passe',
+                                    'label_attr'=>['class'=>'mt-2'],
                                     'attr'=>['class'=>'form-control mt-2']
                 ],
             ])
             ->add('title', TextType::class, [
                 'required'=>true,
                 'label'=>"Civilité",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control mt-2']
             ])
             ->add('firstname', TextType::class, [
                 'required'=>true,
                 'label'=>"Prénom",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control mt-2']
             ])
             ->add('lastname', TextType::class, [
                 'required'=>true,
                 'label'=>"Nom",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control mt-2']
             ])
             ->add('email', EmailType::class, [
                 'required'=>true,
                 'label'=>"Adresse e-mail",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control mt-2']
             ])
             ->add('birthday', DateType::class, [
                 'required'=>true,
                 'label'=>"Date de naissance",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'input_format'=>'dd/mm/YYYY',
                 'widget'=>'single_text',
                 'attr'=>['class'=>'mt-2']

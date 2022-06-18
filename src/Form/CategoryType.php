@@ -20,6 +20,7 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class, [
                 'required'=>true,
                 'label'=>'Catégorie',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
             ])
 
@@ -28,6 +29,7 @@ class CategoryType extends AbstractType
                 'required'=>true,
                 'choice_label'=>'name',
                 'label'=>'Boutique',
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'query_builder'=>function(EntityRepository $entityRepository){
                     return $entityRepository->createQueryBuilder('c')
                         ->where('c.parentCategory is null');

@@ -27,6 +27,7 @@ class AdminProductType extends AbstractType
             ->add('title', TextType::class, [
                 'required'=>true,
                 'label'=>"Nom du produit",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control',
                         'placeholder'=>'Ex: croquettes pour chien']
             ])
@@ -34,49 +35,58 @@ class AdminProductType extends AbstractType
                 'class' => Brand::class,
                 'required'=>true,
                 'choice_label'=>'name',
-                'label'=>'Marque'
+                'label'=>'Marque',
+                'label_attr'=>['class'=>'text-bold my-2'],
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'required'=>true,
                 'choice_label'=>'name',
-                'label'=>'Catégorie'
+                'label'=>'Catégorie',
+                'label_attr'=>['class'=>'text-bold my-2'],
             ])
             ->add('description', TextareaType::class, [
                 'required'=>true,
                 'label'=>"Description",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control',
                         'placeholder'=>'Veuillez décrire votre nouveau produit']
             ])
             ->add('HTprice', NumberType::class, [
                 'required'=>true,
                 'label'=>"Prix Hors Taxes",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control',
                 ]
             ])
             ->add('stock', IntegerType::class, [
                 'required'=>true,
                 'label'=>"Stock",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control']
             ])
             ->add('isActive', CheckboxType::class, [
                 'required'=>false,
                 'label'=>"Actif",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'checkbox']
             ])
             ->add('isFlash', CheckboxType::class, [
                 'required'=>false,
                 'label'=>"Produit flash",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'checkbox']
             ])
             ->add('stars', NumberType::class, [
                 'required'=>true,
                 'label'=>"Nbre d'étoiles",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'form-control',
                         'placeholder'=>'Max. 5']
             ])
             ->add('pictures', CollectionType::class,[
                 'label'=>"Ajouter des images",
+                'label_attr'=>['class'=>'text-bold my-2'],
                 'entry_type' => AdminPictureType::class,
                 'mapped' => false,
                 'allow_add' => true,

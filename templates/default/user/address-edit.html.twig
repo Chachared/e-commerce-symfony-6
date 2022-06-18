@@ -9,18 +9,18 @@
 
             <div class="row">
 
-                <h1 class="h3 text-center">Mettre à jour les données pour {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
+                <h1 class="h3 text-center">Mettre à jour l'adresse pour {{address.user.title}} {{address.user.firstname}} {{address.user.lastname}}</h1>
                 <div class="col-12">
                     <div class="card shadow-lg my-3 card-account">
                         <div class="row g-0">
                             <div class="col-lg-4">
-                                <img src="{{ asset('img/spaceCat.jpg') }}" class="img-fluid rounded-circle p-2" alt="boutique" />
+                                <img src="{{ asset('img/terre.jpg') }}" class="img-fluid rounded-circle p-2" alt="boutique" />
                             </div>
                             <div class="col-lg-8">
                                 <div class="card-body">
                                     <h5 class="text-uppercase text-decoration-underline card-title text-end me-5">Mes informations</h5>
                                     <p class="card-body d-flex justify-content-center">
-                                        {{ include('default/user/_form-user.html.twig', {'button_label': 'Update'}) }}
+                                        {{ include('default/user/_form-address.html.twig', {'button_label': 'Update'}) }}
                                     </p>
                                 </div>
                                 <div class="card-body text-center">

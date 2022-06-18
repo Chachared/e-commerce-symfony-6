@@ -161,6 +161,7 @@ class CartController extends AbstractController
     setProduct()
     setInvoice() -> new invoice
     invoice->setUser()
+    si on click sur le bouton CB -> moyen payment cb, si on click sur le bouton paypal etc
 
     }*/
     

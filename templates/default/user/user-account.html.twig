@@ -67,10 +67,9 @@
                                         <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
                                     </div>
                                     {% endfor %}
+                                    <a href="{{ path('edit_address', {'id': address.id}) }}" class="text-white">Modifier</a>
                                 </div>
-                                <div class=" card-footer text-end">
-                                    <a href="" class="text-white">Modifier</a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
