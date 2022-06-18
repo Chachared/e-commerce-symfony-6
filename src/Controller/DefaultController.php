@@ -70,8 +70,13 @@ class DefaultController extends AbstractController
     #[Route('/user/{id}', name: 'show_user', methods: ['GET'])]
     public function showUser(User $user): Response
     {
+        //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
+        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
+        shuffle($flashProducts);
+
         return $this->render('default/user/user-account.html.twig', [
             'user' => $user,
+            'products' => array_splice($flashProducts, -4),
         ]);
     }
     #[Route('user/{id}/edit', name: 'edit_user', methods: ['GET', 'POST'])]
@@ -85,9 +90,14 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('default', [], Response::HTTP_SEE_OTHER);
         }
 
+        //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
+        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
+        shuffle($flashProducts);
+
         return $this->renderForm('default/user/user-edit.html.twig', [
             'user' => $user,
             'form' => $form,
+            'products' => array_splice($flashProducts, -4),
         ]);
     }
 

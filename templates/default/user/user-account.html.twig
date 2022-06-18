@@ -4,68 +4,84 @@
 
 {% block body %}
 
-    {% include 'default/parts/header.html.twig' %}
-
+    {% include 'default/parts/header-account.html.twig' %}
 <main>
-    <div class="container d-flex justify-content-center">
-        <div class="card shadow-lg my-3 card-account" >
-            <h1 class="card-header shadow-lg h3 my-3 text-center">Bienvenue, {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="my-4 mx-3">
-                            <h5 class="text-uppercase">Mes informations</h5>
-                            <div class="my-3">
-                                <p><strong>Titre:</strong> {{ user.title }}</p>
-                                <p><strong>Prénom:</strong> {{ user.firstname }}</p>
-                                <p><strong>Nom:</strong> {{ user.lastname }}</p>
-                                <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
-                                <p><strong>Adresse email:</strong> {{ user.email }}</p>
-                                <p><strong>Date de naissance:</strong> {{ user.birthday|date("d/m/Y") }}</p>
-                                <p><strong>Date d'enregistrement:</strong> {{ user.registerDate|date("d/m/Y") }}</p>
+
+    {# infos mon compte #}
+        <div class="container my-5">
+
+            <div class="row">
+                <h1 class="h3 text-center">Bienvenue, {{user.title}} {{user.firstname}} {{user.lastname}}</h1>
+                <div class="text-center mb-2">
+                    <a href="{{ path('app_logout') }}" class="text-dark">Me déconnecter</a>
+                </div>
+                {# mes infos #}
+                <div class="col-lg-6 col-sm-6">
+                    <div class="card shadow-lg my-3 card-account">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <img src="{{ asset('img/spaceCat.jpg') }}" class="img-fluid rounded-circle p-2" alt="boutique" />
                             </div>
-                            <a href="{{ path('edit_user', {'id': app.user.id}) }}" class="text-white">Modifier</a>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="my-4 mx-3">
-                            <h5 class="text-uppercase">Mes adresses</h5>
-                            {% for address in user.addresses %}
-                                <div class="card-address my-3 p-1">
-                                    {% if address.isDelivery == 1 and address.isBilling == 0 %}
-                                        <p class="text-uppercase h6"><strong>Livraison</strong></p>
-                                        {% elseif address.isBilling == 1 and address.isDelivery == 0 %}
-                                            <p class="text-uppercase h6"><strong>Facturation</strong></p>
-                                            {% else %}
-                                                <p class="text-uppercase h6"><strong>Facturation & Livraison</strong></p>
-                                    {% endif %}
-                                    <p>{{ address.streetNumber }}, {{ address.street }}</p>
-                                    <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="text-uppercase text-decoration-underline card-title text-end me-5">Mes informations</h5>
+                                    <p class="card-text">
+                                    <p><strong>Titre:</strong> {{ user.title }}</p>
+                                    <p><strong>Prénom:</strong> {{ user.firstname }}</p>
+                                    <p><strong>Nom:</strong> {{ user.lastname }}</p>
+                                    <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+                                    <p><strong>Adresse email:</strong> {{ user.email }}</p>
+                                    <p><strong>Date de naissance:</strong> {{ user.birthday|date("d/m/Y") }}</p>
+                                    <p><strong>Date d'enregistrement:</strong> {{ user.registerDate|date("d/m/Y") }}</p>
+                                    </p>
                                 </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="my-4 mx-3">
-                            <h5 class="text-uppercase">Mes commandes</h5>
-                            {% for invoice in user.invoices %}
-                                <div class="card-invoice my-3 p-1">
-                                    <p><strong>Commande n°</strong>{{ invoice.id }}</p>
-                                    <p><strong>En date du</strong> {{ invoice.orderDate|date("d/m/Y") }}</p>
-                                    <p><strong>Montant total</strong></p>
-                                    <p>Réglement par <strong class="text-uppercase">{{ invoice.paymentMethod }}</strong></p>
-                                    <a href="" class="text-white">Détail</a>
+                                <div class=" card-footer text-end">
+                                    <a href="{{ path('edit_user', {'id': app.user.id}) }}" class="text-white">Modifier</a>
                                 </div>
-                            {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mb-2">
-                <a href="{{ path('app_logout') }}" class="text-white">Me déconnecter</a>
+
+                {# adresses #}
+                <div class="col-lg-6 col-sm-6">
+                    <div class="card shadow-lg my-3 card-account">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <img src="{{ asset('img/terre.jpg') }}" class="img-fluid rounded-circle p-2" alt="boutique" />
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="text-uppercase text-decoration-underline card-title text-end me-5">Mes adresses</h5>
+                                    <p class="card-text">
+                                        {% for address in user.addresses %}
+                                    <div class="card-address my-3 p-1">
+                                        {% if address.isDelivery == 1 and address.isBilling == 0 %}
+                                            <p class="text-uppercase h6"><strong>Livraison</strong></p>
+                                        {% elseif address.isBilling == 1 and address.isDelivery == 0 %}
+                                            <p class="text-uppercase h6"><strong>Facturation</strong></p>
+                                        {% else %}
+                                            <p class="text-uppercase h6"><strong>Facturation & Livraison</strong></p>
+                                        {% endif %}
+                                        <p>{{ address.streetNumber }}, {{ address.street }}</p>
+                                        <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <div class=" card-footer text-end">
+                                    <a href="" class="text-white">Modifier</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 my-5">
+                    <h4 class="text-center mt-5">Quelques produits qui pourraient vous plaire :</h4>
+                    {% include 'default/parts/best-sellers.html.twig'%}
+                </div>
             </div>
         </div>
-    </div>
 </main>
 
 {% endblock %}

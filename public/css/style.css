@@ -38,8 +38,12 @@ h6,
 .logo-header {
   margin-top: 10%;
 }
-.header-home {
+
+#headerAccount {
   height: 600px;
+  background: url("../img/headers/terra.jpg") center no-repeat;
+  background-size: cover;
+  color: white;
 }
 
 #headerDogs {
@@ -69,7 +73,6 @@ h6,
   background-size: cover;
   color: white;
 }
-
 
 .store-title {
   height: 400px;
@@ -201,7 +204,6 @@ footer {
   color:white;
 }
 .card-account{
-  width:80%;
   border-radius: 60px 60px 60px 60px;
   background: url("../img/stars.jpg") center no-repeat;
   background-size: cover;
@@ -224,6 +226,12 @@ footer {
   color: white;
 }
 
+.title-account{
+  border-radius: 60px 60px 60px 60px;
+  height: 80px;
+  background: url("../img/stars.jpg") center no-repeat;
+  color:white;
+}
 /***************************formulaires************************/
 .thumbnail {
   width: 150px;

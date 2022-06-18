@@ -1,0 +1,20 @@
+<header id="headerAccount">
+
+    {# logo principal #}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 logo-header d-flex justify-content-center">
+                <a href="{{ path('default') }}"><img src="{{ asset('img/logos/LOGOclear.jpg') }}" width="350px" height="100%"
+                                                     alt="la Nimes'Alerie" class="img-fluid"></a>
+            </div>
+            <div class="col-lg-12 col-sm-12 text-center">
+                <h6>La Nîmes'alerie, envoie vos compagnons dans l'espace</p>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <h1 class="text-end me-5">Mon compte</h1>
+            </div>
+        </div>
+    </div>
+    {{ render(controller('App\\Controller\\DefaultController::displayNav'))}}
+</header>
