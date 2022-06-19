@@ -46,7 +46,7 @@
                                                 <div class="card-header h6 text-center">
                                                     <strong>Informations sur la commande</strong>
                                                 </div>
-                                                <div class="card-body" >
+                                                <div class="card-body">
                                                     <p>Commande du: {{ invoice.orderDate ? invoice.orderDate|date('d/m/Y') : '' }}</p>
                                                     <p>Montant total de la commande: {{ invoice.TotalHTPrice }} €</p>
                                                     <p>Moyen de paiement: {{ invoice.paymentMethod }}</p>
@@ -54,39 +54,46 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row my-3 mx-3">
-                                        <table class="table text-white">
-                                            <thead>
-                                            <tr>
-                                                <th>Produits</th>
-                                                <th>Quantité</th>
-                                                <th>Prix total</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for productOrder in invoice.productOrders %}
-                                                <tr>
-                                                    <td>{{ productOrder.product.title }}</td>
-                                                    <td>{{ productOrder.quantity }}</td>
-                                                    <td>{{ productOrder.HTPrice|number_format(2,'.') }} €</td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <th>Montant total de la facture</th>
-                                                <td class="text-end"><strong>{{ invoice.TotalHTPrice }} €</strong></td>
-                                            </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="card-body text-center">
-                                    <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour à l'espace client</a>
-                                </div>
                             </div>
                         </div>
+                            <div class="row card-body">
+                                <table class="table table-sm text-white my-5 mx-5">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Produit</th>
+                                        <th>Quantité</th>
+                                        <th>Prix total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for productOrder in invoice.productOrders %}
+                                        <tr>
+                                            {% for picture in productOrder.product.pictures %}
+                                                {% if picture.isFront == 1 %}
+                                                    <td><img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="thumb-order p-1 border"></td>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <td>{{ productOrder.product.title }}</td>
+                                            <td>{{ productOrder.quantity }}</td>
+                                            <td>{{ productOrder.HTPrice|number_format(2,'.') }} €</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Montant total de la facture</th>
+                                        <td class="text-end"><strong>{{ invoice.TotalHTPrice }} €</strong></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-body text-center">
+                            <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour à l'espace client</a>
+                        </div>
+
+
                     </div>
                 </div>
                 <div class="col-12 my-5">

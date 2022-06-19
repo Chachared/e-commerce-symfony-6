@@ -124,10 +124,11 @@ h6,
   color: #ffffff;
 }
 
-.space {
+.space{
   background:url("../img/stars.jpg") center no-repeat ;
   border-radius: 20px 10px 20px 10px;
   border: none;
+  color: #ffffff;
 }
 
 /**************************************************MODALES*****************************************************/
@@ -231,6 +232,10 @@ footer {
   height: 80px;
   background: url("../img/stars.jpg") center no-repeat;
   color:white;
+}
+
+.thumb-order{
+  width:80px;
 }
 /***************************formulaires************************/
 .thumbnail {

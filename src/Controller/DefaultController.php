@@ -2,14 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Invoice;
 use App\Entity\Product;
 use App\Entity\User;
-use App\Form\AddressType;
 use App\Form\UserType;
-use App\Repository\AddressRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
@@ -26,7 +23,6 @@ class DefaultController extends AbstractController
     public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository){
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
-
     }
     
     #[Route('/', name: 'default')]
@@ -91,7 +87,7 @@ class DefaultController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->add($user);
-            return $this->redirectToRoute('default', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('show_user', ['id'=>$user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
@@ -127,28 +123,6 @@ class DefaultController extends AbstractController
 
         return $this->render('default/user/show-order.html.twig', [
             'invoice' => $invoice,
-            'products' => array_splice($flashProducts, -4),
-        ]);
-    }
-
-    #[Route('address/{id}/edit', name: 'edit_address', methods: ['GET', 'POST'])]
-    public function editAddress(Request $request, Address $address, AddressRepository $addressRepository): Response
-    {
-        $form = $this->createForm(AddressType::class, $address);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $addressRepository->add($address);
-            return $this->redirectToRoute('show_user', [], Response::HTTP_SEE_OTHER);
-        }
-
-        //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
-        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
-        shuffle($flashProducts);
-
-        return $this->renderForm('default/user/address-edit.html.twig', [
-            'address' => $address,
-            'form' => $form,
             'products' => array_splice($flashProducts, -4),
         ]);
     }

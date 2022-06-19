@@ -28,11 +28,11 @@
                                 <td><a href="{{ path('cart_addremove', {'id': productOrder.product.id, 'operator': 'minus'}) }}" class="btn btn-sm btn-secondary rounded-pill">-</a> <strong>{{ productOrder.quantity }}</strong>  <a href="{{ path('cart_addremove', {'id': productOrder.product.id, 'operator': 'plus'}) }}" class="btn btn-sm btn-secondary rounded-pill">+</a></td>
                                 <td>{{ productOrder.product.TTCPrice|number_format(2,'.') }} €</td>
                                 <td>{{ productOrder.product.TTCPrice|number_format(2,'.') * productOrder.quantity|number_format(2,'.') }} €</td>
-                                <td><a class="btn btn-dark btn-sm rounded-pill" href="{{path('cart_remove', {'id':productOrder.product.id})}}">Supprimer</a></td>
+                                <td><a class="btn btn-delete-small" href="{{path('cart_remove', {'id':productOrder.product.id})}}">x</a></td>
                             </tr>
                         {% endfor %}
                         <tr>
-                            <a class="btn btn-dark btn-sm rounded-pill focus-border-danger" href="{{path('cart_delete_all')}}">Vider le panier</a>
+                            <a class="btn btn-delete" href="{{path('cart_delete_all')}}">Vider le panier</a>
                         </tr>
                     </tbody>
                 </table>
