@@ -9,7 +9,7 @@
 
             <div class="row">
 
-                <h1 class="h3 text-center">Mettre à jour de l'adresse pour {{address.user.title}} {{address.user.firstname}} {{address.user.lastname}}</h1>
+                <h1 class="h3 text-center">Ajouter une adresse pour {{app.user.title}} {{app.user.firstname}} {{app.user.lastname}}</h1>
                 <div class="col-12">
                     <div class="card shadow-lg my-3 card-account">
                         <div class="row g-0">
@@ -19,25 +19,13 @@
                             <div class="col-lg-8">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-6 text-end">
-                                            {{ include('default/user/_delete_form-address.html.twig') }}
-                                        </div>
-                                        <div class="col-5">
-                                            <h5 class="text-uppercase text-decoration-underline card-title text-end me-5">Mes informations</h5>
-                                        </div>
+                                        <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour</a>
+                                        <h5 class="text-uppercase text-decoration-underline card-title text-end pe-5">Mes informations</h5>
                                     </div>
+
                                     <p class="card-body d-flex justify-content-center">
                                         {{ include('default/user/_form-address.html.twig', {'button_label': 'Update'}) }}
                                     </p>
-                                </div>
-                                <div class="card-body row text-center">
-                                    <div class="col-6">
-
-                                    </div>
-                                    <div class="col-5">
-                                        <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour</a>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

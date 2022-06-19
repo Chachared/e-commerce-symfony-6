@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Address;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -55,6 +56,10 @@ class AddressType extends AbstractType
                 'label'=>"Adresse de livraison",
                 'label_attr'=>['class'=>'text-bold my-2'],
                 'attr'=>['class'=>'checkbox']
+            ])
+            ->add('save', SubmitType::class, options: [
+                'label'=>"Ajouter",
+                'attr'=>['class'=>'btn btn-add my-2']
             ])
         ;
     }

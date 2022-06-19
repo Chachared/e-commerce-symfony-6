@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <h5 class="text-uppercase text-decoration-underline card-title text-end me-5">Mes adresses</h5>
                                     <p class="card-text">
-                                        {% for address in user.addresses %}
+                                        {% for address in app.user.addresses %}
                                     <div class="card-address my-3 p-1">
                                         {% if address.isDelivery == 1 and address.isBilling == 0 %}
                                             <p class="text-uppercase h6"><strong>Livraison</strong></p>

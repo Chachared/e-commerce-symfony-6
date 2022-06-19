@@ -90,20 +90,12 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="{{ path('show_user', {'id': app.user.id}) }}" class="text-white">Retour à l'espace client</a>
+                            <a href="{{ path('default_invoice_index') }}" class="text-white">Retour à mes commandes</a>
                         </div>
-
-
                     </div>
                 </div>
-                <div class="col-12 my-5">
-                    <h4 class="text-center mt-5">Quelques produits qui pourraient vous plaire :</h4>
-                    {% include 'default/parts/best-sellers.html.twig'%}
-                </div>
             </div>
-
         </div>
-
     </main>
 
 {% endblock %}

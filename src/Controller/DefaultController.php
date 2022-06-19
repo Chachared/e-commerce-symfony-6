@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Invoice;
 use App\Entity\Product;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\AddressRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\InvoiceRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,10 +22,12 @@ class DefaultController extends AbstractController
 {
     private $productRepository;
     private $categoryRepository;
-    
-    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository){
+    private $addressRepository;
+
+    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository, AddressRepository $addressRepository){
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->addressRepository = $addressRepository;
     }
     
     #[Route('/', name: 'default')]
@@ -69,6 +74,7 @@ class DefaultController extends AbstractController
     #[Route('/user/{id}', name: 'show_user', methods: ['GET'])]
     public function showUser(User $user): Response
     {
+
         //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
         $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
         shuffle($flashProducts);
@@ -76,6 +82,7 @@ class DefaultController extends AbstractController
         return $this->render('default/user/user-account.html.twig', [
             'user' => $user,
             'products' => array_splice($flashProducts, -4),
+            'addresses'=> $this->addressRepository->findAll()
         ]);
     }
 
@@ -97,32 +104,6 @@ class DefaultController extends AbstractController
         return $this->renderForm('default/user/user-edit.html.twig', [
             'user' => $user,
             'form' => $form,
-            'products' => array_splice($flashProducts, -4),
-        ]);
-    }
-
-    #[Route('/user/{id}/orders', name: 'show_orders', methods: ['GET'])]
-    public function showUserOrders(User $user): Response
-    {
-        //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
-        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
-        shuffle($flashProducts);
-
-        return $this->render('default/user/user-orders.html.twig', [
-            'user' => $user,
-            'products' => array_splice($flashProducts, -4),
-        ]);
-    }
-
-    #[Route('/order/{id}', name: 'show_order', methods: ['GET'])]
-    public function showOrder(Invoice $invoice): Response
-    {
-        //retourne 4 produits flashs de facon aleatoire sur la page d'accueil
-        $flashProducts = $this->productRepository->findBy(['isFlash' => true]);
-        shuffle($flashProducts);
-
-        return $this->render('default/user/show-order.html.twig', [
-            'invoice' => $invoice,
             'products' => array_splice($flashProducts, -4),
         ]);
     }

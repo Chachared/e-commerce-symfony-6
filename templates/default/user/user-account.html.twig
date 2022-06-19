@@ -54,21 +54,24 @@
                                 <div class="card-body">
                                     <h5 class="text-uppercase text-decoration-underline card-title text-end me-5">Mes adresses</h5>
                                     <p class="card-text">
-                                        {% for address in user.addresses %}
-                                    <div class="card-address my-3 p-1">
-                                        {% if address.isDelivery == 1 and address.isBilling == 0 %}
-                                            <p class="text-uppercase h6"><strong>Livraison</strong></p>
-                                        {% elseif address.isBilling == 1 and address.isDelivery == 0 %}
-                                            <p class="text-uppercase h6"><strong>Facturation</strong></p>
-                                        {% else %}
-                                            <p class="text-uppercase h6"><strong>Facturation & Livraison</strong></p>
-                                        {% endif %}
-                                        <p>{{ address.streetNumber }}, {{ address.street }}</p>
-                                        <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
-                                        <a href="" class="text-white">Modifier</a>
-                                    </div>
-                                    {% endfor %}
-
+                                        {% for address in addresses %}
+                                            {% if address.user.id == app.user.id %}
+                                                <div class="card-address my-3 p-1">
+                                                    {% if address.isDelivery == 1 and address.isBilling == 0 %}
+                                                        <p class="text-uppercase h6"><strong>Livraison</strong></p>
+                                                    {% elseif address.isBilling == 1 and address.isDelivery == 0 %}
+                                                        <p class="text-uppercase h6"><strong>Facturation</strong></p>
+                                                    {% else %}
+                                                        <p class="text-uppercase h6"><strong>Facturation & Livraison</strong></p>
+                                                    {% endif %}
+                                                    <p>{{ address.streetNumber }}, {{ address.street }}</p>
+                                                    <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
+                                                    <a href="{{ path('default_address_edit', {'id': address.id})}}" class="text-white">Modifier</a>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                    <a href="{{ path('default_address_new')}}" class="text-white">Ajouter</a>
                                 </div>
 
                             </div>

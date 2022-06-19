@@ -41,12 +41,12 @@
                                 <a href="{{ path('cart_display')}}" class="nav-link text-center " aria-current="page"><img
                                         src="{{ asset('img/icons/cart.png') }}" width="50" height="50" alt="Panier"
                                         class="cart"></br>Panier</a>
-                            </li>
+                                </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link text-center dropdown-toggle" data-bs-toggle="dropdown"><img src="{{ asset('img/icons/account.png') }}" width="50" height="50" alt="Compte"></br>Mon compte</a>
                                     <div class="dropdown-menu">
                                         <a href="{{ path('show_user', {'id': app.user.id}) }}" class="dropdown-item">Mon compte</a>
-                                        <a href="{{ path('show_orders', {'id': app.user.id}) }}" class="dropdown-item">Mes commandes</a>
+                                        <a href="{{ path('default_invoice_index') }}" class="dropdown-item">Mes commandes</a>
                                         <a href="{{ path('app_logout') }}" class="dropdown-item">Me déconnecter</a>
                                     </div>
                                 </li>

@@ -1,0 +1,11 @@
+<form method="post" action="{{ path('default_address_delete', {'id': address.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer cette adresse?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ address.id) }}">
+    <div class="row">
+        <div class="col-2 text-end">
+            <button class="btn btn-delete-small">x</button>
+        </div>
+        <div class="col-10 text-start">
+            <p>Supprimer cette adresse</p>
+        </div>
+    </div>
+</form>
