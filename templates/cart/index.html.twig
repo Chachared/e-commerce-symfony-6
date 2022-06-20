@@ -38,6 +38,7 @@
                 </table>
         </div>
         <div class="card-footer">
+            <a href="{{ path('place_order') }}" class="btn btn-add">Valider ma commande</a>
             <h5 class="text-end">Montant total TTC: {{totalTTCPrice|number_format(2,'.') }} euros</h5>
         </div>
         {% else %}

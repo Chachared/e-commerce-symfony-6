@@ -21,7 +21,7 @@ class ProductOrder
     #[ORM\Column(type: 'float')]
     private float $HT_price;
 
-    #[ORM\ManyToOne(targetEntity: Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'productOrders')]
     #[ORM\JoinColumn(nullable: false)]
     private Product $product;
 

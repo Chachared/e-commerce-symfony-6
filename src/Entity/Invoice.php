@@ -26,27 +26,10 @@ class Invoice
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invoices')]
     private User $user;
-    private \DateTime $date;
 
-    #[ORM\OneToMany(mappedBy: 'invoice', targetEntity: ProductOrder::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'invoice', targetEntity: ProductOrder::class, cascade: ["persist"], orphanRemoval: true)]
     #[ORM\JoinColumn(nullable: true)]
     private Collection|null $productOrders;
-
-    /**
-     * @param ?Collection|null $productOrders
-     */
-    public function setProductOrders(Collection|null $productOrders): void
-    {
-        $this->productOrders = $productOrders;
-    }
-
-    /**
-     * @returnCollection|null
-     */
-    public function getProductOrders(): Collection|null
-    {
-        return $this->productOrders;
-    }
 
 
     public function __construct()
@@ -84,10 +67,31 @@ class Invoice
         return $this;
     }
 
-
-    public function __toString(){
-        return $this->id;
+    /**
+     * @param ?Collection|null $productOrders
+     */
+    public function setProductOrders(Collection|null $productOrders): void
+    {
+        $this->productOrders = $productOrders;
     }
+
+    /**
+     * @returnCollection|null
+     */
+    public function getProductOrders(): Collection|null
+    {
+        return $this->productOrders;
+    }
+
+    public function addProductOrder(ProductOrder $productOrder): self
+    {
+        if (!$this->productOrders->contains($productOrder)) {
+            $this->productOrders[] = $productOrder;
+            $productOrder->setInvoice($this);
+        }
+        return $this;
+    }
+
 
     public function getUser(): ?User
     {

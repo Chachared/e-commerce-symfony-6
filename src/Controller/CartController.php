@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Invoice;
 use App\Entity\Product;
 use App\Entity\ProductOrder;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route('/cart')]
 class CartController extends AbstractController
@@ -150,19 +153,43 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_display');
     }
 
-    /*persister le panier en BDD
-    récupérer le panier en session
-    recuperer l'utilisateur connecté
-    s'il n'est pas connecté -> redirect to login
-    S'il est connecté -> on peut enregister la commande
-    récupérer chaque ligne du panier pour la persister en product order
-    setQuantity()
-    setHTPrice()
-    setProduct()
-    setInvoice() -> new invoice
-    invoice->setUser()
-    si on click sur le bouton CB -> moyen payment cb, si on click sur le bouton paypal etc
+    #[Route('place-order', name: 'place_order')]
+    public function orderSummary(Request $request, EntityManagerInterface $entityManager, UserInterface $user, ProductRepository $productRepository): Response
+    {
+        //on récupère le panier en session
+        $cart = $request->getSession()->get('cart');
 
-    }*/
-    
+        $HTPrice = 0;
+        $invoice= new Invoice();
+
+        if ($cart!=null){
+            foreach ($cart as $cartItem){
+
+                $productOrder= new ProductOrder();
+
+                $productOrder->setProduct($productRepository->find($cartItem->getProduct()));
+                $productOrder->setQuantity($cartItem->getQuantity());
+                $productOrder->setHTPrice($cartItem->getProduct()->getHTPrice() * $cartItem->getQuantity());
+                $productOrder->setInvoice($invoice);
+                $invoice->setUser($user);
+                $invoice->setPaymentMethod('CB');
+                $invoice->setOrderDate(new \DateTime());
+                $entityManager->persist($productOrder);
+                $entityManager->persist($invoice);
+                $entityManager->flush();
+            }
+
+            $cart=[];
+
+            return $this->redirectToRoute('default_invoice_index', ['id'=>$user->getId()], Response::HTTP_SEE_OTHER);
+        }
+
+
+
+        return $this->render('cart/index.html.twig', [
+            'cart' => $cart,
+            'HTPrice' => $HTPrice,
+            'invoice'=> $invoice
+        ]);
+    }
 }
