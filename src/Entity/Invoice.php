@@ -114,4 +114,14 @@ class Invoice
         return $totalHTPrice;
 
     }
+
+    public function getTotalTTCPrice(){
+
+        $totalTTCPrice = 0;
+        foreach ($this->getProductOrders() as $productOrder){
+            $totalTTCPrice += $productOrder->getTTCPrice();
+        }
+        return $totalTTCPrice;
+
+    }
 }

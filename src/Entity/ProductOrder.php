@@ -82,4 +82,10 @@ class ProductOrder
         return $this;
     }
 
+    public function getTTCPrice(){
+        $HTPrice = $this->getHTPrice();
+        $TTCPrice = $HTPrice + $HTPrice * 0.2;
+        return $TTCPrice;
+    }
+
 }
