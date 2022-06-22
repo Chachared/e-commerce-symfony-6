@@ -76,14 +76,14 @@
                                             {% endfor %}
                                             <td>{{ productOrder.product.title }}</td>
                                             <td>{{ productOrder.quantity }}</td>
-                                            <td>{{ productOrder.HTPrice|number_format(2,'.') }} €</td>
+                                            <td>{{ productOrder.TTCPrice|number_format(2,'.') }} €</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
                                     <tfoot>
                                     <tr>
                                         <th>Montant total de la facture</th>
-                                        <td class="text-end"><strong>{{ invoice.TotalHTPrice }} €</strong></td>
+                                        <td class="text-end"><strong>{{ invoice.TotalTTCPrice|number_format(2,'.') }} €</strong></td>
                                     </tr>
                                     </tfoot>
                                 </table>
