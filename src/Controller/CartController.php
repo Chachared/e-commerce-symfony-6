@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Invoice;
 use App\Entity\Product;
 use App\Entity\ProductOrder;
+use App\Repository\AddressRepository;
 use App\Repository\ProductRepository;
+use ContainerLfR7mew\getAddressRepositoryService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -153,61 +155,59 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_display');
     }
 
-    /*#[Route('/choose-address', name: 'cart_choose_address')]
-    public function chooseAddress(Request $request){
-
-        $session = $request->getSession();
-        $cart=[];
-
-        //Récupère le panier déjà en session s'il existe
-        if ($session->has('cart')) {
-            $cart = $session->get('cart');
-            unset($cart);
-            $cart=[];
-        }
-
-        $session->set('cart', $cart);
-
-        return $this->redirectToRoute('cart_display');
-    }*/
-
     #[Route('place-order', name: 'place_order')]
-    public function orderSummary(Request $request, EntityManagerInterface $entityManager, UserInterface $user, ProductRepository $productRepository): Response
+    public function placeOrder(Request $request, EntityManagerInterface $entityManager, UserInterface $user, ProductRepository $productRepository, AddressRepository $addressRepository): Response
     {
         //on récupère le panier en session
-        $cart = $request->getSession()->get('cart');
+        $session = $request->getSession();
+        $cart = $session->get('cart');
 
         $HTPrice = 0;
         $invoice= new Invoice();
+        $addresses = $user->getAddresses();
 
+        //on modifie le panier en ajoutant une facture au panier en session
         if ($cart!=null){
             foreach ($cart as $cartItem){
 
                 $productOrder= new ProductOrder();
-
+                $invoice->setUser($user);
+                $invoice->setOrderDate(new \DateTime());
+                $invoice->setPaymentMethod('CB');
+                foreach ($addresses as $address){
+                    if ($address->getIsDelivery() == 1 && $address->getIsBilling() == 0){
+                        $invoice->setDeliveryAddress($address);
+                    } else if ($address->getIsBilling() == 1 && $address->getIsDelivery() == 0){
+                        $invoice->setBillingAddress($address);
+                    } else if ($address->getIsBilling() == 1 && $address->getIsDelivery() == 1){
+                        $invoice->setDeliveryAddress($address);
+                        $invoice->setBillingAddress($address);
+                    } else {
+                        return $this->redirectToRoute('default_address_edit');
+                    }
+                }
                 $productOrder->setProduct($productRepository->find($cartItem->getProduct()));
                 $productOrder->setQuantity($cartItem->getQuantity());
                 $productOrder->setHTPrice($cartItem->getProduct()->getHTPrice() * $cartItem->getQuantity());
                 $productOrder->setInvoice($invoice);
-                $invoice->setUser($user);
-                $invoice->setPaymentMethod('CB');
-                $invoice->setOrderDate(new \DateTime());
+
                 $entityManager->persist($productOrder);
                 $entityManager->persist($invoice);
                 $entityManager->flush();
             }
 
-            $cart=[];
 
-            return $this->redirectToRoute('default_invoice_index', ['id'=>$user->getId()], Response::HTTP_SEE_OTHER);
+
+            return $this->redirectToRoute('default_invoice_index', [], Response::HTTP_SEE_OTHER);
         }
 
-
+        $cart= [];
 
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,
             'HTPrice' => $HTPrice,
-            'invoice'=> $invoice
+            'invoice'=> $invoice,
+            'addresses' => $addressRepository->findAll(),
         ]);
     }
 }

@@ -32,7 +32,8 @@
                                         <p>{{ address.streetNumber }}, {{ address.street }}</p>
                                         <p class="text-uppercase">{{ address.zipcode }} {{ address.city }}</p>
                                         <div class=" card-footer text-end">
-                                            <a href="{{ path('edit_address', {'id': address.id}) }}" class="text-white">Modifier</a>
+                                            <a href="{{ path('set_as_delivery', {'id': address.id}) }}" class="text-white">Choisir comme adresse de livraison</a>
+                                            <a href="{{ path('set_as_billing', {'id': address.id}) }}" class="text-white">Choisir comme adresse de facturation</a>
                                         </div>
                                     </div>
                                     {% endfor %}

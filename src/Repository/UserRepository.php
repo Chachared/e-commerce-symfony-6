@@ -25,7 +25,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
     public function findByPagination($currentPage, $nbResults){
         return $this->createQueryBuilder('u' )
-            ->orderBy('u.registerDate')
+            ->orderBy('u.registerDate','DESC')
             ->setMaxResults($nbResults)
             ->setFirstResult(($currentPage*$nbResults)-$nbResults)
             ->getQuery()->getResult();

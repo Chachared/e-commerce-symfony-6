@@ -21,6 +21,7 @@ class InvoiceRepository extends ServiceEntityRepository
 
     public function findByPagination($currentPage, $nbResults){
         return $this->createQueryBuilder('i')
+            ->orderBy('i.order_date', 'DESC')
             ->setMaxResults($nbResults)
             ->setFirstResult(($currentPage*$nbResults)-$nbResults)
             ->getQuery()->getResult();
