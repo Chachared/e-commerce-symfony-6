@@ -153,6 +153,24 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_display');
     }
 
+    /*#[Route('/choose-address', name: 'cart_choose_address')]
+    public function chooseAddress(Request $request){
+
+        $session = $request->getSession();
+        $cart=[];
+
+        //Récupère le panier déjà en session s'il existe
+        if ($session->has('cart')) {
+            $cart = $session->get('cart');
+            unset($cart);
+            $cart=[];
+        }
+
+        $session->set('cart', $cart);
+
+        return $this->redirectToRoute('cart_display');
+    }*/
+
     #[Route('place-order', name: 'place_order')]
     public function orderSummary(Request $request, EntityManagerInterface $entityManager, UserInterface $user, ProductRepository $productRepository): Response
     {

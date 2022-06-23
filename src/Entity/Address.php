@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AddressRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -38,6 +40,50 @@ class Address
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
+
+    #[ORM\OneToMany(mappedBy: 'billing_address', targetEntity: Invoice::class)]
+    private $invoices_billing_address;
+
+    #[ORM\OneToMany(mappedBy: 'delivery_address', targetEntity: Invoice::class)]
+    private $invoices_delivery_address;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getInvoicesBillingAddress(): ArrayCollection
+    {
+        return $this->invoices_billing_address;
+    }
+
+    /**
+     * @param ArrayCollection $invoices_billing_address
+     */
+    public function setInvoicesBillingAddress(ArrayCollection $invoices_billing_address): void
+    {
+        $this->invoices_billing_address = $invoices_billing_address;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getInvoicesDeliveryAddress(): ArrayCollection
+    {
+        return $this->invoices_delivery_address;
+    }
+
+    /**
+     * @param ArrayCollection $invoices_delivery_address
+     */
+    public function setInvoicesDeliveryAddress(ArrayCollection $invoices_delivery_address): void
+    {
+        $this->invoices_delivery_address = $invoices_delivery_address;
+    }
+
+    public function __construct()
+    {
+        $this->invoices_billing_address = new ArrayCollection();
+        $this->invoices_delivery_address = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -154,6 +200,36 @@ class Address
     public function setIsDelivery($isDelivery): self
     {
         $this->isDelivery = $isDelivery;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Invoice>
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setBillingAddressId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->removeElement($invoice)) {
+            // set the owning side to null (unless already changed)
+            if ($invoice->getBillingAddressId() === $this) {
+                $invoice->setBillingAddressId(null);
+            }
+        }
 
         return $this;
     }

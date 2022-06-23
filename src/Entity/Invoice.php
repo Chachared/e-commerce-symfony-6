@@ -31,6 +31,14 @@ class Invoice
     #[ORM\JoinColumn(nullable: true)]
     private Collection|null $productOrders;
 
+    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'invoices_billing_address')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $billing_address;
+
+    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'invoices_delivery_address')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $delivery_address;
+
 
     public function __construct()
     {
@@ -123,5 +131,29 @@ class Invoice
         }
         return $totalTTCPrice;
 
+    }
+
+    public function getBillingAddressId(): ?Address
+    {
+        return $this->billing_address;
+    }
+
+    public function setBillingAddress(?Address $billing_address): self
+    {
+        $this->billing_address = $billing_address;
+
+        return $this;
+    }
+
+    public function getDeliveryAddress(): ?Address
+    {
+        return $this->delivery_address;
+    }
+
+    public function setDeliveryAddressId(?Address $delivery_address): self
+    {
+        $this->delivery_address = $delivery_address;
+
+        return $this;
     }
 }
