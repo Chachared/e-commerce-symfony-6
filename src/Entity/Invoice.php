@@ -133,7 +133,7 @@ class Invoice
 
     }
 
-    public function getBillingAddressId(): ?Address
+    public function getBillingAddress(): ?Address
     {
         return $this->billing_address;
     }
@@ -150,7 +150,7 @@ class Invoice
         return $this->delivery_address;
     }
 
-    public function setDeliveryAddressId(?Address $delivery_address): self
+    public function setDeliveryAddress(?Address $delivery_address): self
     {
         $this->delivery_address = $delivery_address;
 
