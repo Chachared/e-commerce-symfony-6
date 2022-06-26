@@ -30,43 +30,46 @@
             </div>
         </div>
 
-        <table class="table table-striped table-hover table-sm my-3">
-            <thead>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-sm my-3">
+                <thead>
                 <tr>
                     <th>Boutique</th>
                     <th>Catégorie</th>
                     <th>Actions</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr>
                     {% for category in categories %}
-                        {%if category.parentCategory != null %}
-                            <td><strong>{{ category.parentCategory.name }}</strong></td>
-                            <td>{{ category.name }}</td>
-                        {% elseif category.parentCategory is null %}
-                            <td><strong>{{ category.name }}</strong></td>
-                            <td> - </td>
+                    {%if category.parentCategory != null %}
+                        <td><strong>{{ category.parentCategory.name }}</strong></td>
+                        <td>{{ category.name }}</td>
+                    {% elseif category.parentCategory is null %}
+                        <td><strong>{{ category.name }}</strong></td>
+                        <td> - </td>
                     {% endif %}
                     <td>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-lg-3 col-sm-12 col-xxs-12">
                                 <a class="text-dark" href="{{ path('admin_category_edit', {'id': category.id}) }}">Modifier</a>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 col-sm-12 col-xxs-12">
                                 {{ include('admin/admin_category/_delete_form.html.twig') }}
                             </div>
                         </div>
                     </td>
                 </tr>
 
-            {% else %}
-                <tr>
-                    <td colspan="3">aucune catégorie enregistrée</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                {% else %}
+                    <tr>
+                        <td colspan="3">aucune catégorie enregistrée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 {% if currentPage != 1 %}

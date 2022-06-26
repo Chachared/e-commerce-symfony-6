@@ -165,8 +165,9 @@ class CartController extends AbstractController
         $HTPrice = 0;
         $invoice= new Invoice();
         $addresses = $user->getAddresses();
+        $nbOfAddresses = $user->getAddresses()->count([]);
 
-        //on modifie le panier en ajoutant une facture au panier en session
+        //on persiste les données du panier dans les entités correspondantes
         if ($cart!=null){
             foreach ($cart as $cartItem){
 
@@ -174,34 +175,39 @@ class CartController extends AbstractController
                 $invoice->setUser($user);
                 $invoice->setOrderDate(new \DateTime());
                 $invoice->setPaymentMethod('CB');
-                foreach ($addresses as $address){
-                    if ($address->getIsDelivery() == 1 && $address->getIsBilling() == 0){
-                        $invoice->setDeliveryAddress($address);
-                    } else if ($address->getIsBilling() == 1 && $address->getIsDelivery() == 0){
-                        $invoice->setBillingAddress($address);
-                    } else if ($address->getIsBilling() == 1 && $address->getIsDelivery() == 1){
-                        $invoice->setDeliveryAddress($address);
-                        $invoice->setBillingAddress($address);
-                    } else {
-                        return $this->redirectToRoute('default_address_edit');
+                //on vérifie qu'il ya bien une adresse de livraison et une adresse de facturation dans le compte client
+                //sinon on renvoie vers les informations du client pour qu'il renseigne ses adresses
+                if ($nbOfAddresses == 1) {
+                    foreach ($addresses as $address) {
+                        if ($address->getIsDelivery() == 1 && $address->getIsBilling() == 0) {
+                            $invoice->setDeliveryAddress($address);
+                        } else if ($address->getIsBilling() == 1 && $address->getIsDelivery() == 0) {
+                            $invoice->setBillingAddress($address);
+                        } else if ($address->getIsBilling() == 1 && $address->getIsDelivery() == 1) {
+                            $invoice->setDeliveryAddress($address);
+                            $invoice->setBillingAddress($address);
+                        } else {
+                            return $this->redirectToRoute('show_user',['id'=>$user->getId()]);
+                        }
                     }
+                } else {
+                    return $this->redirectToRoute('show_user',['id'=>$user->getId()]);
                 }
+
                 $productOrder->setProduct($productRepository->find($cartItem->getProduct()));
                 $productOrder->setQuantity($cartItem->getQuantity());
                 $productOrder->setHTPrice($cartItem->getProduct()->getHTPrice() * $cartItem->getQuantity());
                 $productOrder->setInvoice($invoice);
-
                 $entityManager->persist($productOrder);
                 $entityManager->persist($invoice);
                 $entityManager->flush();
             }
 
-
-
-            return $this->redirectToRoute('default_invoice_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('default_invoice_index', ['id'=>$user->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        $cart= [];
+        //todo : vider le panier quand il est validé
+
 
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,

@@ -216,7 +216,7 @@ class Address
     {
         if (!$this->invoices->contains($invoice)) {
             $this->invoices[] = $invoice;
-            $invoice->setBillingAddressId($this);
+            $invoice->setBillingAddress($this);
         }
 
         return $this;
@@ -226,8 +226,8 @@ class Address
     {
         if ($this->invoices->removeElement($invoice)) {
             // set the owning side to null (unless already changed)
-            if ($invoice->getBillingAddressId() === $this) {
-                $invoice->setBillingAddressId(null);
+            if ($invoice->getBillingAddress() === $this) {
+                $invoice->setBillingAddress(null);
             }
         }
 

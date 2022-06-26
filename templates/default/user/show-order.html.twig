@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4 me-1">
+                                        <div class="col-lg-4 col-sm-6 col-xxs-12 me-1 mt-1">
                                             <div class="card card-account ms-3">
                                                 <div class="card-header h6 text-center">
                                                     <strong>Adresse de facturation</strong>
@@ -38,10 +38,22 @@
                                                         {% endif %}
                                                     {% endfor %}
                                                 </div>
+                                                <div class="card-header h6 text-center">
+                                                    <strong>Adresse de livraison</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="text-uppercase">{{ invoice.user.title }} {{ invoice.user.firstname }} {{ invoice.user.lastname }}</p>
+                                                    {% for address in invoice.user.addresses%}
+                                                        {% if address.isDelivery == 1 %}
+                                                            <p>{{ address.streetNumber }} {{ address.street }}</p>
+                                                            <p class="text-uppercase">{{ address.zipCode }} {{ address.city }}</p>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
                                             </div>
 
                                         </div>
-                                        <div class="col-6 ms-1">
+                                        <div class="col-lg-6 col-sm-6 col-xxs-12 ms-1 mt-1">
                                             <div class="card card-account ms-3">
                                                 <div class="card-header h6 text-center">
                                                     <strong>Informations sur la commande</strong>
@@ -57,36 +69,38 @@
                             </div>
                         </div>
                             <div class="row card-body">
-                                <table class="table table-sm text-white my-5 mx-5">
-                                    <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Produit</th>
-                                        <th>Quantité</th>
-                                        <th>Prix total</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for productOrder in invoice.productOrders %}
+                                <div class="table-responsive-sm table-responsive-xxs">
+                                    <table class="table table-sm text-white my-5 mx-5">
+                                        <thead>
                                         <tr>
-                                            {% for picture in productOrder.product.pictures %}
-                                                {% if picture.isFront == 1 %}
-                                                    <td><img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="thumb-order p-1 border"></td>
-                                                {% endif %}
-                                            {% endfor %}
-                                            <td>{{ productOrder.product.title }}</td>
-                                            <td>{{ productOrder.quantity }}</td>
-                                            <td>{{ productOrder.TTCPrice|number_format(2,'.') }} €</td>
+                                            <th></th>
+                                            <th>Produit</th>
+                                            <th>Quantité</th>
+                                            <th>Prix total</th>
                                         </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Montant total de la facture</th>
-                                        <td class="text-end"><strong>{{ invoice.TotalTTCPrice|number_format(2,'.') }} €</strong></td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        {% for productOrder in invoice.productOrders %}
+                                            <tr>
+                                                {% for picture in productOrder.product.pictures %}
+                                                    {% if picture.isFront == 1 %}
+                                                        <td><img src="{{asset('img/uploads/product/' ~ picture.href )}}" class="thumb-order p-1 border"></td>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <td>{{ productOrder.product.title }}</td>
+                                                <td>{{ productOrder.quantity }}</td>
+                                                <td>{{ productOrder.TTCPrice|number_format(2,'.') }} €</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Montant total de la facture</th>
+                                            <td class="text-end"><strong>{{ invoice.TotalTTCPrice|number_format(2,'.') }} €</strong></td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body text-center">

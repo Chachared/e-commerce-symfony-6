@@ -32,7 +32,7 @@
                             </div>
                             
 
-                            <div class="col-5 main-picture mt-4 mt-xl-0">
+                            <div class="col-lg-5 col-xxs-12 col-sm-12 main-picture mt-4 mt-xl-0">
                                 <div class="row">
                                     <div class="col-10">
                                     {% for picture in product.pictures %}
@@ -43,21 +43,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-lg-5 col-xxs-12 col-sm-12">
                                 <div class="row py-2">
                                     <div class="col-12">
                                         <p class="h4">Marque: {{product.brand.name}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 text-dark mt-2">
+                                    <div class="col-lg-12 text-dark mt-2">
                                         <p>
                                         {{product.description}}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 text-dark mt-2">
+                                    <div class="col-lg-12 text-dark mt-2">
                                         <p>
                                             <strong>Quantité en stock:</strong> {{product.stock}}</br>
                                             <em>
@@ -72,7 +72,7 @@
                                 </div>
 
                                 <div class="row py-3">
-                                    <div class="col-5 col-xl-3">
+                                    <div class="col-lg-5 col-xl-3 col-xxs-12 col-sm-12">
                                         <h6 class="text-grey small d-block">
                                             Prix H.T.
                                         </h6>
@@ -81,7 +81,7 @@
                                         </p>
                                     </div>
                                     <!--avis des clients-->
-                                    <div class="col-7 col-xl-9 small text-grey d-flex justify-content-end align-items-end">
+                                    <div class="col-7 col-xl-9 col-xxs-12 col-sm-12 small text-grey d-flex justify-content-end align-items-end">
                                         <p class="h3 font-weight-bold d-block mb-0">
                                         {% include 'default/parts/stars.html.twig' %}
                                         </p>
