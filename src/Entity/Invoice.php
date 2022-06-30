@@ -32,11 +32,11 @@ class Invoice
     private Collection|null $productOrders;
 
     #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'invoices_billing_address')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $billing_address;
 
     #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'invoices_delivery_address')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $delivery_address;
 
 

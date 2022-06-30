@@ -155,7 +155,7 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_display');
     }
 
-    #[Route('place-order', name: 'place_order')]
+    #[Route('/place-order', name: 'place_order')]
     public function placeOrder(Request $request, EntityManagerInterface $entityManager, UserInterface $user, ProductRepository $productRepository, AddressRepository $addressRepository): Response
     {
         //on récupère le panier en session
@@ -177,7 +177,7 @@ class CartController extends AbstractController
                 $invoice->setPaymentMethod('CB');
                 //on vérifie qu'il ya bien une adresse de livraison et une adresse de facturation dans le compte client
                 //sinon on renvoie vers les informations du client pour qu'il renseigne ses adresses
-                if ($nbOfAddresses == 1) {
+                if ($nbOfAddresses >= 1) {
                     foreach ($addresses as $address) {
                         if ($address->getIsDelivery() == 1 && $address->getIsBilling() == 0) {
                             $invoice->setDeliveryAddress($address);
@@ -205,8 +205,6 @@ class CartController extends AbstractController
 
             return $this->redirectToRoute('default_invoice_index', ['id'=>$user->getId()], Response::HTTP_SEE_OTHER);
         }
-
-        //todo : vider le panier quand il est validé
 
 
         return $this->render('cart/index.html.twig', [
